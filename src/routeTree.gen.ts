@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SitemapLangDotxmlRouteImport } from './routes/sitemap-$lang[.]xml'
+import { Route as SitemapLangDotxmlRouteImport } from './routes/sitemap-$lang[.xml]'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ExperienceRouteImport } from './routes/experience'
