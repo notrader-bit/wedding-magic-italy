@@ -10,6 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SitemapUkDotxmlRouteImport } from './routes/sitemap-uk[.]xml'
+import { Route as SitemapRuDotxmlRouteImport } from './routes/sitemap-ru[.]xml'
+import { Route as SitemapItDotxmlRouteImport } from './routes/sitemap-it[.]xml'
+import { Route as SitemapEsDotxmlRouteImport } from './routes/sitemap-es[.]xml'
+import { Route as SitemapEnDotxmlRouteImport } from './routes/sitemap-en[.]xml'
+import { Route as SitemapDeDotxmlRouteImport } from './routes/sitemap-de[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ExperienceRouteImport } from './routes/experience'
@@ -20,6 +26,36 @@ import { Route as IndexRouteImport } from './routes/index'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapUkDotxmlRoute = SitemapUkDotxmlRouteImport.update({
+  id: '/sitemap-uk.xml',
+  path: '/sitemap-uk.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRuDotxmlRoute = SitemapRuDotxmlRouteImport.update({
+  id: '/sitemap-ru.xml',
+  path: '/sitemap-ru.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapItDotxmlRoute = SitemapItDotxmlRouteImport.update({
+  id: '/sitemap-it.xml',
+  path: '/sitemap-it.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapEsDotxmlRoute = SitemapEsDotxmlRouteImport.update({
+  id: '/sitemap-es.xml',
+  path: '/sitemap-es.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapEnDotxmlRoute = SitemapEnDotxmlRouteImport.update({
+  id: '/sitemap-en.xml',
+  path: '/sitemap-en.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDeDotxmlRoute = SitemapDeDotxmlRouteImport.update({
+  id: '/sitemap-de.xml',
+  path: '/sitemap-de.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -60,6 +96,12 @@ export interface FileRoutesByFullPath {
   '/experience': typeof ExperienceRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
+  '/sitemap-de.xml': typeof SitemapDeDotxmlRoute
+  '/sitemap-en.xml': typeof SitemapEnDotxmlRoute
+  '/sitemap-es.xml': typeof SitemapEsDotxmlRoute
+  '/sitemap-it.xml': typeof SitemapItDotxmlRoute
+  '/sitemap-ru.xml': typeof SitemapRuDotxmlRoute
+  '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +111,12 @@ export interface FileRoutesByTo {
   '/experience': typeof ExperienceRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
+  '/sitemap-de.xml': typeof SitemapDeDotxmlRoute
+  '/sitemap-en.xml': typeof SitemapEnDotxmlRoute
+  '/sitemap-es.xml': typeof SitemapEsDotxmlRoute
+  '/sitemap-it.xml': typeof SitemapItDotxmlRoute
+  '/sitemap-ru.xml': typeof SitemapRuDotxmlRoute
+  '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
@@ -79,6 +127,12 @@ export interface FileRoutesById {
   '/experience': typeof ExperienceRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
+  '/sitemap-de.xml': typeof SitemapDeDotxmlRoute
+  '/sitemap-en.xml': typeof SitemapEnDotxmlRoute
+  '/sitemap-es.xml': typeof SitemapEsDotxmlRoute
+  '/sitemap-it.xml': typeof SitemapItDotxmlRoute
+  '/sitemap-ru.xml': typeof SitemapRuDotxmlRoute
+  '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +144,12 @@ export interface FileRouteTypes {
     | '/experience'
     | '/portfolio'
     | '/services'
+    | '/sitemap-de.xml'
+    | '/sitemap-en.xml'
+    | '/sitemap-es.xml'
+    | '/sitemap-it.xml'
+    | '/sitemap-ru.xml'
+    | '/sitemap-uk.xml'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +159,12 @@ export interface FileRouteTypes {
     | '/experience'
     | '/portfolio'
     | '/services'
+    | '/sitemap-de.xml'
+    | '/sitemap-en.xml'
+    | '/sitemap-es.xml'
+    | '/sitemap-it.xml'
+    | '/sitemap-ru.xml'
+    | '/sitemap-uk.xml'
     | '/sitemap.xml'
   id:
     | '__root__'
@@ -108,6 +174,12 @@ export interface FileRouteTypes {
     | '/experience'
     | '/portfolio'
     | '/services'
+    | '/sitemap-de.xml'
+    | '/sitemap-en.xml'
+    | '/sitemap-es.xml'
+    | '/sitemap-it.xml'
+    | '/sitemap-ru.xml'
+    | '/sitemap-uk.xml'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +190,12 @@ export interface RootRouteChildren {
   ExperienceRoute: typeof ExperienceRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDeDotxmlRoute: typeof SitemapDeDotxmlRoute
+  SitemapEnDotxmlRoute: typeof SitemapEnDotxmlRoute
+  SitemapEsDotxmlRoute: typeof SitemapEsDotxmlRoute
+  SitemapItDotxmlRoute: typeof SitemapItDotxmlRoute
+  SitemapRuDotxmlRoute: typeof SitemapRuDotxmlRoute
+  SitemapUkDotxmlRoute: typeof SitemapUkDotxmlRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -128,6 +206,48 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-uk.xml': {
+      id: '/sitemap-uk.xml'
+      path: '/sitemap-uk.xml'
+      fullPath: '/sitemap-uk.xml'
+      preLoaderRoute: typeof SitemapUkDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-ru.xml': {
+      id: '/sitemap-ru.xml'
+      path: '/sitemap-ru.xml'
+      fullPath: '/sitemap-ru.xml'
+      preLoaderRoute: typeof SitemapRuDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-it.xml': {
+      id: '/sitemap-it.xml'
+      path: '/sitemap-it.xml'
+      fullPath: '/sitemap-it.xml'
+      preLoaderRoute: typeof SitemapItDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-es.xml': {
+      id: '/sitemap-es.xml'
+      path: '/sitemap-es.xml'
+      fullPath: '/sitemap-es.xml'
+      preLoaderRoute: typeof SitemapEsDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-en.xml': {
+      id: '/sitemap-en.xml'
+      path: '/sitemap-en.xml'
+      fullPath: '/sitemap-en.xml'
+      preLoaderRoute: typeof SitemapEnDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-de.xml': {
+      id: '/sitemap-de.xml'
+      path: '/sitemap-de.xml'
+      fullPath: '/sitemap-de.xml'
+      preLoaderRoute: typeof SitemapDeDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -182,6 +302,12 @@ const rootRouteChildren: RootRouteChildren = {
   ExperienceRoute: ExperienceRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDeDotxmlRoute: SitemapDeDotxmlRoute,
+  SitemapEnDotxmlRoute: SitemapEnDotxmlRoute,
+  SitemapEsDotxmlRoute: SitemapEsDotxmlRoute,
+  SitemapItDotxmlRoute: SitemapItDotxmlRoute,
+  SitemapRuDotxmlRoute: SitemapRuDotxmlRoute,
+  SitemapUkDotxmlRoute: SitemapUkDotxmlRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
