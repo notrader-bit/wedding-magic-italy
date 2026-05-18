@@ -1,18 +1,21 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-
-const nav = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/portfolio", label: "Portfolio" },
-  { to: "/experience", label: "Experience" },
-  { to: "/contact", label: "Contact" },
-] as const;
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const nav = [
+    { to: "/", label: t.nav.home },
+    { to: "/about", label: t.nav.about },
+    { to: "/services", label: t.nav.services },
+    { to: "/portfolio", label: t.nav.portfolio },
+    { to: "/experience", label: t.nav.experience },
+    { to: "/contact", label: t.nav.contact },
+  ] as const;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -50,24 +53,29 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link
-          to="/contact"
-          className="hidden border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background md:inline-block"
-        >
-          Plan your day
-        </Link>
+        <div className="hidden items-center gap-5 md:flex">
+          <LanguageSwitcher />
+          <Link
+            to="/contact"
+            className="border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
+          >
+            {t.nav.planCta}
+          </Link>
+        </div>
 
-        <button
-          aria-label="Menu"
-          className="md:hidden"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <div className="space-y-1.5">
-            <span className="block h-px w-7 bg-ink" />
-            <span className="block h-px w-7 bg-ink" />
-            <span className="block h-px w-5 bg-ink" />
-          </div>
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <LanguageSwitcher />
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <div className="space-y-1.5">
+              <span className="block h-px w-7 bg-ink" />
+              <span className="block h-px w-7 bg-ink" />
+              <span className="block h-px w-5 bg-ink" />
+            </div>
+          </button>
+        </div>
       </div>
 
       {open && (
