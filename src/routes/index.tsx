@@ -40,7 +40,29 @@ function HomePage() {
     <>
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Bride and groom at sunset on a Tuscan villa terrace" width={1920} height={1280} className="hero-blur h-full w-full object-cover scale-110 ken-burns" />
+          <picture>
+            <source
+              type="image/avif"
+              sizes="100vw"
+              srcSet={`${heroAvif640} 640w, ${heroAvif1024} 1024w, ${heroAvif1600} 1600w, ${heroAvif1920} 1920w`}
+            />
+            <source
+              type="image/webp"
+              sizes="100vw"
+              srcSet={`${heroWebp640} 640w, ${heroWebp1024} 1024w, ${heroWebp1600} 1600w, ${heroWebp1920} 1920w`}
+            />
+            <img
+              src={heroImg}
+              srcSet={`${heroJpg640} 640w, ${heroJpg1024} 1024w, ${heroJpg1600} 1600w, ${heroImg} 1920w`}
+              sizes="100vw"
+              alt="Bride and groom at sunset on a Tuscan villa terrace"
+              width={1920}
+              height={1280}
+              fetchPriority="high"
+              decoding="async"
+              className="hero-blur h-full w-full object-cover scale-110 ken-burns"
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85 md:from-black/60 md:via-black/35 md:to-black/80" />
           <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/70 to-transparent md:h-[60%] md:from-black/60" />
         </div>
