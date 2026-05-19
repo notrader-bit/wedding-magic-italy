@@ -29,13 +29,13 @@ function HomePage() {
     <>
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Bride and groom at sunset on a Tuscan villa terrace" width={1920} height={1280} className="h-full w-full object-cover ken-burns" />
+          <img src={heroImg} alt="Bride and groom at sunset on a Tuscan villa terrace" width={1920} height={1280} className="h-full w-full object-cover blur-[6px] scale-110 ken-burns" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85 md:from-black/60 md:via-black/35 md:to-black/80" />
           <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/70 to-transparent md:h-[60%] md:from-black/60" />
         </div>
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-24 md:px-12 md:pb-32">
-          <div className="fade-up max-w-3xl rounded-sm bg-black/20 p-6 backdrop-blur-[6px] md:bg-black/15 md:p-10 md:backdrop-blur-[8px]">
+          <div className="fade-up max-w-3xl rounded-sm p-6 md:p-10">
             <p className="eyebrow text-[#f3e7d3]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>{h.eyebrow}</p>
             <h1 className="mt-5 font-display text-5xl leading-[1.02] text-white md:text-7xl lg:text-8xl" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.45)" }}>
               {h.h1a} <span className="display-italic text-[#f0c9a8]">{h.h1b}</span>
