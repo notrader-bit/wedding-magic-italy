@@ -113,5 +113,21 @@
     from { transform: scale(1.05); }
     to   { transform: scale(1.18); }
   }
+
+  .hero-blur {
+    filter: blur(8px);
+    will-change: filter, transform;
+  }
+  @media (min-width: 768px) {
+    .hero-blur { filter: blur(4px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-blur { filter: blur(2px); animation: none !important; transform: none !important; }
+    .ken-burns { animation: none !important; }
+    .fade-up { animation: none !important; }
+  }
+  @media (update: slow), (max-resolution: 1dppx) and (max-width: 480px) {
+    .hero-blur { filter: blur(2px); }
+  }
   .hairline { border-bottom: 1px solid var(--color-border); }
 }
