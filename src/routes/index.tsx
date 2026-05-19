@@ -30,7 +30,7 @@ function HomePage() {
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImg} alt="Bride and groom at sunset on a Tuscan villa terrace" width={1920} height={1280} className="h-full w-full object-cover ken-burns" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
         </div>
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-24 md:px-12 md:pb-32">
