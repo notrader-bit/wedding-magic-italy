@@ -30,23 +30,24 @@ function HomePage() {
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImg} alt="Bride and groom at sunset on a Tuscan villa terrace" width={1920} height={1280} className="h-full w-full object-cover ken-burns" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85 md:from-black/60 md:via-black/35 md:to-black/80" />
+          <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/70 to-transparent md:h-[60%] md:from-black/60" />
         </div>
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-24 md:px-12 md:pb-32">
-          <div className="fade-up max-w-3xl">
-            <p className="eyebrow text-[#f3e7d3]">{h.eyebrow}</p>
-            <h1 className="mt-5 font-display text-5xl leading-[1.02] text-white md:text-7xl lg:text-8xl">
+          <div className="fade-up max-w-3xl rounded-sm bg-black/20 p-6 backdrop-blur-[6px] md:bg-black/15 md:p-10 md:backdrop-blur-[8px]">
+            <p className="eyebrow text-[#f3e7d3]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>{h.eyebrow}</p>
+            <h1 className="mt-5 font-display text-5xl leading-[1.02] text-white md:text-7xl lg:text-8xl" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.45)" }}>
               {h.h1a} <span className="display-italic text-[#f0c9a8]">{h.h1b}</span>
             </h1>
-            <p className="mt-7 max-w-xl text-base font-light leading-relaxed text-white/85 md:text-lg">
+            <p className="mt-7 max-w-xl text-base font-light leading-relaxed text-white/95 md:text-lg" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
               {h.lede}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link to="/contact" className="bg-[#f0c9a8] px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-ink transition-transform hover:translate-y-[-1px]">
+              <Link to="/contact" className="bg-[#f0c9a8] px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-ink shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-transform hover:translate-y-[-1px]">
                 {h.cta1}
               </Link>
-              <Link to="/portfolio" className="border border-white/60 px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-white hover:bg-white/10">
+              <Link to="/portfolio" className="border border-white/80 bg-white/5 px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-white shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-sm hover:bg-white/15">
                 {h.cta2}
               </Link>
             </div>
