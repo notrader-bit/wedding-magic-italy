@@ -1,5 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-tuscany.jpg";
+import heroImg from "@/assets/hero/hero-1920.jpg";
+import heroAvif640 from "@/assets/hero/hero-640.avif";
+import heroAvif1024 from "@/assets/hero/hero-1024.avif";
+import heroAvif1600 from "@/assets/hero/hero-1600.avif";
+import heroAvif1920 from "@/assets/hero/hero-1920.avif";
+import heroWebp640 from "@/assets/hero/hero-640.webp";
+import heroWebp1024 from "@/assets/hero/hero-1024.webp";
+import heroWebp1600 from "@/assets/hero/hero-1600.webp";
+import heroWebp1920 from "@/assets/hero/hero-1920.webp";
+import heroJpg640 from "@/assets/hero/hero-640.jpg";
+import heroJpg1024 from "@/assets/hero/hero-1024.jpg";
+import heroJpg1600 from "@/assets/hero/hero-1600.jpg";
 import comoImg from "@/assets/portfolio-como.jpg";
 import amalfiImg from "@/assets/portfolio-amalfi.jpg";
 import pugliaImg from "@/assets/portfolio-puglia.jpg";
