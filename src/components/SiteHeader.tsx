@@ -68,6 +68,7 @@ export function SiteHeader() {
           <button
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
+            className="rounded-sm p-1.5 transition-colors hover:bg-ink/10"
           >
             <div className="space-y-1.5">
               <span className="block h-px w-7 bg-ink" />
