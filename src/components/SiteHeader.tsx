@@ -79,8 +79,15 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {open && (
-        <div className="border-b border-border bg-background/95 shadow-xl backdrop-blur-md md:hidden">
+      <div
+        aria-hidden={!open}
+        className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none ${
+          open
+            ? "max-h-[500px] opacity-100 translate-y-0 pointer-events-auto"
+            : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+      >
+        <div className="border-b border-border bg-background/95 shadow-xl backdrop-blur-md">
           <div className="mx-auto flex max-w-[1400px] flex-col px-6 py-5">
             {nav.map((item) => (
               <Link
@@ -103,7 +110,7 @@ export function SiteHeader() {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
