@@ -80,18 +80,27 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background md:hidden">
-          <div className="flex flex-col px-6 py-6">
+        <div className="border-b border-border bg-background/95 shadow-xl backdrop-blur-md md:hidden">
+          <div className="mx-auto flex max-w-[1400px] flex-col px-6 py-5">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm uppercase tracking-[0.22em] text-foreground"
+                className="py-3 text-sm font-medium uppercase tracking-[0.22em] text-ink transition-colors hover:text-terracotta"
               >
                 {item.label}
               </Link>
             ))}
+            <div className="mt-3 border-t border-border pt-4">
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="inline-block border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
+              >
+                {t.nav.planCta}
+              </Link>
+            </div>
           </div>
         </div>
       )}
