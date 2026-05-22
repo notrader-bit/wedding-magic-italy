@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
@@ -7,6 +7,8 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
+  const toggleBtnRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
 
   const nav = [
     { to: "/", label: t.nav.home },
@@ -32,6 +34,54 @@ export function SiteHeader() {
         document.body.style.overflow = prev;
       };
     }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const panel = menuPanelRef.current;
+    if (!panel) return;
+
+    const getFocusable = () =>
+      Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => !el.hasAttribute("aria-hidden") && el.offsetParent !== null);
+
+    const focusables = getFocusable();
+    focusables[0]?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = getFocusable();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey) {
+        if (active === first || !panel.contains(active)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      toggleBtnRef.current?.focus();
+    };
   }, [open]);
 
   return (
@@ -76,7 +126,10 @@ export function SiteHeader() {
         <div className="flex items-center gap-4 md:hidden">
           <LanguageSwitcher />
           <button
+            ref={toggleBtnRef}
             aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
             className="rounded-sm p-1.5 transition-colors hover:bg-ink/10"
           >
@@ -97,6 +150,11 @@ export function SiteHeader() {
         }`}
       />
       <div
+        ref={menuPanelRef}
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
         aria-hidden={!open}
         className={`relative z-50 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none ${
           open
