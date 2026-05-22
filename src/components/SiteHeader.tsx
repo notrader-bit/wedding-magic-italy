@@ -6,7 +6,9 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [headerBottom, setHeaderBottom] = useState(0);
   const { t } = useLanguage();
+  const headerRef = useRef<HTMLElement>(null);
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
 
