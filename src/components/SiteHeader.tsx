@@ -126,7 +126,10 @@ export function SiteHeader() {
         <div className="flex items-center gap-4 md:hidden">
           <LanguageSwitcher />
           <button
+            ref={toggleBtnRef}
             aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
             className="rounded-sm p-1.5 transition-colors hover:bg-ink/10"
           >
