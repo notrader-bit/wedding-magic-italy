@@ -91,7 +91,14 @@ export function SiteHeader() {
 
       <div
         aria-hidden={!open}
-        className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none ${
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 z-[49] bg-ink/25 backdrop-blur-[2px] transition-opacity duration-500 md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-1 pointer-events-none"
+        }`}
+      />
+      <div
+        aria-hidden={!open}
+        className={`relative z-50 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none ${
           open
             ? "max-h-[500px] opacity-100 translate-y-0 pointer-events-auto"
             : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
