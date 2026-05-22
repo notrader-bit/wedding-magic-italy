@@ -150,6 +150,11 @@ export function SiteHeader() {
         }`}
       />
       <div
+        ref={menuPanelRef}
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
         aria-hidden={!open}
         className={`relative z-50 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none ${
           open
