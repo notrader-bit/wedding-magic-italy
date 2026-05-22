@@ -40,6 +40,22 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!open) return;
+    const measure = () => {
+      if (headerRef.current) {
+        setHeaderBottom(headerRef.current.getBoundingClientRect().bottom);
+      }
+    };
+    // measure after panel transition starts so menu height is included
+    const id = window.setTimeout(measure, 0);
+    window.addEventListener("resize", measure);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener("resize", measure);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
 
     const panel = menuPanelRef.current;
     if (!panel) return;
