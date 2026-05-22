@@ -6,7 +6,9 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [headerBottom, setHeaderBottom] = useState(0);
   const { t } = useLanguage();
+  const headerRef = useRef<HTMLElement>(null);
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
 
@@ -34,6 +36,22 @@ export function SiteHeader() {
         document.body.style.overflow = prev;
       };
     }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const measure = () => {
+      if (headerRef.current) {
+        setHeaderBottom(headerRef.current.getBoundingClientRect().bottom);
+      }
+    };
+    // measure after panel transition starts so menu height is included
+    const id = window.setTimeout(measure, 0);
+    window.addEventListener("resize", measure);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener("resize", measure);
+    };
   }, [open]);
 
   useEffect(() => {
@@ -86,6 +104,7 @@ export function SiteHeader() {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
         scrolled ? "bg-background/90 backdrop-blur-md hairline" : "bg-background/85 backdrop-blur-md"
       }`}
@@ -145,7 +164,8 @@ export function SiteHeader() {
       <div
         aria-hidden={!open}
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-[49] bg-ink/30 backdrop-blur-lg transition-opacity duration-500 md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
+        style={{ top: open ? headerBottom : 0 }}
+        className={`fixed inset-x-0 bottom-0 z-[49] bg-ink/15 backdrop-blur-sm transition-opacity duration-500 md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
