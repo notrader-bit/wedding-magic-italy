@@ -104,6 +104,7 @@ export function SiteHeader() {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
         scrolled ? "bg-background/90 backdrop-blur-md hairline" : "bg-background/85 backdrop-blur-md"
       }`}
