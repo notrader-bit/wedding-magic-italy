@@ -145,8 +145,8 @@ export function SiteHeader() {
       <div
         aria-hidden={!open}
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-[49] bg-ink/25 backdrop-blur-[2px] transition-opacity duration-500 md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-1 pointer-events-none"
+        className={`fixed inset-0 z-[49] bg-ink/30 backdrop-blur-lg transition-opacity duration-500 md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
       <div
