@@ -166,8 +166,8 @@ export function SiteHeader() {
       <div
         aria-hidden={!open}
         onClick={() => setOpen(false)}
-        style={{ top: open ? headerBottom : 0 }}
-        className={`fixed inset-x-0 bottom-0 z-[49] bg-ink/15 backdrop-blur-sm transition-opacity duration-500 md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
+        style={{ top: headerBottom }}
+        className={`fixed inset-x-0 bottom-0 z-[49] bg-ink/15 backdrop-blur-sm transition-[opacity,top] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
