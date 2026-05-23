@@ -39,20 +39,22 @@ export function SiteHeader() {
   }, [open]);
 
   useEffect(() => {
-    if (!open) return;
+    const el = headerRef.current;
+    if (!el) return;
     const measure = () => {
-      if (headerRef.current) {
-        setHeaderBottom(headerRef.current.getBoundingClientRect().bottom);
-      }
+      setHeaderBottom(el.getBoundingClientRect().bottom);
     };
-    // measure after panel transition starts so menu height is included
-    const id = window.setTimeout(measure, 0);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
     window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, { passive: true });
     return () => {
-      window.clearTimeout(id);
+      ro.disconnect();
       window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", measure);
     };
-  }, [open]);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
