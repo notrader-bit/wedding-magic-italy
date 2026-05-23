@@ -39,20 +39,22 @@ export function SiteHeader() {
   }, [open]);
 
   useEffect(() => {
-    if (!open) return;
+    const el = headerRef.current;
+    if (!el) return;
     const measure = () => {
-      if (headerRef.current) {
-        setHeaderBottom(headerRef.current.getBoundingClientRect().bottom);
-      }
+      setHeaderBottom(el.getBoundingClientRect().bottom);
     };
-    // measure after panel transition starts so menu height is included
-    const id = window.setTimeout(measure, 0);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
     window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, { passive: true });
     return () => {
-      window.clearTimeout(id);
+      ro.disconnect();
       window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", measure);
     };
-  }, [open]);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -164,8 +166,8 @@ export function SiteHeader() {
       <div
         aria-hidden={!open}
         onClick={() => setOpen(false)}
-        style={{ top: open ? headerBottom : 0 }}
-        className={`fixed inset-x-0 bottom-0 z-[49] bg-ink/15 backdrop-blur-sm transition-opacity duration-500 md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
+        style={{ top: headerBottom }}
+        className={`fixed inset-x-0 bottom-0 z-[49] bg-ink/15 backdrop-blur-sm transition-[opacity,top] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
