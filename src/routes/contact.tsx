@@ -77,12 +77,12 @@ function ContactPage() {
           <aside className="space-y-10 md:border-l md:border-border md:pl-12">
             <div>
               <p className="eyebrow">{c.direct}</p>
-              <p className="mt-3 font-display text-2xl text-ink">hello@weddingmagicitaly.com</p>
+              <p className="mt-3 font-display text-2xl text-ink">Italianweddingmagic@gmail.com</p>
               <p className="mt-2 text-sm text-muted-foreground">{c.replyNote}</p>
             </div>
             <div>
               <p className="eyebrow">{c.byPhone}</p>
-              <p className="mt-3 font-display text-2xl text-ink">+39 055 000 0000</p>
+              <p className="mt-3 font-display text-2xl text-ink">+393275628698</p>
               <p className="mt-2 text-sm text-muted-foreground">{c.whatsappNote}</p>
             </div>
             <div>
@@ -95,9 +95,8 @@ function ContactPage() {
             <div>
               <p className="eyebrow">{c.follow}</p>
               <div className="mt-3 flex gap-5 text-sm">
-                <a href="#" className="hover:text-terracotta">Instagram</a>
-                <a href="#" className="hover:text-terracotta">Pinterest</a>
-                <a href="#" className="hover:text-terracotta">Vimeo</a>
+                <a href="https://www.instagram.com/italian.wedding.magic" target="_blank" rel="noopener noreferrer" className="hover:text-terracotta">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=100093991688862" target="_blank" rel="noopener noreferrer" className="hover:text-terracotta">Facebook</a>
               </div>
             </div>
           </aside>
