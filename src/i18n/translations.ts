@@ -101,7 +101,7 @@ const en: Dict = {
   },
   about: {
     eyebrow: "The Studio", h1a: "A small studio", h1b: "with a long memory of Italy.",
-    founderEyebrow: "Founder · Creative Director", founderName: "Giulia Moretti",
+    founderEyebrow: "Founder · Creative Director", founderName: "Natalia Kozhushko",
     founderBio1: "Born in Firenze, raised between Como and Lecce — Italy is not a portfolio for me, it is a private map. After ten years inside the country's most exclusive villas and venues, I founded Wedding Magic Italy to design weddings the way I would design my own: slowly, honestly, with rooms for stillness.",
     founderBio2: "We are a tiny team on purpose. Two planners, one designer, one production lead — so every couple receives the same hands from first email to last dance.",
     philosophy: "Philosophy",
@@ -395,7 +395,7 @@ const it: Dict = {
   },
   about: {
     eyebrow: "Lo Studio", h1a: "Uno studio piccolo", h1b: "con una lunga memoria d'Italia.",
-    founderEyebrow: "Fondatrice · Direttrice Creativa", founderName: "Giulia Moretti",
+    founderEyebrow: "Fondatrice · Direttrice Creativa", founderName: "Natalia Kozhushko",
     founderBio1: "Nata a Firenze, cresciuta tra Como e Lecce — l'Italia per me non è un portfolio, è una mappa privata. Dopo dieci anni nelle ville più esclusive del paese, ho fondato Wedding Magic Italy per disegnare matrimoni come disegnerei il mio: lentamente, onestamente, con spazio per la quiete.",
     founderBio2: "Siamo una squadra piccola di proposito. Due wedding planner, una designer, un production lead — così ogni coppia riceve le stesse mani dalla prima email all'ultimo ballo.",
     philosophy: "Filosofia",
@@ -493,7 +493,7 @@ const es: Dict = {
   },
   about: {
     eyebrow: "El Estudio", h1a: "Un estudio pequeño", h1b: "con larga memoria de Italia.",
-    founderEyebrow: "Fundadora · Directora Creativa", founderName: "Giulia Moretti",
+    founderEyebrow: "Fundadora · Directora Creativa", founderName: "Natalia Kozhushko",
     founderBio1: "Nacida en Florencia, criada entre Como y Lecce — Italia para mí no es un portfolio, es un mapa privado. Tras diez años en las villas más exclusivas del país, fundé Wedding Magic Italy para diseñar bodas como diseñaría la mía: despacio, con honestidad, con espacio para el silencio.",
     founderBio2: "Somos un equipo pequeño a propósito. Dos planners, una diseñadora, un production lead — para que cada pareja reciba las mismas manos del primer email al último baile.",
     philosophy: "Filosofía",
@@ -591,7 +591,7 @@ const de: Dict = {
   },
   about: {
     eyebrow: "Das Studio", h1a: "Ein kleines Studio", h1b: "mit langem Italien-Gedächtnis.",
-    founderEyebrow: "Gründerin · Creative Director", founderName: "Giulia Moretti",
+    founderEyebrow: "Gründerin · Creative Director", founderName: "Natalia Kozhushko",
     founderBio1: "Geboren in Florenz, aufgewachsen zwischen Como und Lecce — Italien ist für mich kein Portfolio, sondern eine private Karte. Nach zehn Jahren in den exklusivsten Villen des Landes gründete ich Wedding Magic Italy, um Hochzeiten so zu gestalten, wie ich meine eigene gestalten würde: langsam, ehrlich, mit Raum für Stille.",
     founderBio2: "Wir sind absichtlich ein kleines Team. Zwei Planerinnen, eine Designerin, ein Production Lead — so erhält jedes Paar dieselben Hände von der ersten E-Mail bis zum letzten Tanz.",
     philosophy: "Philosophie",
