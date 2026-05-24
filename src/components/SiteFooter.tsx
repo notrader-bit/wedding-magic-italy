@@ -28,8 +28,8 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow mb-4">{t.footer.contact}</p>
           <ul className="space-y-2 text-sm">
-            <li>hello@weddingmagicitaly.com</li>
-            <li>+39 055 000 0000</li>
+            <li>Italianweddingmagic@gmail.com</li>
+            <li>+393275628698</li>
             <li>{t.footer.locations}</li>
           </ul>
         </div>
@@ -37,9 +37,8 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow mb-4">{t.footer.follow}</p>
           <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-terracotta">Instagram</a></li>
-            <li><a href="#" className="hover:text-terracotta">Pinterest</a></li>
-            <li><a href="#" className="hover:text-terracotta">Vimeo</a></li>
+            <li><a href="https://www.instagram.com/italian.wedding.magic" target="_blank" rel="noopener noreferrer" className="hover:text-terracotta">Instagram</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100093991688862" target="_blank" rel="noopener noreferrer" className="hover:text-terracotta">Facebook</a></li>
           </ul>
         </div>
       </div>
