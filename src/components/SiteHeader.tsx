@@ -107,6 +107,8 @@ export function SiteHeader() {
   return (
     <>
       <div
+        data-testid="mobile-menu-backdrop"
+        data-state={open ? "open" : "closed"}
         aria-hidden={!open}
         onClick={() => setOpen(false)}
         style={{ top: headerBottom }}
