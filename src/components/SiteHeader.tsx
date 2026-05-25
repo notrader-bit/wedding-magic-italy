@@ -208,8 +208,9 @@ export function SiteHeader() {
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="inline-block border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
+                  className="inline-flex items-center gap-2 border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
                 >
+                  <CalendarDays className="h-3.5 w-3.5" />
                   {t.nav.planCta}
                 </Link>
               </div>
