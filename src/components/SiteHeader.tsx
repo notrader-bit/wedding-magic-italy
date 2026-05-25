@@ -190,16 +190,20 @@ export function SiteHeader() {
         >
           <div className="border-b border-border bg-background/95 shadow-xl backdrop-blur-md">
             <div className="mx-auto flex max-w-[1400px] flex-col px-6 py-5">
-              {nav.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => setOpen(false)}
-                  className="py-3 text-sm font-medium uppercase tracking-[0.22em] text-ink transition-colors hover:text-terracotta"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {nav.map((item) => {
+                const Icon = item.Icon;
+                return (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 py-3 text-sm font-medium uppercase tracking-[0.22em] text-ink transition-colors hover:text-terracotta"
+                  >
+                    <Icon className="h-4 w-4 shrink- 0 opacity-60" />
+                    {item.label}
+                  </Link>
+                );
+              })}
               <div className="mt-3 border-t border-border pt-4">
                 <Link
                   to="/contact"
