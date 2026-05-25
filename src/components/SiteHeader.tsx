@@ -14,12 +14,12 @@ export function SiteHeader() {
   const menuPanelRef = useRef<HTMLDivElement>(null);
 
   const nav = [
-    { to: "/", label: t.nav.home },
-    { to: "/about", label: t.nav.about },
-    { to: "/services", label: t.nav.services },
-    { to: "/portfolio", label: t.nav.portfolio },
-    { to: "/experience", label: t.nav.experience },
-    { to: "/contact", label: t.nav.contact },
+    { to: "/", label: t.nav.home, Icon: Home },
+    { to: "/about", label: t.nav.about, Icon: Users },
+    { to: "/services", label: t.nav.services, Icon: Sparkles },
+    { to: "/portfolio", label: t.nav.portfolio, Icon: Images },
+    { to: "/experience", label: t.nav.experience, Icon: Compass },
+    { to: "/contact", label: t.nav.contact, Icon: Mail },
   ] as const;
 
   useEffect(() => {
