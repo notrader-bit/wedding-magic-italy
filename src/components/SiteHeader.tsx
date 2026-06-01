@@ -124,7 +124,7 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-12">
-          <Link
+          <LocaleLink
             to="/"
             className="font-display text-xl tracking-[0.18em] text-ink md:text-[22px]"
             style={{ fontFamily: "var(--font-display)" }}
@@ -134,7 +134,7 @@ export function SiteHeader() {
 
           <nav className="hidden items-center gap-9 md:flex">
             {nav.map((item) => (
-              <Link
+              <LocaleLink
                 key={item.to}
                 to={item.to}
                 className="text-[12px] uppercase tracking-[0.22em] text-foreground/80 transition-colors hover:text-terracotta"
@@ -148,7 +148,7 @@ export function SiteHeader() {
 
           <div className="hidden items-center gap-5 md:flex">
             <LanguageSwitcher />
-            <Link
+            <LocaleLink
               to="/contact"
               className="border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
             >
@@ -193,7 +193,7 @@ export function SiteHeader() {
               {nav.map((item) => {
                 const Icon = item.Icon;
                 return (
-                  <Link
+                  <LocaleLink
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
@@ -205,7 +205,7 @@ export function SiteHeader() {
                 );
               })}
               <div className="mt-3 border-t border-border pt-4">
-                <Link
+                <LocaleLink
                   to="/contact"
                   onClick={() => setOpen(false)}
                   className="inline-flex items-center gap-2 border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
