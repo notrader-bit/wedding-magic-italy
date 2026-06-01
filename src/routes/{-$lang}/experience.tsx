@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 
-export const Route = createFileRoute("/experience")({
+export const Route = createFileRoute("/{-$lang}/experience")({
   head: () => ({
     meta: [
       { title: "The Experience — Wedding Magic Italy" },

@@ -16,12 +16,12 @@ import { Route as SitemapItDotxmlRouteImport } from './routes/sitemap-it[.]xml'
 import { Route as SitemapEsDotxmlRouteImport } from './routes/sitemap-es[.]xml'
 import { Route as SitemapEnDotxmlRouteImport } from './routes/sitemap-en[.]xml'
 import { Route as SitemapDeDotxmlRouteImport } from './routes/sitemap-de[.]xml'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as PortfolioRouteImport } from './routes/portfolio'
-import { Route as ExperienceRouteImport } from './routes/experience'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as Char123LangChar125IndexRouteImport } from './routes/{-$lang}/index'
+import { Route as Char123LangChar125ServicesRouteImport } from './routes/{-$lang}/services'
+import { Route as Char123LangChar125PortfolioRouteImport } from './routes/{-$lang}/portfolio'
+import { Route as Char123LangChar125ExperienceRouteImport } from './routes/{-$lang}/experience'
+import { Route as Char123LangChar125ContactRouteImport } from './routes/{-$lang}/contact'
+import { Route as Char123LangChar125AboutRouteImport } from './routes/{-$lang}/about'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -58,44 +58,42 @@ const SitemapDeDotxmlRoute = SitemapDeDotxmlRouteImport.update({
   path: '/sitemap-de.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const Char123LangChar125IndexRoute = Char123LangChar125IndexRouteImport.update({
+  id: '/{-$lang}/',
+  path: '/{-$lang}/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PortfolioRoute = PortfolioRouteImport.update({
-  id: '/portfolio',
-  path: '/portfolio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExperienceRoute = ExperienceRouteImport.update({
-  id: '/experience',
-  path: '/experience',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const Char123LangChar125ServicesRoute =
+  Char123LangChar125ServicesRouteImport.update({
+    id: '/{-$lang}/services',
+    path: '/{-$lang}/services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LangChar125PortfolioRoute =
+  Char123LangChar125PortfolioRouteImport.update({
+    id: '/{-$lang}/portfolio',
+    path: '/{-$lang}/portfolio',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LangChar125ExperienceRoute =
+  Char123LangChar125ExperienceRouteImport.update({
+    id: '/{-$lang}/experience',
+    path: '/{-$lang}/experience',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LangChar125ContactRoute =
+  Char123LangChar125ContactRouteImport.update({
+    id: '/{-$lang}/contact',
+    path: '/{-$lang}/contact',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LangChar125AboutRoute = Char123LangChar125AboutRouteImport.update({
+  id: '/{-$lang}/about',
+  path: '/{-$lang}/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
-  '/experience': typeof ExperienceRoute
-  '/portfolio': typeof PortfolioRoute
-  '/services': typeof ServicesRoute
   '/sitemap-de.xml': typeof SitemapDeDotxmlRoute
   '/sitemap-en.xml': typeof SitemapEnDotxmlRoute
   '/sitemap-es.xml': typeof SitemapEsDotxmlRoute
@@ -103,14 +101,14 @@ export interface FileRoutesByFullPath {
   '/sitemap-ru.xml': typeof SitemapRuDotxmlRoute
   '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
+  '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
+  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
+  '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
-  '/experience': typeof ExperienceRoute
-  '/portfolio': typeof PortfolioRoute
-  '/services': typeof ServicesRoute
   '/sitemap-de.xml': typeof SitemapDeDotxmlRoute
   '/sitemap-en.xml': typeof SitemapEnDotxmlRoute
   '/sitemap-es.xml': typeof SitemapEsDotxmlRoute
@@ -118,15 +116,15 @@ export interface FileRoutesByTo {
   '/sitemap-ru.xml': typeof SitemapRuDotxmlRoute
   '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
+  '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
+  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
+  '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
+  '/{-$lang}': typeof Char123LangChar125IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/contact': typeof ContactRoute
-  '/experience': typeof ExperienceRoute
-  '/portfolio': typeof PortfolioRoute
-  '/services': typeof ServicesRoute
   '/sitemap-de.xml': typeof SitemapDeDotxmlRoute
   '/sitemap-en.xml': typeof SitemapEnDotxmlRoute
   '/sitemap-es.xml': typeof SitemapEsDotxmlRoute
@@ -134,16 +132,16 @@ export interface FileRoutesById {
   '/sitemap-ru.xml': typeof SitemapRuDotxmlRoute
   '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
+  '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
+  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
+  '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/experience'
-    | '/portfolio'
-    | '/services'
     | '/sitemap-de.xml'
     | '/sitemap-en.xml'
     | '/sitemap-es.xml'
@@ -151,14 +149,14 @@ export interface FileRouteTypes {
     | '/sitemap-ru.xml'
     | '/sitemap-uk.xml'
     | '/sitemap.xml'
+    | '/{-$lang}/about'
+    | '/{-$lang}/contact'
+    | '/{-$lang}/experience'
+    | '/{-$lang}/portfolio'
+    | '/{-$lang}/services'
+    | '/{-$lang}/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/experience'
-    | '/portfolio'
-    | '/services'
     | '/sitemap-de.xml'
     | '/sitemap-en.xml'
     | '/sitemap-es.xml'
@@ -166,14 +164,14 @@ export interface FileRouteTypes {
     | '/sitemap-ru.xml'
     | '/sitemap-uk.xml'
     | '/sitemap.xml'
+    | '/{-$lang}/about'
+    | '/{-$lang}/contact'
+    | '/{-$lang}/experience'
+    | '/{-$lang}/portfolio'
+    | '/{-$lang}/services'
+    | '/{-$lang}'
   id:
     | '__root__'
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/experience'
-    | '/portfolio'
-    | '/services'
     | '/sitemap-de.xml'
     | '/sitemap-en.xml'
     | '/sitemap-es.xml'
@@ -181,15 +179,15 @@ export interface FileRouteTypes {
     | '/sitemap-ru.xml'
     | '/sitemap-uk.xml'
     | '/sitemap.xml'
+    | '/{-$lang}/about'
+    | '/{-$lang}/contact'
+    | '/{-$lang}/experience'
+    | '/{-$lang}/portfolio'
+    | '/{-$lang}/services'
+    | '/{-$lang}/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  ContactRoute: typeof ContactRoute
-  ExperienceRoute: typeof ExperienceRoute
-  PortfolioRoute: typeof PortfolioRoute
-  ServicesRoute: typeof ServicesRoute
   SitemapDeDotxmlRoute: typeof SitemapDeDotxmlRoute
   SitemapEnDotxmlRoute: typeof SitemapEnDotxmlRoute
   SitemapEsDotxmlRoute: typeof SitemapEsDotxmlRoute
@@ -197,6 +195,12 @@ export interface RootRouteChildren {
   SitemapRuDotxmlRoute: typeof SitemapRuDotxmlRoute
   SitemapUkDotxmlRoute: typeof SitemapUkDotxmlRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  Char123LangChar125AboutRoute: typeof Char123LangChar125AboutRoute
+  Char123LangChar125ContactRoute: typeof Char123LangChar125ContactRoute
+  Char123LangChar125ExperienceRoute: typeof Char123LangChar125ExperienceRoute
+  Char123LangChar125PortfolioRoute: typeof Char123LangChar125PortfolioRoute
+  Char123LangChar125ServicesRoute: typeof Char123LangChar125ServicesRoute
+  Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -250,58 +254,52 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDeDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
+    '/{-$lang}/': {
+      id: '/{-$lang}/'
+      path: '/{-$lang}'
+      fullPath: '/{-$lang}/'
+      preLoaderRoute: typeof Char123LangChar125IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/portfolio': {
-      id: '/portfolio'
-      path: '/portfolio'
-      fullPath: '/portfolio'
-      preLoaderRoute: typeof PortfolioRouteImport
+    '/{-$lang}/services': {
+      id: '/{-$lang}/services'
+      path: '/{-$lang}/services'
+      fullPath: '/{-$lang}/services'
+      preLoaderRoute: typeof Char123LangChar125ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/experience': {
-      id: '/experience'
-      path: '/experience'
-      fullPath: '/experience'
-      preLoaderRoute: typeof ExperienceRouteImport
+    '/{-$lang}/portfolio': {
+      id: '/{-$lang}/portfolio'
+      path: '/{-$lang}/portfolio'
+      fullPath: '/{-$lang}/portfolio'
+      preLoaderRoute: typeof Char123LangChar125PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/{-$lang}/experience': {
+      id: '/{-$lang}/experience'
+      path: '/{-$lang}/experience'
+      fullPath: '/{-$lang}/experience'
+      preLoaderRoute: typeof Char123LangChar125ExperienceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/{-$lang}/contact': {
+      id: '/{-$lang}/contact'
+      path: '/{-$lang}/contact'
+      fullPath: '/{-$lang}/contact'
+      preLoaderRoute: typeof Char123LangChar125ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/{-$lang}/about': {
+      id: '/{-$lang}/about'
+      path: '/{-$lang}/about'
+      fullPath: '/{-$lang}/about'
+      preLoaderRoute: typeof Char123LangChar125AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  ContactRoute: ContactRoute,
-  ExperienceRoute: ExperienceRoute,
-  PortfolioRoute: PortfolioRoute,
-  ServicesRoute: ServicesRoute,
   SitemapDeDotxmlRoute: SitemapDeDotxmlRoute,
   SitemapEnDotxmlRoute: SitemapEnDotxmlRoute,
   SitemapEsDotxmlRoute: SitemapEsDotxmlRoute,
@@ -309,6 +307,12 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapRuDotxmlRoute: SitemapRuDotxmlRoute,
   SitemapUkDotxmlRoute: SitemapUkDotxmlRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  Char123LangChar125AboutRoute: Char123LangChar125AboutRoute,
+  Char123LangChar125ContactRoute: Char123LangChar125ContactRoute,
+  Char123LangChar125ExperienceRoute: Char123LangChar125ExperienceRoute,
+  Char123LangChar125PortfolioRoute: Char123LangChar125PortfolioRoute,
+  Char123LangChar125ServicesRoute: Char123LangChar125ServicesRoute,
+  Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

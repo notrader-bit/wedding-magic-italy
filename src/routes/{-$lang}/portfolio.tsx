@@ -5,7 +5,7 @@ import amalfiImg from "@/assets/portfolio-amalfi.jpg";
 import pugliaImg from "@/assets/portfolio-puglia.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 
-export const Route = createFileRoute("/portfolio")({
+export const Route = createFileRoute("/{-$lang}/portfolio")({
   head: () => ({
     meta: [
       { title: "Portfolio — Wedding Magic Italy" },
