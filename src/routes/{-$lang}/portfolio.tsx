@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute} from "@tanstack/react-router";
+import { LocaleLink } from "@/components/LocaleLink";
 import heroImg from "@/assets/hero-tuscany.jpg";
 import comoImg from "@/assets/portfolio-como.jpg";
 import amalfiImg from "@/assets/portfolio-amalfi.jpg";
@@ -69,9 +70,9 @@ function PortfolioPage() {
           <h2 className="font-display text-4xl md:text-5xl">
             {p.ctaA} <span className="display-italic text-[#f0c9a8]">{p.ctaB}</span>
           </h2>
-          <Link to="/contact" className="mt-8 inline-block bg-[#f0c9a8] px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-ink hover:bg-background">
+          <LocaleLink to="/contact" className="mt-8 inline-block bg-[#f0c9a8] px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-ink hover:bg-background">
             {p.ctaBtn}
-          </Link>
+          </LocaleLink>
         </div>
       </section>
     </>

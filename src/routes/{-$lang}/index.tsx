@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute} from "@tanstack/react-router";
+import { LocaleLink } from "@/components/LocaleLink";
 import heroImg from "@/assets/hero/hero-1920.jpg";
 import heroAvif640 from "@/assets/hero/hero-640.avif";
 import heroAvif1024 from "@/assets/hero/hero-1024.avif";
@@ -77,12 +78,12 @@ function HomePage() {
               {h.lede}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link to="/contact" className="bg-[#f0c9a8] px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-ink shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-transform hover:translate-y-[-1px]">
+              <LocaleLink to="/contact" className="bg-[#f0c9a8] px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-ink shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-transform hover:translate-y-[-1px]">
                 {h.cta1}
-              </Link>
-              <Link to="/portfolio" className="border border-white/80 bg-white/5 px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-white shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-sm hover:bg-white/15">
+              </LocaleLink>
+              <LocaleLink to="/portfolio" className="border border-white/80 bg-white/5 px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-white shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-sm hover:bg-white/15">
                 {h.cta2}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
@@ -116,9 +117,9 @@ function HomePage() {
                 {h.destTitle} <span className="display-italic">{h.destItalic}</span>
               </h2>
             </div>
-            <Link to="/portfolio" className="hidden border-b border-ink pb-1 text-[11px] uppercase tracking-[0.24em] text-ink hover:text-terracotta md:inline-block">
+            <LocaleLink to="/portfolio" className="hidden border-b border-ink pb-1 text-[11px] uppercase tracking-[0.24em] text-ink hover:text-terracotta md:inline-block">
               {h.allWeddings}
-            </Link>
+            </LocaleLink>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -154,9 +155,9 @@ function HomePage() {
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               {h.founderBody}
             </p>
-            <Link to="/about" className="mt-8 inline-block border-b border-ink pb-1 text-[11px] uppercase tracking-[0.24em] text-ink hover:text-terracotta">
+            <LocaleLink to="/about" className="mt-8 inline-block border-b border-ink pb-1 text-[11px] uppercase tracking-[0.24em] text-ink hover:text-terracotta">
               {h.meetStudio}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>
@@ -182,9 +183,9 @@ function HomePage() {
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
             {h.limitedBody}
           </p>
-          <Link to="/contact" className="mt-10 inline-block bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-background hover:bg-terracotta">
+          <LocaleLink to="/contact" className="mt-10 inline-block bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-background hover:bg-terracotta">
             {h.requestCta}
-          </Link>
+          </LocaleLink>
         </div>
       </section>
     </>

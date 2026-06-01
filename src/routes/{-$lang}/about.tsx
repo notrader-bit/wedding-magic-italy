@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute} from "@tanstack/react-router";
+import { LocaleLink } from "@/components/LocaleLink";
 import founderImg from "@/assets/founder.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 
@@ -69,9 +70,9 @@ function AboutPage() {
           <h2 className="font-display text-4xl text-ink md:text-5xl">
             {a.ctaA} <span className="display-italic text-terracotta">{a.ctaB}</span>
           </h2>
-          <Link to="/contact" className="mt-8 inline-block border border-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-ink hover:bg-ink hover:text-background">
+          <LocaleLink to="/contact" className="mt-8 inline-block border border-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-ink hover:bg-ink hover:text-background">
             {a.ctaBtn}
-          </Link>
+          </LocaleLink>
         </div>
       </section>
     </>

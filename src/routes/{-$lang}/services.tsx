@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute} from "@tanstack/react-router";
+import { LocaleLink } from "@/components/LocaleLink";
 import designImg from "@/assets/services-design.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 
@@ -66,9 +67,9 @@ function ServicesPage() {
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">{s.investBody}</p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.investNote}</p>
-            <Link to="/contact" className="mt-10 inline-block bg-ink px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-background hover:bg-terracotta">
+            <LocaleLink to="/contact" className="mt-10 inline-block bg-ink px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-background hover:bg-terracotta">
               {s.investCta}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>
