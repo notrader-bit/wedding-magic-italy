@@ -130,7 +130,7 @@ export function SiteHeader() {
             style={{ fontFamily: "var(--font-display)" }}
           >
             WEDDING MAGIC <span className="display-italic text-terracotta">Italy</span>
-          </Link>
+          </LocaleLink>
 
           <nav className="hidden items-center gap-9 md:flex">
             {nav.map((item) => (
@@ -142,7 +142,7 @@ export function SiteHeader() {
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
-              </Link>
+              </LocaleLink>
             ))}
           </nav>
 
@@ -153,7 +153,7 @@ export function SiteHeader() {
               className="border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
             >
               {t.nav.planCta}
-            </Link>
+            </LocaleLink>
           </div>
 
           <div className="flex items-center gap-4 md:hidden">
@@ -201,7 +201,7 @@ export function SiteHeader() {
                   >
                     <Icon className="h-4 w-4 shrink-0 opacity-60" />
                     {item.label}
-                  </Link>
+                  </LocaleLink>
                 );
               })}
               <div className="mt-3 border-t border-border pt-4">
@@ -212,7 +212,7 @@ export function SiteHeader() {
                 >
                   <CalendarDays className="h-3.5 w-3.5" />
                   {t.nav.planCta}
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>
