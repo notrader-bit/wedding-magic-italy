@@ -1,7 +1,7 @@
-import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { LocaleLink } from "@/components/LocaleLink";
 import { Home, Users, Sparkles, Images, Compass, Mail, CalendarDays } from "lucide-react";
 
 export function SiteHeader() {
