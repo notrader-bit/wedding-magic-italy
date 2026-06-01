@@ -1,7 +1,7 @@
-import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { LocaleLink } from "@/components/LocaleLink";
 import { Home, Users, Sparkles, Images, Compass, Mail, CalendarDays } from "lucide-react";
 
 export function SiteHeader() {
@@ -124,17 +124,17 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-12">
-          <Link
+          <LocaleLink
             to="/"
             className="font-display text-xl tracking-[0.18em] text-ink md:text-[22px]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             WEDDING MAGIC <span className="display-italic text-terracotta">Italy</span>
-          </Link>
+          </LocaleLink>
 
           <nav className="hidden items-center gap-9 md:flex">
             {nav.map((item) => (
-              <Link
+              <LocaleLink
                 key={item.to}
                 to={item.to}
                 className="text-[12px] uppercase tracking-[0.22em] text-foreground/80 transition-colors hover:text-terracotta"
@@ -142,18 +142,18 @@ export function SiteHeader() {
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
-              </Link>
+              </LocaleLink>
             ))}
           </nav>
 
           <div className="hidden items-center gap-5 md:flex">
             <LanguageSwitcher />
-            <Link
+            <LocaleLink
               to="/contact"
               className="border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
             >
               {t.nav.planCta}
-            </Link>
+            </LocaleLink>
           </div>
 
           <div className="flex items-center gap-4 md:hidden">
@@ -193,7 +193,7 @@ export function SiteHeader() {
               {nav.map((item) => {
                 const Icon = item.Icon;
                 return (
-                  <Link
+                  <LocaleLink
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
@@ -201,18 +201,18 @@ export function SiteHeader() {
                   >
                     <Icon className="h-4 w-4 shrink-0 opacity-60" />
                     {item.label}
-                  </Link>
+                  </LocaleLink>
                 );
               })}
               <div className="mt-3 border-t border-border pt-4">
-                <Link
+                <LocaleLink
                   to="/contact"
                   onClick={() => setOpen(false)}
                   className="inline-flex items-center gap-2 border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
                 >
                   <CalendarDays className="h-3.5 w-3.5" />
                   {t.nav.planCta}
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>

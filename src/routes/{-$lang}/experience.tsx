@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute} from "@tanstack/react-router";
+import { LocaleLink } from "@/components/LocaleLink";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 
-export const Route = createFileRoute("/experience")({
+export const Route = createFileRoute("/{-$lang}/experience")({
   head: () => ({
     meta: [
       { title: "The Experience — Wedding Magic Italy" },
@@ -64,9 +65,9 @@ function ExperiencePage() {
           <h2 className="font-display text-4xl text-ink md:text-5xl">
             {e.ctaA} <span className="display-italic text-terracotta">{e.ctaB}</span>
           </h2>
-          <Link to="/contact" className="mt-8 inline-block bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-background hover:bg-terracotta">
+          <LocaleLink to="/contact" className="mt-8 inline-block bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-background hover:bg-terracotta">
             {e.ctaBtn}
-          </Link>
+          </LocaleLink>
         </div>
       </section>
     </>

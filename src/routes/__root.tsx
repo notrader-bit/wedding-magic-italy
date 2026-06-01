@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -24,12 +24,12 @@ function NotFoundComponent() {
           The page you're looking for has wandered off into the Italian countryside.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
+          <a
+            href="/"
             className="inline-flex items-center justify-center border border-ink px-5 py-2.5 text-xs uppercase tracking-[0.22em] text-ink transition-colors hover:bg-ink hover:text-background"
           >
             Return home
-          </Link>
+          </a>
         </div>
       </div>
     </div>

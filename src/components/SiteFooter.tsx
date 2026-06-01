@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { LocaleLink } from "@/components/LocaleLink";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function SiteFooter() {
@@ -18,10 +18,10 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow mb-4">{t.footer.explore}</p>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/about" className="hover:text-terracotta">{t.nav.about}</Link></li>
-            <li><Link to="/services" className="hover:text-terracotta">{t.nav.services}</Link></li>
-            <li><Link to="/portfolio" className="hover:text-terracotta">{t.nav.portfolio}</Link></li>
-            <li><Link to="/experience" className="hover:text-terracotta">{t.nav.experience}</Link></li>
+            <li><LocaleLink to="/about" className="hover:text-terracotta">{t.nav.about}</LocaleLink></li>
+            <li><LocaleLink to="/services" className="hover:text-terracotta">{t.nav.services}</LocaleLink></li>
+            <li><LocaleLink to="/portfolio" className="hover:text-terracotta">{t.nav.portfolio}</LocaleLink></li>
+            <li><LocaleLink to="/experience" className="hover:text-terracotta">{t.nav.experience}</LocaleLink></li>
           </ul>
         </div>
 
