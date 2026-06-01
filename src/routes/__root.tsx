@@ -12,6 +12,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
+import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 
 function NotFoundComponent() {
   return (
@@ -118,6 +119,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useRevealOnScroll();
 
   return (
     <QueryClientProvider client={queryClient}>
