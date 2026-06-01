@@ -1,56 +1,45 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo } from "react";
+import { useNavigate, useParams, useRouterState } from "@tanstack/react-router";
 import { LANGS, LANG_HTML, TRANSLATIONS, type Dict, type Lang } from "./translations";
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Dict };
 const LanguageContext = createContext<Ctx | null>(null);
 
-const STORAGE_KEY = "wmi-lang";
-const DEFAULT_LANG: Lang = "en";
+export const DEFAULT_LANG: Lang = "en";
 
 function isLang(v: string | null | undefined): v is Lang {
   return !!v && (LANGS as readonly string[]).includes(v);
 }
 
-function detectInitial(): Lang {
-  if (typeof window === "undefined") return DEFAULT_LANG;
-  const url = new URL(window.location.href);
-  const q = url.searchParams.get("lang");
-  if (isLang(q)) return q;
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (isLang(stored)) return stored;
-  const nav = window.navigator.language.slice(0, 2).toLowerCase();
-  return isLang(nav) ? nav : DEFAULT_LANG;
+/** Strip a leading "/xx" lang segment from a pathname, return the rest. */
+function stripLangFromPath(pathname: string): string {
+  const m = pathname.match(/^\/([a-z]{2})(\/.*)?$/i);
+  if (m && isLang(m[1].toLowerCase())) {
+    return m[2] || "/";
+  }
+  return pathname || "/";
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
+  const params = useParams({ strict: false }) as { lang?: string };
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  useEffect(() => {
-    setLangState(detectInitial());
-  }, []);
+  const lang: Lang = isLang(params.lang) ? params.lang : DEFAULT_LANG;
 
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.lang = LANG_HTML[lang];
     }
-    if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      const current = url.searchParams.get("lang");
-      const next = lang === DEFAULT_LANG ? null : lang;
-      if (current !== next) {
-        if (next) url.searchParams.set("lang", next);
-        else url.searchParams.delete("lang");
-        window.history.replaceState({}, "", url.toString());
-      }
-    }
   }, [lang]);
 
   const setLang = (l: Lang) => {
-    setLangState(l);
-    if (typeof window !== "undefined") window.localStorage.setItem(STORAGE_KEY, l);
+    const rest = stripLangFromPath(pathname);
+    const nextPath = l === DEFAULT_LANG ? rest : `/${l}${rest === "/" ? "" : rest}`;
+    navigate({ to: nextPath, replace: false });
   };
 
-  const value = useMemo<Ctx>(() => ({ lang, setLang, t: TRANSLATIONS[lang] }), [lang]);
+  const value = useMemo<Ctx>(() => ({ lang, setLang, t: TRANSLATIONS[lang] }), [lang, pathname]);
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
@@ -60,14 +49,11 @@ export function useLanguage(): Ctx {
   return ctx;
 }
 
-/** Build an absolute URL for a given path + lang (default lang has no ?lang param). */
 function buildLangUrl(path: string, l: Lang): string {
-  const origin =
-    typeof window !== "undefined" ? window.location.origin : "";
-  const url = new URL(path, origin || "http://localhost");
-  if (l !== DEFAULT_LANG) url.searchParams.set("lang", l);
-  else url.searchParams.delete("lang");
-  return origin ? url.toString() : `${path}${l !== DEFAULT_LANG ? `?lang=${l}` : ""}`;
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
+  const rest = stripLangFromPath(path);
+  const localized = l === DEFAULT_LANG ? rest : `/${l}${rest === "/" ? "" : rest}`;
+  return origin ? `${origin}${localized}` : localized;
 }
 
 /**
@@ -100,7 +86,6 @@ export function usePageMeta(key: keyof Dict["meta"]) {
 
     const path = window.location.pathname;
 
-    // Remove previously injected hreflang/canonical we manage
     document.head
       .querySelectorAll('link[data-i18n="1"]')
       .forEach((n) => n.parentNode?.removeChild(n));
@@ -118,7 +103,6 @@ export function usePageMeta(key: keyof Dict["meta"]) {
     LANGS.forEach((l) => addLink("alternate", buildLangUrl(path, l), LANG_HTML[l]));
     addLink("alternate", buildLangUrl(path, DEFAULT_LANG), "x-default");
 
-    // og:url should match canonical
     upsertMeta('meta[property="og:url"]', { property: "og:url", content: buildLangUrl(path, lang) });
   }, [t, key, lang]);
 }
