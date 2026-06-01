@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import founderImg from "@/assets/founder.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/{-$lang}/about")({
   head: () => ({
     meta: [
       { title: "About — Wedding Magic Italy" },

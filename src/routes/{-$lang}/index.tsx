@@ -17,7 +17,7 @@ import pugliaImg from "@/assets/portfolio-puglia.jpg";
 import founderImg from "@/assets/founder.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/{-$lang}/")({
   head: () => ({
     meta: [
       { title: "Wedding Magic Italy — Luxury Destination Weddings in Italy" },
