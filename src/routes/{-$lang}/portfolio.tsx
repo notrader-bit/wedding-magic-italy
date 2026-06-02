@@ -44,22 +44,35 @@ function PortfolioPage() {
         <div className="mx-auto max-w-[1300px] space-y-28 md:space-y-40">
           {p.stories.map((s, i) => {
             const [first, second] = s.couple.split(" & ");
+            const slug = STORY_SLUGS[i];
+            const href = `${langPrefix}/portfolio/${slug}`;
             return (
               <article key={s.couple} className="grid gap-10 md:grid-cols-12 md:items-center">
                 <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-                  <div className={`relative ${aspects[i]} overflow-hidden`}>
-                    <img src={images[i]} alt={s.couple} width={1600} height={1200} loading="lazy" className="h-full w-full object-cover" />
-                  </div>
+                  <a href={href} className="group block">
+                    <div className={`relative ${aspects[i]} overflow-hidden`}>
+                      <img
+                        src={images[i]}
+                        alt={s.couple}
+                        width={1600}
+                        height={1200}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                      />
+                    </div>
+                  </a>
                 </div>
                 <div className={`md:col-span-5 ${i % 2 ? "md:pr-12" : "md:pl-12"}`}>
                   <p className="eyebrow">{s.place} · {s.year}</p>
                   <h2 className="mt-4 font-display text-4xl leading-[1.1] text-ink md:text-5xl">
-                    {first} <span className="display-italic text-terracotta">&</span> {second}
+                    <a href={href} className="hover:text-terracotta">
+                      {first} <span className="display-italic text-terracotta">&</span> {second}
+                    </a>
                   </h2>
                   <p className="mt-6 text-base leading-relaxed text-muted-foreground">{s.desc}</p>
-                  <button className="mt-8 border-b border-ink pb-1 text-[11px] uppercase tracking-[0.24em] text-ink hover:text-terracotta">
+                  <a href={href} className="mt-8 inline-block border-b border-ink pb-1 text-[11px] uppercase tracking-[0.24em] text-ink hover:text-terracotta">
                     {p.readStory}
-                  </button>
+                  </a>
                 </div>
               </article>
             );
