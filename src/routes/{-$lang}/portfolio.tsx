@@ -23,8 +23,9 @@ export const Route = createFileRoute("/{-$lang}/portfolio")({
 
 function PortfolioPage() {
   usePageMeta("portfolio");
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const p = t.portfolio;
+  const langPrefix = lang === "en" ? "" : `/${lang}`;
   const images = [heroImg, comoImg, amalfiImg, pugliaImg];
   const aspects = ["aspect-[16/10]", "aspect-[3/4]", "aspect-[3/4]", "aspect-[16/10]"];
 
