@@ -1,10 +1,11 @@
-import { createFileRoute} from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { LocaleLink } from "@/components/LocaleLink";
 import heroImg from "@/assets/hero-tuscany.jpg";
 import comoImg from "@/assets/portfolio-como.jpg";
 import amalfiImg from "@/assets/portfolio-amalfi.jpg";
 import pugliaImg from "@/assets/portfolio-puglia.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
+import { STORY_SLUGS } from "@/data/story-details";
 
 export const Route = createFileRoute("/{-$lang}/portfolio")({
   head: () => ({
