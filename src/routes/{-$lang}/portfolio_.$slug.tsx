@@ -10,7 +10,7 @@ import {
   type StorySlug,
 } from "@/data/story-details";
 
-export const Route = createFileRoute("/{-$lang}/portfolio/$slug")({
+export const Route = createFileRoute("/{-$lang}/portfolio_/$slug")({
   beforeLoad: ({ params }) => {
     if (!isStorySlug(params.slug)) throw notFound();
   },
