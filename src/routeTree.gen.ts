@@ -22,7 +22,7 @@ import { Route as Char123LangChar125PortfolioRouteImport } from './routes/{-$lan
 import { Route as Char123LangChar125ExperienceRouteImport } from './routes/{-$lang}/experience'
 import { Route as Char123LangChar125ContactRouteImport } from './routes/{-$lang}/contact'
 import { Route as Char123LangChar125AboutRouteImport } from './routes/{-$lang}/about'
-import { Route as Char123LangChar125PortfolioSlugRouteImport } from './routes/{-$lang}/portfolio.$slug'
+import { Route as Char123LangChar125PortfolioSlugRouteImport } from './routes/{-$lang}/portfolio_.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -95,9 +95,9 @@ const Char123LangChar125AboutRoute = Char123LangChar125AboutRouteImport.update({
 } as any)
 const Char123LangChar125PortfolioSlugRoute =
   Char123LangChar125PortfolioSlugRouteImport.update({
-    id: '/$slug',
-    path: '/$slug',
-    getParentRoute: () => Char123LangChar125PortfolioRoute,
+    id: '/{-$lang}/portfolio_/$slug',
+    path: '/{-$lang}/portfolio/$slug',
+    getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -111,7 +111,7 @@ export interface FileRoutesByFullPath {
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
-  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRouteWithChildren
+  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
   '/{-$lang}/portfolio/$slug': typeof Char123LangChar125PortfolioSlugRoute
@@ -127,7 +127,7 @@ export interface FileRoutesByTo {
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
-  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRouteWithChildren
+  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}': typeof Char123LangChar125IndexRoute
   '/{-$lang}/portfolio/$slug': typeof Char123LangChar125PortfolioSlugRoute
@@ -144,10 +144,10 @@ export interface FileRoutesById {
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
-  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRouteWithChildren
+  '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
-  '/{-$lang}/portfolio/$slug': typeof Char123LangChar125PortfolioSlugRoute
+  '/{-$lang}/portfolio_/$slug': typeof Char123LangChar125PortfolioSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -197,7 +197,7 @@ export interface FileRouteTypes {
     | '/{-$lang}/portfolio'
     | '/{-$lang}/services'
     | '/{-$lang}/'
-    | '/{-$lang}/portfolio/$slug'
+    | '/{-$lang}/portfolio_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -211,9 +211,10 @@ export interface RootRouteChildren {
   Char123LangChar125AboutRoute: typeof Char123LangChar125AboutRoute
   Char123LangChar125ContactRoute: typeof Char123LangChar125ContactRoute
   Char123LangChar125ExperienceRoute: typeof Char123LangChar125ExperienceRoute
-  Char123LangChar125PortfolioRoute: typeof Char123LangChar125PortfolioRouteWithChildren
+  Char123LangChar125PortfolioRoute: typeof Char123LangChar125PortfolioRoute
   Char123LangChar125ServicesRoute: typeof Char123LangChar125ServicesRoute
   Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
+  Char123LangChar125PortfolioSlugRoute: typeof Char123LangChar125PortfolioSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -309,29 +310,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/{-$lang}/portfolio/$slug': {
-      id: '/{-$lang}/portfolio/$slug'
-      path: '/$slug'
+    '/{-$lang}/portfolio_/$slug': {
+      id: '/{-$lang}/portfolio_/$slug'
+      path: '/{-$lang}/portfolio/$slug'
       fullPath: '/{-$lang}/portfolio/$slug'
       preLoaderRoute: typeof Char123LangChar125PortfolioSlugRouteImport
-      parentRoute: typeof Char123LangChar125PortfolioRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface Char123LangChar125PortfolioRouteChildren {
-  Char123LangChar125PortfolioSlugRoute: typeof Char123LangChar125PortfolioSlugRoute
-}
-
-const Char123LangChar125PortfolioRouteChildren: Char123LangChar125PortfolioRouteChildren =
-  {
-    Char123LangChar125PortfolioSlugRoute: Char123LangChar125PortfolioSlugRoute,
-  }
-
-const Char123LangChar125PortfolioRouteWithChildren =
-  Char123LangChar125PortfolioRoute._addFileChildren(
-    Char123LangChar125PortfolioRouteChildren,
-  )
 
 const rootRouteChildren: RootRouteChildren = {
   SitemapDeDotxmlRoute: SitemapDeDotxmlRoute,
@@ -344,10 +331,10 @@ const rootRouteChildren: RootRouteChildren = {
   Char123LangChar125AboutRoute: Char123LangChar125AboutRoute,
   Char123LangChar125ContactRoute: Char123LangChar125ContactRoute,
   Char123LangChar125ExperienceRoute: Char123LangChar125ExperienceRoute,
-  Char123LangChar125PortfolioRoute:
-    Char123LangChar125PortfolioRouteWithChildren,
+  Char123LangChar125PortfolioRoute: Char123LangChar125PortfolioRoute,
   Char123LangChar125ServicesRoute: Char123LangChar125ServicesRoute,
   Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
+  Char123LangChar125PortfolioSlugRoute: Char123LangChar125PortfolioSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
