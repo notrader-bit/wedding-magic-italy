@@ -10,6 +10,7 @@ const ENTRIES = [
   { path: "/about", priority: "0.8" },
   { path: "/services", priority: "0.9" },
   { path: "/portfolio", priority: "0.9" },
+  { path: "/packages", priority: "0.9" },
   { path: "/experience", priority: "0.8" },
   { path: "/contact", priority: "0.9" },
 ];

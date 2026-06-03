@@ -9,7 +9,7 @@ type ExtraProps = Pick<
 
 export type LocaleLinkProps = AnchorProps &
   ExtraProps & {
-    to: "/" | "/about" | "/services" | "/portfolio" | "/experience" | "/contact";
+    to: "/" | "/about" | "/services" | "/portfolio" | "/packages" | "/experience" | "/contact";
   };
 
 /**

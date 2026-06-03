@@ -21,6 +21,7 @@ export function SiteFooter() {
             <li><LocaleLink to="/about" className="hover:text-terracotta">{t.nav.about}</LocaleLink></li>
             <li><LocaleLink to="/services" className="hover:text-terracotta">{t.nav.services}</LocaleLink></li>
             <li><LocaleLink to="/portfolio" className="hover:text-terracotta">{t.nav.portfolio}</LocaleLink></li>
+            <li><LocaleLink to="/packages" className="hover:text-terracotta">{t.nav.packages}</LocaleLink></li>
             <li><LocaleLink to="/experience" className="hover:text-terracotta">{t.nav.experience}</LocaleLink></li>
           </ul>
         </div>

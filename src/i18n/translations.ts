@@ -20,9 +20,9 @@ export const LANG_HTML: Record<Lang, string> = {
 };
 
 type Dict = {
-  nav: { home: string; about: string; services: string; portfolio: string; experience: string; contact: string; planCta: string };
+  nav: { home: string; about: string; services: string; portfolio: string; packages: string; experience: string; contact: string; planCta: string };
   footer: { tagline: string; explore: string; contact: string; follow: string; crafted: string; locations: string };
-  meta: Record<"home" | "about" | "services" | "portfolio" | "experience" | "contact", { title: string; description: string }>;
+  meta: Record<"home" | "about" | "services" | "portfolio" | "packages" | "experience" | "contact", { title: string; description: string }>;
   home: {
     eyebrow: string; h1a: string; h1b: string; lede: string; cta1: string; cta2: string; scroll: string;
     promiseEyebrow: string; promiseH1a: string; promiseH1b: string; promiseBody: string;
@@ -49,6 +49,13 @@ type Dict = {
     stories: { place: string; couple: string; year: string; desc: string }[];
     readStory: string; ctaA: string; ctaB: string; ctaBtn: string;
   };
+  packages: {
+    eyebrow: string; h1a: string; h1b: string; lede: string;
+    startingFrom: string; includesH: string; idealH: string; popular: string;
+    items: { name: string; n: string; tag?: string; price: string; intro: string; includes: string[]; ideal: string }[];
+    noteH: string; noteBody: string;
+    ctaA: string; ctaB: string; ctaBody: string; ctaBtn: string;
+  };
   experience: {
     eyebrow: string; h1a: string; h1b: string; lede: string;
     steps: { n: string; t: string; when: string; d: string }[];
@@ -70,7 +77,7 @@ type Dict = {
 };
 
 const en: Dict = {
-  nav: { home: "Home", about: "About", services: "Services", portfolio: "Portfolio", experience: "Experience", contact: "Contact", planCta: "Plan your day" },
+  nav: { home: "Home", about: "About", services: "Services", portfolio: "Portfolio", experience: "Experience", contact: "Contact", packages: "Packages", planCta: "Plan your day" },
   footer: { tagline: "Bespoke destination weddings across Tuscany, Lake Como, Amalfi & Puglia. Cinematic, intimate, unforgettable.", explore: "Explore", contact: "Contact", follow: "Follow", crafted: "Crafted in Italia · Con amore", locations: "Firenze · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Luxury Destination Weddings in Italy", description: "Cinematic, intimate destination weddings in Tuscany, Lake Como, Amalfi & Puglia. Crafted by Wedding Magic Italy." },
@@ -78,6 +85,7 @@ const en: Dict = {
     services: { title: "Services — Wedding Magic Italy", description: "Full planning, destination weddings, elopements and creative direction across Italy." },
     portfolio: { title: "Portfolio — Wedding Magic Italy", description: "A selected portfolio of luxury weddings across Italy — Tuscany, Lake Como, Amalfi, Puglia." },
     experience: { title: "The Experience — Wedding Magic Italy", description: "How we work — a transparent five-step process from first call to last dance." },
+    packages: { title: "Packages & Pricing — Wedding Magic Italy", description: "Three transparent ways to work with us — full planning, partial planning, and elopements in Italy. Honest starting prices." },
     contact: { title: "Contact — Wedding Magic Italy", description: "Begin your Italian wedding. Tell us about your day and we'll reply within 48 hours." },
   },
   home: {
@@ -165,10 +173,22 @@ const en: Dict = {
     studio: "Studio", studioBy: "By appointment only.",
     follow: "Follow",
   },
+  packages: {
+    eyebrow: "Packages & Pricing", h1a: "Three honest ways", h1b: "to begin.",
+    lede: "Every wedding is bespoke — but we work in three transparent shapes. These are starting points for couples planning between €40,000 and €500,000+ in total wedding budget.",
+    startingFrom: "Starting from", includesH: "What's included", idealH: "Ideal for", popular: "Most chosen",
+    items: [
+      { name: "Full Planning", n: "I.", price: "€18,000", intro: "Twelve to eighteen months of fully bespoke planning, designed and produced end-to-end by our team.", includes: ["Venue sourcing & private site visits", "Creative direction, mood & palette", "Curated vendor team", "Budget management & contracts", "Guest concierge & travel logistics", "Full on-the-day direction"], ideal: "International couples planning a multi-day celebration of 40–150 guests who want one team to hold every detail." },
+      { name: "Partial Planning", n: "II.", tag: "popular", price: "€9,500", intro: "You've already chosen a venue or a few key suppliers — we step in for design, production and the months that matter most.", includes: ["Design & creative direction", "Vendor curation for remaining roles", "Detailed timeline & supplier briefing", "Final-month coordination", "On-the-day team of two planners", "Guest welcome & on-site concierge"], ideal: "Couples who've started planning but want an Italian team for design, production and the final stretch." },
+      { name: "Elopement & Intimate", n: "III.", price: "€6,500", intro: "Two to twenty guests, one breathtaking location — from cliffside vows in Amalfi to a private vineyard lunch in Tuscany.", includes: ["Symbolic, civil or legal ceremony", "Curated location (chapel, cliff, vineyard, villa)", "Photography & optional film", "Florals, hair & makeup, officiant", "Private chef dinner for up to 20", "On-the-day planner"], ideal: "Couples who want the whole of Italy in a single intimate day — without 150 guests on the timeline." },
+    ],
+    noteH: "Beyond these three", noteBody: "Need something else — a renewal of vows, a corporate-style event, a multi-cultural ceremony? We design custom packages on request. The numbers above are professional fees only; total wedding budgets typically start at €40,000.",
+    ctaA: "Not sure which fits?", ctaB: "Let's talk.", ctaBody: "Send a short note about your date, location and guest count — we'll reply within 48 hours with the package that makes sense for you.", ctaBtn: "Request a consultation",
+  },
 };
 
 const uk: Dict = {
-  nav: { home: "Головна", about: "Про нас", services: "Послуги", portfolio: "Портфоліо", experience: "Досвід", contact: "Контакти", planCta: "Спланувати день" },
+  nav: { home: "Головна", about: "Про нас", services: "Послуги", portfolio: "Портфоліо", experience: "Досвід", contact: "Контакти", packages: "Пакети", planCta: "Спланувати день" },
   footer: { tagline: "Ексклюзивні весілля в Тоскані, на озері Комо, Амальфі та Апулії. Кінематографічні, інтимні, незабутні.", explore: "Розділи", contact: "Контакти", follow: "Соцмережі", crafted: "Створено в Італії · Con amore", locations: "Флоренція · Комо · Амальфі" },
   meta: {
     home: { title: "Wedding Magic Italy — Розкішні весілля в Італії", description: "Кінематографічні, інтимні весілля в Тоскані, на озері Комо, Амальфі та Апулії від Wedding Magic Italy." },
@@ -176,6 +196,7 @@ const uk: Dict = {
     services: { title: "Послуги — Wedding Magic Italy", description: "Повне планування, destination-весілля, елопменти та креативна режисура по всій Італії." },
     portfolio: { title: "Портфоліо — Wedding Magic Italy", description: "Обране портфоліо розкішних весіль в Італії — Тоскана, Комо, Амальфі, Апулія." },
     experience: { title: "Досвід — Wedding Magic Italy", description: "Як ми працюємо — прозорий п'ятикроковий процес від першого дзвінка до останнього танцю." },
+    packages: { title: "Пакети та ціни — Wedding Magic Italy", description: "Три прозорі формати співпраці — повне планування, часткове планування, елопменти. Чесні стартові ціни." },
     contact: { title: "Контакти — Wedding Magic Italy", description: "Розпочніть своє італійське весілля. Розкажіть про ваш день — відповімо протягом 48 годин." },
   },
   home: {
@@ -263,10 +284,22 @@ const uk: Dict = {
     studio: "Студія", studioBy: "Тільки за попереднім записом.",
     follow: "Соцмережі",
   },
+  packages: {
+    eyebrow: "Пакети та ціни", h1a: "Три чесні способи", h1b: "почати.",
+    lede: "Кожне весілля — індивідуальне, але ми працюємо у трьох прозорих форматах. Це стартові точки для пар з бюджетом весілля від €40 000 до €500 000+.",
+    startingFrom: "Від", includesH: "Що входить", idealH: "Для кого", popular: "Найпопулярніший",
+    items: [
+      { name: "Повне планування", n: "I.", price: "€18 000", intro: "Від дванадцяти до вісімнадцяти місяців повністю індивідуальної роботи: концепція, дизайн і продакшн — від нуля до останнього танцю.", includes: ["Пошук локацій і приватні огляди", "Креативна режисура, настрій і палітра", "Підбір команди підрядників", "Управління бюджетом і договори", "Консьєрж для гостей і логістика", "Повна режисура дня"], ideal: "Міжнародні пари з багатоденним святом на 40–150 гостей, які хочуть, щоб усе тримала одна команда." },
+      { name: "Часткове планування", n: "II.", tag: "popular", price: "€9 500", intro: "Ви вже маєте локацію або частину підрядників — ми підключаємось до дизайну, продакшну й найважливіших останніх місяців.", includes: ["Дизайн і креативна режисура", "Підбір решти підрядників", "Детальний таймлайн і бриф для команди", "Координація останнього місяця", "Команда з двох планувальників у день весілля", "Welcome для гостей і консьєрж"], ideal: "Пари, які вже почали планувати, але хочуть італійську команду для дизайну, продакшну і фінального етапу." },
+      { name: "Елопмент і камерне", n: "III.", price: "€6 500", intro: "Від двох до двадцяти гостей, одна неймовірна локація — від обітниць на скелях Амальфі до обіду в приватному виноградникові Тоскани.", includes: ["Символічна, цивільна або юридична церемонія", "Кураторська локація (каплиця, скеля, виноградник, вілла)", "Фото та відео за бажанням", "Флористика, зачіска та макіяж, ведучий", "Вечеря від приватного шефа до 20 осіб", "Планувальник у день весілля"], ideal: "Пари, які хочуть усю Італію в одному камерному дні — без 150 гостей у таймлайні." },
+    ],
+    noteH: "Поза цими трьома", noteBody: "Потрібно щось інше — оновлення обітниць, корпоративний формат, мультикультурна церемонія? Створюємо індивідуальні пакети на запит. Цифри вище — лише професійний гонорар; загальний бюджет весілля зазвичай починається від €40 000.",
+    ctaA: "Не впевнені, що пасує?", ctaB: "Поговорімо.", ctaBody: "Надішліть короткий лист з датою, локацією та кількістю гостей — відповімо протягом 48 годин із пакетом, який підходить саме вам.", ctaBtn: "Записатись на консультацію",
+  },
 };
 
 const ru: Dict = {
-  nav: { home: "Главная", about: "О нас", services: "Услуги", portfolio: "Портфолио", experience: "Опыт", contact: "Контакты", planCta: "Спланировать день" },
+  nav: { home: "Главная", about: "О нас", services: "Услуги", portfolio: "Портфолио", experience: "Опыт", contact: "Контакты", packages: "Пакеты", planCta: "Спланировать день" },
   footer: { tagline: "Эксклюзивные свадьбы в Тоскане, на озере Комо, Амальфи и Апулии. Кинематографичные, камерные, незабываемые.", explore: "Разделы", contact: "Контакты", follow: "Соцсети", crafted: "Сделано в Италии · Con amore", locations: "Флоренция · Комо · Амальфи" },
   meta: {
     home: { title: "Wedding Magic Italy — Роскошные свадьбы в Италии", description: "Кинематографичные, камерные свадьбы в Тоскане, на Комо, Амальфи и Апулии от Wedding Magic Italy." },
@@ -274,6 +307,7 @@ const ru: Dict = {
     services: { title: "Услуги — Wedding Magic Italy", description: "Полное планирование, destination-свадьбы, элопменты и креативная режиссура по всей Италии." },
     portfolio: { title: "Портфолио — Wedding Magic Italy", description: "Избранное портфолио роскошных свадеб в Италии — Тоскана, Комо, Амальфи, Апулия." },
     experience: { title: "Опыт — Wedding Magic Italy", description: "Как мы работаем — прозрачный пятишаговый процесс от первого звонка до последнего танца." },
+    packages: { title: "Пакеты и цены — Wedding Magic Italy", description: "Три прозрачных формата работы — полное планирование, частичное планирование, элопменты. Честные стартовые цены." },
     contact: { title: "Контакты — Wedding Magic Italy", description: "Начните свою итальянскую свадьбу. Расскажите о вашем дне — ответим в течение 48 часов." },
   },
   home: {
@@ -361,10 +395,22 @@ const ru: Dict = {
     studio: "Студия", studioBy: "Только по предварительной записи.",
     follow: "Соцсети",
   },
+  packages: {
+    eyebrow: "Пакеты и цены", h1a: "Три честных способа", h1b: "начать.",
+    lede: "Каждая свадьба индивидуальна, но мы работаем в трёх прозрачных форматах. Это стартовые точки для пар с общим бюджетом от €40 000 до €500 000+.",
+    startingFrom: "От", includesH: "Что входит", idealH: "Для кого", popular: "Самый популярный",
+    items: [
+      { name: "Полное планирование", n: "I.", price: "€18 000", intro: "От двенадцати до восемнадцати месяцев полностью индивидуальной работы: концепция, дизайн и продакшн — от нуля до последнего танца.", includes: ["Поиск локаций и частные осмотры", "Креативная режиссура, настроение и палитра", "Подбор команды подрядчиков", "Управление бюджетом и договоры", "Консьерж для гостей и логистика", "Полная режиссура дня"], ideal: "Международные пары с многодневным праздником на 40–150 гостей, которые хотят одну команду на всё." },
+      { name: "Частичное планирование", n: "II.", tag: "popular", price: "€9 500", intro: "У вас уже есть локация или часть подрядчиков — мы подключаемся к дизайну, продакшну и важнейшим последним месяцам.", includes: ["Дизайн и креативная режиссура", "Подбор оставшихся подрядчиков", "Подробный таймлайн и бриф команды", "Координация последнего месяца", "Команда из двух планировщиков в день свадьбы", "Welcome для гостей и консьерж"], ideal: "Пары, которые уже начали планировать, но хотят итальянскую команду для дизайна, продакшна и финального этапа." },
+      { name: "Элопмент и камерная", n: "III.", price: "€6 500", intro: "От двух до двадцати гостей, одна потрясающая локация — от клятв на скалах Амальфи до обеда в частном винограднике Тосканы.", includes: ["Символическая, гражданская или юридическая церемония", "Кураторская локация (часовня, скала, виноградник, вилла)", "Фото и видео по желанию", "Флористика, причёска и макияж, ведущий", "Ужин частного шефа до 20 человек", "Планировщик в день свадьбы"], ideal: "Пары, которые хотят всю Италию в одном камерном дне — без 150 гостей в таймлайне." },
+    ],
+    noteH: "За пределами этих трёх", noteBody: "Нужно что-то ещё — обновление клятв, корпоративный формат, мультикультурная церемония? Создаём индивидуальные пакеты по запросу. Цифры выше — только профессиональный гонорар; общий бюджет свадьбы обычно от €40 000.",
+    ctaA: "Не уверены, что подходит?", ctaB: "Поговорим.", ctaBody: "Пришлите короткое письмо с датой, локацией и количеством гостей — ответим в течение 48 часов с пакетом, который вам подходит.", ctaBtn: "Записаться на консультацию",
+  },
 };
 
 const it: Dict = {
-  nav: { home: "Home", about: "Studio", services: "Servizi", portfolio: "Portfolio", experience: "Esperienza", contact: "Contatti", planCta: "Pianifica il giorno" },
+  nav: { home: "Home", about: "Studio", services: "Servizi", portfolio: "Portfolio", experience: "Esperienza", contact: "Contatti", packages: "Pacchetti", planCta: "Pianifica il giorno" },
   footer: { tagline: "Matrimoni destinazione su misura tra Toscana, Lago di Como, Amalfi e Puglia. Cinematografici, intimi, indimenticabili.", explore: "Esplora", contact: "Contatti", follow: "Social", crafted: "Crafted in Italia · Con amore", locations: "Firenze · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Matrimoni di Lusso in Italia", description: "Matrimoni destinazione cinematografici e intimi in Toscana, sul Lago di Como, Amalfi e Puglia. Wedding Magic Italy." },
@@ -372,6 +418,7 @@ const it: Dict = {
     services: { title: "Servizi — Wedding Magic Italy", description: "Full planning, destination wedding, elopement e direzione creativa in tutta Italia." },
     portfolio: { title: "Portfolio — Wedding Magic Italy", description: "Una selezione di matrimoni di lusso in Italia — Toscana, Como, Amalfi, Puglia." },
     experience: { title: "L'Esperienza — Wedding Magic Italy", description: "Come lavoriamo — un percorso trasparente in cinque passi, dalla prima chiamata all'ultimo ballo." },
+    packages: { title: "Pacchetti e Prezzi — Wedding Magic Italy", description: "Tre formule trasparenti per lavorare con noi — full planning, partial planning ed elopement in Italia." },
     contact: { title: "Contatti — Wedding Magic Italy", description: "Iniziate il vostro matrimonio italiano. Raccontateci la giornata, rispondiamo entro 48 ore." },
   },
   home: {
@@ -459,10 +506,22 @@ const it: Dict = {
     studio: "Studio", studioBy: "Solo su appuntamento.",
     follow: "Social",
   },
+  packages: {
+    eyebrow: "Pacchetti e Prezzi", h1a: "Tre formule oneste", h1b: "per iniziare.",
+    lede: "Ogni matrimonio è su misura, ma lavoriamo in tre formule trasparenti. Sono punti di partenza per coppie con un budget totale tra €40.000 e €500.000+.",
+    startingFrom: "A partire da", includesH: "Cosa include", idealH: "Ideale per", popular: "La più scelta",
+    items: [
+      { name: "Full Planning", n: "I.", price: "€18.000", intro: "Dai dodici ai diciotto mesi di pianificazione su misura: concept, design e produzione — dall'idea all'ultimo ballo.", includes: ["Ricerca location e visite private", "Direzione creativa, mood e palette", "Selezione del team di fornitori", "Gestione budget e contratti", "Concierge ospiti e logistica viaggio", "Regia completa del giorno"], ideal: "Coppie internazionali con un evento multi-day da 40–150 ospiti che vogliono un solo team per ogni dettaglio." },
+      { name: "Partial Planning", n: "II.", tag: "popular", price: "€9.500", intro: "Avete già scelto la location o alcuni fornitori — entriamo per il design, la produzione e i mesi che contano di più.", includes: ["Design e direzione creativa", "Selezione dei fornitori mancanti", "Timeline dettagliata e brief al team", "Coordinamento dell'ultimo mese", "Team di due planner nel giorno", "Welcome ospiti e concierge in loco"], ideal: "Coppie che hanno iniziato a pianificare ma vogliono un team italiano per design, produzione e rettilineo finale." },
+      { name: "Elopement & Intimi", n: "III.", price: "€6.500", intro: "Da due a venti ospiti, una location mozzafiato — dalle promesse a picco sul mare ad Amalfi a un pranzo in una vigna privata in Toscana.", includes: ["Cerimonia simbolica, civile o legale", "Location curata (cappella, scogliera, vigna, villa)", "Fotografia e video opzionale", "Fiori, hair & make-up, officiante", "Cena con chef privato fino a 20 persone", "Planner nel giorno"], ideal: "Coppie che vogliono tutta l'Italia in una sola giornata intima — senza 150 ospiti in timeline." },
+    ],
+    noteH: "Oltre questi tre", noteBody: "Vi serve altro — rinnovo delle promesse, evento corporate, cerimonia multiculturale? Disegniamo pacchetti su misura su richiesta. Le cifre sopra sono solo onorari professionali; i budget totali partono in genere da €40.000.",
+    ctaA: "Non sapete quale scegliere?", ctaB: "Parliamone.", ctaBody: "Inviateci un breve messaggio con data, location e numero di ospiti — risponderemo entro 48 ore con il pacchetto giusto per voi.", ctaBtn: "Richiedi una consulenza",
+  },
 };
 
 const es: Dict = {
-  nav: { home: "Inicio", about: "Estudio", services: "Servicios", portfolio: "Portfolio", experience: "Experiencia", contact: "Contacto", planCta: "Planifica tu día" },
+  nav: { home: "Inicio", about: "Estudio", services: "Servicios", portfolio: "Portfolio", experience: "Experiencia", contact: "Contacto", packages: "Paquetes", planCta: "Planifica tu día" },
   footer: { tagline: "Bodas destino a medida en Toscana, Lago di Como, Amalfi y Puglia. Cinematográficas, íntimas, inolvidables.", explore: "Explorar", contact: "Contacto", follow: "Redes", crafted: "Hecho en Italia · Con amore", locations: "Florencia · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Bodas de Lujo en Italia", description: "Bodas destino cinematográficas e íntimas en Toscana, Lago di Como, Amalfi y Puglia. Por Wedding Magic Italy." },
@@ -470,6 +529,7 @@ const es: Dict = {
     services: { title: "Servicios — Wedding Magic Italy", description: "Planificación completa, bodas destino, elopements y dirección creativa en toda Italia." },
     portfolio: { title: "Portfolio — Wedding Magic Italy", description: "Una selección de bodas de lujo en Italia — Toscana, Como, Amalfi, Puglia." },
     experience: { title: "La Experiencia — Wedding Magic Italy", description: "Cómo trabajamos — un proceso transparente en cinco pasos, de la primera llamada al último baile." },
+    packages: { title: "Paquetes y Precios — Wedding Magic Italy", description: "Tres formatos transparentes para trabajar con nosotros — full planning, partial planning y elopements en Italia." },
     contact: { title: "Contacto — Wedding Magic Italy", description: "Comienza tu boda italiana. Cuéntanos sobre tu día y respondemos en 48 horas." },
   },
   home: {
@@ -557,10 +617,22 @@ const es: Dict = {
     studio: "Estudio", studioBy: "Solo con cita.",
     follow: "Redes",
   },
+  packages: {
+    eyebrow: "Paquetes y Precios", h1a: "Tres formas honestas", h1b: "de empezar.",
+    lede: "Cada boda es a medida, pero trabajamos en tres formatos transparentes. Son puntos de partida para parejas con un presupuesto total entre €40.000 y €500.000+.",
+    startingFrom: "Desde", includesH: "Qué incluye", idealH: "Ideal para", popular: "La más elegida",
+    items: [
+      { name: "Full Planning", n: "I.", price: "€18.000", intro: "De doce a dieciocho meses de planificación totalmente a medida: concepto, diseño y producción — del cero al último baile.", includes: ["Búsqueda de lugares y visitas privadas", "Dirección creativa, mood y paleta", "Selección del equipo de proveedores", "Gestión de presupuesto y contratos", "Concierge de invitados y logística", "Dirección completa del día"], ideal: "Parejas internacionales con un evento multi-día de 40–150 invitados que quieren un único equipo para todo." },
+      { name: "Partial Planning", n: "II.", tag: "popular", price: "€9.500", intro: "Ya tenéis lugar o algunos proveedores — entramos para el diseño, la producción y los meses que más importan.", includes: ["Diseño y dirección creativa", "Selección de proveedores restantes", "Timeline detallado y brief al equipo", "Coordinación del último mes", "Equipo de dos planners el día de la boda", "Welcome de invitados y concierge in situ"], ideal: "Parejas que han empezado a planificar pero quieren un equipo italiano para diseño, producción y la recta final." },
+      { name: "Elopement e Íntimas", n: "III.", price: "€6.500", intro: "De dos a veinte invitados, un lugar impresionante — desde votos al borde del acantilado en Amalfi hasta un almuerzo en un viñedo privado de Toscana.", includes: ["Ceremonia simbólica, civil o legal", "Lugar curado (capilla, acantilado, viñedo, villa)", "Fotografía y vídeo opcional", "Flores, peluquería y maquillaje, oficiante", "Cena con chef privado hasta 20 personas", "Planner el día de la boda"], ideal: "Parejas que quieren toda Italia en un único día íntimo — sin 150 invitados en el timeline." },
+    ],
+    noteH: "Más allá de estos tres", noteBody: "¿Necesitáis algo distinto — renovación de votos, evento corporativo, ceremonia multicultural? Diseñamos paquetes a medida bajo demanda. Las cifras arriba son solo honorarios profesionales; los presupuestos totales suelen partir desde €40.000.",
+    ctaA: "¿No estáis seguros?", ctaB: "Hablemos.", ctaBody: "Mandadnos un mensaje breve con la fecha, el lugar y el número de invitados — responderemos en 48 horas con el paquete que tenga sentido para vosotros.", ctaBtn: "Solicitar una consulta",
+  },
 };
 
 const de: Dict = {
-  nav: { home: "Start", about: "Studio", services: "Leistungen", portfolio: "Portfolio", experience: "Ablauf", contact: "Kontakt", planCta: "Tag planen" },
+  nav: { home: "Start", about: "Studio", services: "Leistungen", portfolio: "Portfolio", experience: "Ablauf", contact: "Kontakt", packages: "Pakete", planCta: "Tag planen" },
   footer: { tagline: "Maßgeschneiderte Destination Weddings in der Toskana, am Comer See, an der Amalfiküste und in Apulien. Cinematic, intim, unvergesslich.", explore: "Entdecken", contact: "Kontakt", follow: "Social", crafted: "Crafted in Italia · Con amore", locations: "Florenz · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Luxus-Hochzeiten in Italien", description: "Cinematic, intime Destination Weddings in der Toskana, am Comer See, an der Amalfiküste und in Apulien. Wedding Magic Italy." },
@@ -568,6 +640,7 @@ const de: Dict = {
     services: { title: "Leistungen — Wedding Magic Italy", description: "Full Planning, Destination Weddings, Elopements und Creative Direction in ganz Italien." },
     portfolio: { title: "Portfolio — Wedding Magic Italy", description: "Eine Auswahl von Luxushochzeiten in Italien — Toskana, Como, Amalfi, Apulien." },
     experience: { title: "Der Ablauf — Wedding Magic Italy", description: "Wie wir arbeiten — ein transparenter Fünf-Schritte-Prozess vom ersten Anruf bis zum letzten Tanz." },
+    packages: { title: "Pakete & Preise — Wedding Magic Italy", description: "Drei transparente Formate für die Zusammenarbeit — Full Planning, Partial Planning und Elopements in Italien." },
     contact: { title: "Kontakt — Wedding Magic Italy", description: "Beginnen Sie Ihre italienische Hochzeit. Erzählen Sie uns von Ihrem Tag — wir antworten innerhalb von 48 Stunden." },
   },
   home: {
@@ -654,6 +727,18 @@ const de: Dict = {
     byPhone: "Telefonisch", whatsappNote: "WhatsApp bevorzugt für internationale Paare.",
     studio: "Studio", studioBy: "Nur nach Terminvereinbarung.",
     follow: "Social",
+  },
+  packages: {
+    eyebrow: "Pakete & Preise", h1a: "Drei ehrliche Wege,", h1b: "zu beginnen.",
+    lede: "Jede Hochzeit ist maßgeschneidert, doch wir arbeiten in drei transparenten Formaten. Das sind Ausgangspunkte für Paare mit einem Gesamtbudget zwischen €40.000 und €500.000+.",
+    startingFrom: "Ab", includesH: "Was enthalten ist", idealH: "Ideal für", popular: "Am häufigsten gewählt",
+    items: [
+      { name: "Full Planning", n: "I.", price: "€18.000", intro: "Zwölf bis achtzehn Monate vollständig maßgeschneiderte Planung: Konzept, Design und Produktion — von der Idee bis zum letzten Tanz.", includes: ["Locationsuche & private Besichtigungen", "Creative Direction, Mood & Palette", "Auswahl des Dienstleister-Teams", "Budget-Management & Verträge", "Gäste-Concierge & Reise-Logistik", "Vollständige Regie am Tag"], ideal: "Internationale Paare mit Multi-Day-Event von 40–150 Gästen, die ein einziges Team für jedes Detail wollen." },
+      { name: "Partial Planning", n: "II.", tag: "popular", price: "€9.500", intro: "Sie haben bereits Location oder einige Dienstleister gewählt — wir steigen für Design, Produktion und die wichtigsten letzten Monate ein.", includes: ["Design & Creative Direction", "Auswahl der fehlenden Dienstleister", "Detaillierte Timeline & Briefing", "Koordination des letzten Monats", "Zwei Planerinnen am Tag", "Welcome für Gäste & Concierge vor Ort"], ideal: "Paare, die bereits planen, aber ein italienisches Team für Design, Produktion und die Zielgerade wollen." },
+      { name: "Elopement & Intim", n: "III.", price: "€6.500", intro: "Zwei bis zwanzig Gäste, eine atemberaubende Location — vom Eheversprechen auf den Klippen Amalfis bis zum Mittagessen in einem privaten Weinberg der Toskana.", includes: ["Symbolische, zivile oder rechtliche Zeremonie", "Kuratierte Location (Kapelle, Klippe, Weinberg, Villa)", "Fotografie & optionaler Film", "Floral, Hair & Make-up, Officiant", "Private-Chef-Dinner für bis zu 20 Personen", "Planerin am Tag"], ideal: "Paare, die ganz Italien in einem intimen Tag wollen — ohne 150 Gäste in der Timeline." },
+    ],
+    noteH: "Jenseits dieser drei", noteBody: "Brauchen Sie etwas anderes — Vow Renewal, Corporate-Event, multikulturelle Zeremonie? Wir gestalten individuelle Pakete auf Anfrage. Die Zahlen oben sind reine Honorare; Gesamtbudgets starten typischerweise bei €40.000.",
+    ctaA: "Nicht sicher, was passt?", ctaB: "Sprechen wir.", ctaBody: "Schicken Sie uns eine kurze Notiz mit Datum, Location und Gästezahl — wir antworten innerhalb von 48 Stunden mit dem passenden Paket.", ctaBtn: "Beratung anfragen",
   },
 };
 
