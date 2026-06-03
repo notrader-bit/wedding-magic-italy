@@ -20,9 +20,9 @@ export const LANG_HTML: Record<Lang, string> = {
 };
 
 type Dict = {
-  nav: { home: string; about: string; services: string; portfolio: string; experience: string; contact: string; planCta: string };
+  nav: { home: string; about: string; services: string; portfolio: string; packages: string; experience: string; contact: string; planCta: string };
   footer: { tagline: string; explore: string; contact: string; follow: string; crafted: string; locations: string };
-  meta: Record<"home" | "about" | "services" | "portfolio" | "experience" | "contact", { title: string; description: string }>;
+  meta: Record<"home" | "about" | "services" | "portfolio" | "packages" | "experience" | "contact", { title: string; description: string }>;
   home: {
     eyebrow: string; h1a: string; h1b: string; lede: string; cta1: string; cta2: string; scroll: string;
     promiseEyebrow: string; promiseH1a: string; promiseH1b: string; promiseBody: string;
@@ -48,6 +48,13 @@ type Dict = {
     eyebrow: string; h1a: string; h1b: string;
     stories: { place: string; couple: string; year: string; desc: string }[];
     readStory: string; ctaA: string; ctaB: string; ctaBtn: string;
+  };
+  packages: {
+    eyebrow: string; h1a: string; h1b: string; lede: string;
+    startingFrom: string; includesH: string; idealH: string; popular: string;
+    items: { name: string; n: string; tag?: string; price: string; intro: string; includes: string[]; ideal: string }[];
+    noteH: string; noteBody: string;
+    ctaA: string; ctaB: string; ctaBody: string; ctaBtn: string;
   };
   experience: {
     eyebrow: string; h1a: string; h1b: string; lede: string;
