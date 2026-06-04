@@ -114,7 +114,7 @@ export function SiteHeader() {
         aria-hidden={!open}
         onClick={() => setOpen(false)}
         style={{ top: headerBottom }}
-        className={`fixed inset-x-0 bottom-0 z-40 bg-ink/15 backdrop-blur-sm transition-[opacity,top] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
+        className={`fixed inset-x-0 bottom-0 z-40 bg-ink/15 backdrop-blur-sm transition-[opacity,top] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden motion-reduce:transition-none motion-reduce:backdrop-blur-none ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
@@ -124,21 +124,21 @@ export function SiteHeader() {
           scrolled ? "bg-background/90 backdrop-blur-md hairline" : "bg-background/85 backdrop-blur-md"
         }`}
       >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-12">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 py-5 lg:gap-6 lg:px-8 xl:px-12">
           <LocaleLink
             to="/"
-            className="font-display text-xl tracking-[0.18em] text-ink md:text-[22px]"
+            className="shrink-0 font-display text-xl tracking-[0.18em] text-ink lg:text-[20px] xl:text-[22px]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             WEDDING MAGIC <span className="display-italic text-terracotta">Italy</span>
           </LocaleLink>
 
-          <nav className="hidden items-center gap-9 md:flex">
+          <nav className="hidden items-center gap-4 lg:flex xl:gap-7">
             {nav.map((item) => (
               <LocaleLink
                 key={item.to}
                 to={item.to}
-                className="text-[12px] uppercase tracking-[0.22em] text-foreground/80 transition-colors hover:text-terracotta"
+                className="whitespace-nowrap text-[11px] uppercase tracking-[0.18em] text-foreground/80 transition-colors hover:text-terracotta xl:text-[12px] xl:tracking-[0.22em]"
                 activeProps={{ className: "text-terracotta" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
@@ -147,17 +147,17 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-5 md:flex">
+          <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-5">
             <LanguageSwitcher />
             <LocaleLink
               to="/contact"
-              className="border border-ink/70 px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-ink transition-colors hover:bg-ink hover:text-background"
+              className="whitespace-nowrap border border-ink/70 px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-background xl:px-5 xl:py-2.5 xl:text-[11px] xl:tracking-[0.24em]"
             >
               {t.nav.planCta}
             </LocaleLink>
           </div>
 
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-4 lg:hidden">
             <LanguageSwitcher />
             <button
               ref={toggleBtnRef}
@@ -175,6 +175,7 @@ export function SiteHeader() {
             </button>
           </div>
         </div>
+
 
         <div
           ref={menuPanelRef}
