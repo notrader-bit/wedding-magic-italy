@@ -184,7 +184,7 @@ export function SiteHeader() {
           aria-modal="true"
           aria-label="Mobile navigation"
           aria-hidden={!open}
-          className={`relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden motion-reduce:transition-none ${
+          className={`relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden motion-reduce:transition-none ${
             open
               ? "max-h-[500px] opacity-100 translate-y-0 pointer-events-auto"
               : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
