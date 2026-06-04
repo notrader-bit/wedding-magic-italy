@@ -290,7 +290,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-cream px-6 py-28 md:px-12 md:py-36">
+      <section className="bg-background px-6 py-28 md:px-12 md:py-36">
 
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow">{h.limitedEyebrow}</p>
