@@ -19,8 +19,6 @@ import { Route as SitemapDeDotxmlRouteImport } from './routes/sitemap-de[.]xml'
 import { Route as Char123LangChar125IndexRouteImport } from './routes/{-$lang}/index'
 import { Route as Char123LangChar125ServicesRouteImport } from './routes/{-$lang}/services'
 import { Route as Char123LangChar125PortfolioRouteImport } from './routes/{-$lang}/portfolio'
-import { Route as Char123LangChar125PackagesRouteImport } from './routes/{-$lang}/packages'
-import { Route as Char123LangChar125ExperienceRouteImport } from './routes/{-$lang}/experience'
 import { Route as Char123LangChar125ContactRouteImport } from './routes/{-$lang}/contact'
 import { Route as Char123LangChar125AboutRouteImport } from './routes/{-$lang}/about'
 import { Route as Char123LangChar125PortfolioSlugRouteImport } from './routes/{-$lang}/portfolio_.$slug'
@@ -77,18 +75,6 @@ const Char123LangChar125PortfolioRoute =
     path: '/{-$lang}/portfolio',
     getParentRoute: () => rootRouteImport,
   } as any)
-const Char123LangChar125PackagesRoute =
-  Char123LangChar125PackagesRouteImport.update({
-    id: '/{-$lang}/packages',
-    path: '/{-$lang}/packages',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char123LangChar125ExperienceRoute =
-  Char123LangChar125ExperienceRouteImport.update({
-    id: '/{-$lang}/experience',
-    path: '/{-$lang}/experience',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const Char123LangChar125ContactRoute =
   Char123LangChar125ContactRouteImport.update({
     id: '/{-$lang}/contact',
@@ -117,8 +103,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
-  '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
-  '/{-$lang}/packages': typeof Char123LangChar125PackagesRoute
   '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
@@ -134,8 +118,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
-  '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
-  '/{-$lang}/packages': typeof Char123LangChar125PackagesRoute
   '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}': typeof Char123LangChar125IndexRoute
@@ -152,8 +134,6 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
-  '/{-$lang}/experience': typeof Char123LangChar125ExperienceRoute
-  '/{-$lang}/packages': typeof Char123LangChar125PackagesRoute
   '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
@@ -171,8 +151,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/{-$lang}/about'
     | '/{-$lang}/contact'
-    | '/{-$lang}/experience'
-    | '/{-$lang}/packages'
     | '/{-$lang}/portfolio'
     | '/{-$lang}/services'
     | '/{-$lang}/'
@@ -188,8 +166,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/{-$lang}/about'
     | '/{-$lang}/contact'
-    | '/{-$lang}/experience'
-    | '/{-$lang}/packages'
     | '/{-$lang}/portfolio'
     | '/{-$lang}/services'
     | '/{-$lang}'
@@ -205,8 +181,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/{-$lang}/about'
     | '/{-$lang}/contact'
-    | '/{-$lang}/experience'
-    | '/{-$lang}/packages'
     | '/{-$lang}/portfolio'
     | '/{-$lang}/services'
     | '/{-$lang}/'
@@ -223,8 +197,6 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char123LangChar125AboutRoute: typeof Char123LangChar125AboutRoute
   Char123LangChar125ContactRoute: typeof Char123LangChar125ContactRoute
-  Char123LangChar125ExperienceRoute: typeof Char123LangChar125ExperienceRoute
-  Char123LangChar125PackagesRoute: typeof Char123LangChar125PackagesRoute
   Char123LangChar125PortfolioRoute: typeof Char123LangChar125PortfolioRoute
   Char123LangChar125ServicesRoute: typeof Char123LangChar125ServicesRoute
   Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
@@ -303,20 +275,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/{-$lang}/packages': {
-      id: '/{-$lang}/packages'
-      path: '/{-$lang}/packages'
-      fullPath: '/{-$lang}/packages'
-      preLoaderRoute: typeof Char123LangChar125PackagesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/{-$lang}/experience': {
-      id: '/{-$lang}/experience'
-      path: '/{-$lang}/experience'
-      fullPath: '/{-$lang}/experience'
-      preLoaderRoute: typeof Char123LangChar125ExperienceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/{-$lang}/contact': {
       id: '/{-$lang}/contact'
       path: '/{-$lang}/contact'
@@ -351,8 +309,6 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char123LangChar125AboutRoute: Char123LangChar125AboutRoute,
   Char123LangChar125ContactRoute: Char123LangChar125ContactRoute,
-  Char123LangChar125ExperienceRoute: Char123LangChar125ExperienceRoute,
-  Char123LangChar125PackagesRoute: Char123LangChar125PackagesRoute,
   Char123LangChar125PortfolioRoute: Char123LangChar125PortfolioRoute,
   Char123LangChar125ServicesRoute: Char123LangChar125ServicesRoute,
   Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
@@ -361,3 +317,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
