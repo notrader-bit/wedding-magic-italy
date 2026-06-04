@@ -177,7 +177,121 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Experience — five-step process */}
+      <section id="experience" className="bg-background px-6 py-28 md:px-12 md:py-36">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="max-w-3xl">
+            <p className="eyebrow">{e.eyebrow}</p>
+            <h2 className="mt-3 font-display text-4xl leading-[1.1] text-ink md:text-6xl">
+              {e.h1a} <span className="display-italic text-terracotta">{e.h1b}</span>
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">{e.lede}</p>
+          </div>
+
+          <div className="mt-16">
+            {e.steps.map((s) => (
+              <div key={s.n} className="grid gap-6 border-t border-border py-10 md:grid-cols-[100px_1fr_2fr] md:items-start md:py-12">
+                <p className="font-display text-4xl text-terracotta">{s.n}</p>
+                <div>
+                  <h3 className="font-display text-2xl text-ink md:text-3xl">{s.t}</h3>
+                  <p className="mt-2 text-xs uppercase tracking-[0.22em] text-muted-foreground">{s.when}</p>
+                </div>
+                <p className="text-base leading-relaxed text-muted-foreground">{s.d}</p>
+              </div>
+            ))}
+            <div className="border-t border-border" />
+          </div>
+
+          <div className="mt-16 grid gap-10 md:grid-cols-3">
+            {e.cards.map((c) => (
+              <div key={c.t}>
+                <h3 className="font-display text-2xl text-ink">{c.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Packages & Pricing */}
+      <section id="packages" className="bg-cream px-6 py-28 md:px-12 md:py-36">
+        <div className="mx-auto max-w-[1300px]">
+          <div className="max-w-3xl">
+            <p className="eyebrow">{p.eyebrow}</p>
+            <h2 className="mt-3 font-display text-4xl leading-[1.1] text-ink md:text-6xl">
+              {p.h1a} <span className="display-italic text-terracotta">{p.h1b}</span>
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">{p.lede}</p>
+          </div>
+
+          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+            {p.items.map((item) => {
+              const isPopular = item.tag === "popular";
+              return (
+                <article
+                  key={item.name}
+                  className={`relative flex flex-col border ${
+                    isPopular ? "border-terracotta bg-background" : "border-border bg-background"
+                  } p-10 md:p-12`}
+                >
+                  {isPopular && (
+                    <span className="absolute -top-3 left-10 bg-terracotta px-4 py-1 text-[10px] uppercase tracking-[0.28em] text-background">
+                      {p.popular}
+                    </span>
+                  )}
+                  <p className="font-display text-3xl text-terracotta">{item.n}</p>
+                  <h3 className="mt-3 font-display text-3xl text-ink md:text-4xl">{item.name}</h3>
+                  <div className="mt-6">
+                    <p className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{p.startingFrom}</p>
+                    <p className="mt-2 font-display text-5xl text-ink">{item.price}</p>
+                  </div>
+                  <p className="mt-6 text-base leading-relaxed text-muted-foreground">{item.intro}</p>
+
+                  <div className="mt-8 border-t border-ink/10 pt-6">
+                    <p className="eyebrow">{p.includesH}</p>
+                    <ul className="mt-5 space-y-3 text-sm leading-relaxed text-foreground">
+                      {item.includes.map((b) => (
+                        <li key={b} className="flex gap-3">
+                          <span className="mt-[10px] inline-block h-[5px] w-[5px] shrink-0 rounded-full bg-terracotta" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-8 border-t border-ink/10 pt-6">
+                    <p className="eyebrow">{p.idealH}</p>
+                    <p className="mt-4 text-sm italic leading-relaxed text-muted-foreground">{item.ideal}</p>
+                  </div>
+
+                  <LocaleLink
+                    to="/contact"
+                    className={`mt-10 inline-block w-full text-center px-7 py-4 text-[11px] uppercase tracking-[0.28em] transition-colors ${
+                      isPopular
+                        ? "bg-terracotta text-background hover:bg-ink"
+                        : "border border-ink text-ink hover:bg-ink hover:text-background"
+                    }`}
+                  >
+                    {p.ctaBtn}
+                  </LocaleLink>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-16 grid gap-10 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <p className="eyebrow">{p.noteH}</p>
+            </div>
+            <div className="md:col-span-8">
+              <p className="font-display text-xl leading-[1.4] text-ink md:text-2xl">{p.noteBody}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-cream px-6 py-28 md:px-12 md:py-36">
+
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow">{h.limitedEyebrow}</p>
           <h2 className="mt-4 font-display text-4xl text-ink md:text-6xl">
