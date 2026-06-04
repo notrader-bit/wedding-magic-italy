@@ -18,10 +18,9 @@ export function SiteHeader() {
     { to: "/about", label: t.nav.about, Icon: Users },
     { to: "/services", label: t.nav.services, Icon: Sparkles },
     { to: "/portfolio", label: t.nav.portfolio, Icon: Images },
-    { to: "/packages", label: t.nav.packages, Icon: Tag },
-    { to: "/experience", label: t.nav.experience, Icon: Compass },
     { to: "/contact", label: t.nav.contact, Icon: Mail },
   ] as const;
+
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
