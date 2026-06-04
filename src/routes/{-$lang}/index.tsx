@@ -36,6 +36,9 @@ function HomePage() {
   usePageMeta("home");
   const { t } = useLanguage();
   const h = t.home;
+  const e = t.experience;
+  const p = t.packages;
+
 
   return (
     <>
