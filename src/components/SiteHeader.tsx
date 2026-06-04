@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LocaleLink } from "@/components/LocaleLink";
-import { Home, Users, Sparkles, Images, Tag, Compass, Mail, CalendarDays } from "lucide-react";
+import { Home, Users, Sparkles, Images, Mail, CalendarDays } from "lucide-react";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
