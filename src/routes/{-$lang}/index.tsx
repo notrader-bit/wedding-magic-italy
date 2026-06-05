@@ -291,6 +291,32 @@ function HomePage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section id="faq" className="bg-background px-6 py-28 md:px-12 md:py-36">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="max-w-3xl">
+            <p className="eyebrow">{f.eyebrow}</p>
+            <h2 className="mt-3 font-display text-4xl leading-[1.1] text-ink md:text-6xl">
+              {f.h1a} <span className="display-italic text-terracotta">{f.h1b}</span>
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">{f.lede}</p>
+          </div>
+
+          <div className="mt-16">
+            {f.items.map((item, i) => (
+              <details key={i} className="group border-t border-border">
+                <summary className="flex cursor-pointer items-start justify-between gap-4 py-6 text-left">
+                  <span className="font-display text-xl text-ink md:text-2xl">{item.q}</span>
+                  <span className="mt-2 inline-block h-[10px] w-[10px] shrink-0 rotate-45 border-b-2 border-r-2 border-ink transition-transform group-open:rotate-[225deg]" />
+                </summary>
+                <p className="pb-6 text-base leading-relaxed text-muted-foreground">{item.a}</p>
+              </details>
+            ))}
+            <div className="border-t border-border" />
+          </div>
+        </div>
+      </section>
+
       <section className="bg-background px-6 py-28 md:px-12 md:py-36">
 
         <div className="mx-auto max-w-3xl text-center">
