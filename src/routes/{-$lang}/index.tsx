@@ -38,6 +38,7 @@ function HomePage() {
   const h = t.home;
   const e = t.experience;
   const p = t.packages;
+  const f = t.faq;
 
 
   return (
