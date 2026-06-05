@@ -186,6 +186,19 @@ const en: Dict = {
     noteH: "Beyond these three", noteBody: "Need something else — a renewal of vows, a corporate-style event, a multi-cultural ceremony? We design custom packages on request. The numbers above are professional fees only; total wedding budgets typically start at €40,000.",
     ctaA: "Not sure which fits?", ctaB: "Let's talk.", ctaBody: "Send a short note about your date, location and guest count — we'll reply within 48 hours with the package that makes sense for you.", ctaBtn: "Request a consultation",
   },
+  faq: {
+    eyebrow: "Frequently Asked Questions", h1a: "Answers", h1b: "before the first call.",
+    lede: "The questions we hear most often — answered honestly, so you can plan with confidence.",
+    items: [
+      { q: "Is a legal marriage required in Italy?", a: "Not at all. Most of our couples have a symbolic ceremony in Italy and handle the legal paperwork at home. If you prefer a civil or religious ceremony here, we guide you through every document and appointment." },
+      { q: "How do we choose the right date?", a: "Spring (May–June) and early autumn (September–October) offer the best balance of weather, light and villa availability. We reserve the most exclusive venues up to 18 months ahead." },
+      { q: "What is the ideal guest count?", a: "Forty to eighty guests feels most intimate and manageable in Italian villas. We also design elopements for two to twenty guests — Italy is just as magical with a smaller circle." },
+      { q: "Do I need my own coordinator on the day?", a: "No — that is exactly what we are for. Our team of two planners is on the ground from the morning welcome to the last dance. You wake up and simply walk toward the aisle." },
+      { q: "How much does an Italian wedding cost?", a: "Total budgets typically range from €40,000 to €500,000+ depending on guest count, venue and season. Our professional fees start at €6,500. After your inquiry we send a detailed brochure with sample budgets." },
+      { q: "Can we plan everything from abroad?", a: "Absolutely. Most of our couples live in the US, UK or UAE. We work via video calls, shared mood boards and a single planning document. You only fly to Italy for the final venue visit and the wedding itself." },
+      { q: "What documents are needed?", a: "For a civil ceremony: passports, birth certificates with an apostille, nulla osta (certificate of no impediment). For symbolic ceremonies: none at all. We handle translations, appointments and every deadline." },
+    ],
+  },
 };
 
 const uk: Dict = {
@@ -296,6 +309,19 @@ const uk: Dict = {
     ],
     noteH: "Поза цими трьома", noteBody: "Потрібно щось інше — оновлення обітниць, корпоративний формат, мультикультурна церемонія? Створюємо індивідуальні пакети на запит. Цифри вище — лише професійний гонорар; загальний бюджет весілля зазвичай починається від €40 000.",
     ctaA: "Не впевнені, що пасує?", ctaB: "Поговорімо.", ctaBody: "Надішліть короткий лист з датою, локацією та кількістю гостей — відповімо протягом 48 годин із пакетом, який підходить саме вам.", ctaBtn: "Записатись на консультацію",
+  },
+  faq: {
+    eyebrow: "Часті запитання", h1a: "Відповіді", h1b: "перед першим дзвінком.",
+    lede: "Питання, які ми чуємо найчастіше — чесно, щоб ви могли планувати з впевненістю.",
+    items: [
+      { q: "Чи потрібен юридичний шлюб в Італії?", a: "Зовсім ні. Більшість наших пар проводить символічну церемонію в Італії, а юридичне оформлення — вдома. Якщо хочете цивільну чи релігійну церемонію тут — ми проведемо вас через кожен документ і запис." },
+      { q: "Як обрати правильну дату?", a: "Весна (травень–червень) та рання осінь (вересень–жовтень) — найкращий баланс погоди, світла та доступності вілл. Ми бронюємо найексклюзивніші локації за 18 місяців наперед." },
+      { q: "Яка оптимальна кількість гостей?", a: "40–80 гостей — найбільш інтимно та комфортно у віллах. Також створюємо елопменти для 2–20 гостей — Італія так само чарівна з меншим колом." },
+      { q: "Чи потрібен власний координатор у день весілля?", a: "Ні — саме для цього ми й існуємо. Наша команда з двох планувальників працює з ранкового вітання до останнього танцю. Ви прокидаєтесь і просто йдете до вівтаря." },
+      { q: "Скільки коштує весілля в Італії?", a: "Загальні бюджети зазвичай від €40 000 до €500 000+ залежно від кількості гостей, локації та сезону. Наш гонорар — від €6 500. Після запиту ми надсилаємо детальну брошуру з прикладами бюджетів." },
+      { q: "Чи можна все спланувати з-за кордону?", a: "Безумовно. Більшість наших пар живуть у США, Великій Британії чи ОАЕ. Ми працюємо через відеодзвінки, спільні мудборди та єдиний документ планування. Ви прилітаєте в Італію лише для фінального огляду локації та самого весілля." },
+      { q: "Які документи потрібні?", a: "Для цивільної церемонії: паспорти, свідоцтва про народження з апостилем, nulla osta. Для символічної — жодних. Ми беремо на себе переклади, записи та всі терміни." },
+    ],
   },
 };
 
@@ -408,6 +434,19 @@ const ru: Dict = {
     noteH: "За пределами этих трёх", noteBody: "Нужно что-то ещё — обновление клятв, корпоративный формат, мультикультурная церемония? Создаём индивидуальные пакеты по запросу. Цифры выше — только профессиональный гонорар; общий бюджет свадьбы обычно от €40 000.",
     ctaA: "Не уверены, что подходит?", ctaB: "Поговорим.", ctaBody: "Пришлите короткое письмо с датой, локацией и количеством гостей — ответим в течение 48 часов с пакетом, который вам подходит.", ctaBtn: "Записаться на консультацию",
   },
+  faq: {
+    eyebrow: "Частые вопросы", h1a: "Ответы", h1b: "до первого звонка.",
+    lede: "Вопросы, которые мы слышим чаще всего — честно, чтобы вы могли планировать с уверенностью.",
+    items: [
+      { q: "Нужен ли юридический брак в Италии?", a: "Совсем нет. Большинство наших пар проводит символическую церемонию в Италии, а юридическое оформление — дома. Если хотите гражданскую или религиозную церемонию здесь — мы проведём через каждый документ и запись." },
+      { q: "Как выбрать правильную дату?", a: "Весна (май–июнь) и ранняя осень (сентябрь–октябрь) — лучший баланс погоды, света и доступности вилл. Мы бронируем самые эксклюзивные локации за 18 месяцев вперёд." },
+      { q: "Какое оптимальное число гостей?", a: "40–80 гостей — самое интимное и комфортное в итальянских виллах. Также делаем элопменты для 2–20 гостей — Италия так же волшебна с меньшим кругом." },
+      { q: "Нужен ли свой координатор в день свадьбы?", a: "Нет — именно для этого мы и существуем. Наша команда из двух планировщиков работает с утреннего приветствия до последнего танца. Вы просыпаетесь и просто идёте к алтарю." },
+      { q: "Сколько стоит свадьба в Италии?", a: "Общие бюджеты обычно от €40 000 до €500 000+ в зависимости от числа гостей, локации и сезона. Наш гонорар — от €6 500. После запроса отправляем подробную брошюру с примерами бюджетов." },
+      { q: "Можно ли всё спланировать из-за рубежа?", a: "Абсолютно. Большинство наших пар живут в США, Великобритании или ОАЭ. Мы работаем через видеозвонки, общие мудборды и единый документ планирования. Вы прилетаете в Италию только для финального осмотра локации и самой свадьбы." },
+      { q: "Какие документы нужны?", a: "Для гражданской церемонии: паспорта, свидетельства о рождении с апостилем, nulla osta. Для символической — никаких. Мы берём на себя переводы, записи и все сроки." },
+    ],
+  },
 };
 
 const it: Dict = {
@@ -518,6 +557,19 @@ const it: Dict = {
     ],
     noteH: "Oltre questi tre", noteBody: "Vi serve altro — rinnovo delle promesse, evento corporate, cerimonia multiculturale? Disegniamo pacchetti su misura su richiesta. Le cifre sopra sono solo onorari professionali; i budget totali partono in genere da €40.000.",
     ctaA: "Non sapete quale scegliere?", ctaB: "Parliamone.", ctaBody: "Inviateci un breve messaggio con data, location e numero di ospiti — risponderemo entro 48 ore con il pacchetto giusto per voi.", ctaBtn: "Richiedi una consulenza",
+  },
+  faq: {
+    eyebrow: "Domande Frequenti", h1a: "Risposte", h1b: "prima della prima chiamata.",
+    lede: "Le domande che sentiamo più spesso — risposte oneste, per pianificare con fiducia.",
+    items: [
+      { q: "Serve un matrimonio legale in Italia?", a: "Affatto. La maggior parte delle coppie celebra una cerimonia simbolica in Italia e gestisce la pratica legale a casa. Se preferite civile o religiosa qui, vi guidiamo attraverso ogni documento e appuntamento." },
+      { q: "Come scegliamo la data giusta?", a: "Primavera (maggio–giugno) e inizio autunno (settembre–ottobre) offrono il miglior equilibrio di clima, luce e disponibilità delle ville. Riserviamo le location più esclusive con 18 mesi di anticipo." },
+      { q: "Qual è il numero ideale di ospiti?", a: "Quaranta–ottanta ospiti risulta più intimo e gestibile nelle ville italiane. Progettiamo anche elopement per 2–20 ospiti — l'Italia è altrettanto magica con un cerchio più piccolo." },
+      { q: "Ho bisogno di un mio coordinatore il giorno stesso?", a: "No — è esattamente il nostro ruolo. Il nostro team di due planner è sul campo dal benvenuto mattutino all'ultimo ballo. Vi svegliate e camminate semplicemente verso l'altare." },
+      { q: "Quanto costa un matrimonio in Italia?", a: "I budget totali variano tipicamente da €40.000 a oltre €500.000 a seconda degli ospiti, della location e della stagione. I nostri onorari partono da €6.500. Dopo la richiesta inviamo una brochure dettagliata con budget di esempio." },
+      { q: "Possiamo pianificare tutto dall'estero?", a: "Assolutamente. La maggior parte delle coppie vive negli Stati Uniti, nel Regno Unito o negli Emirati. Lavoriamo via videochiamate, mood board condivise e un unico documento di pianificazione. Volate in Italia solo per la visita finale della location e il matrimonio stesso." },
+      { q: "Quali documenti servono?", a: "Per cerimonia civile: passaporti, certificati di nascita con apostille, nulla osta. Per simboliche: nessuno. Ci occupiamo di traduzioni, appuntamenti e ogni scadenza." },
+    ],
   },
 };
 
@@ -630,6 +682,19 @@ const es: Dict = {
     noteH: "Más allá de estos tres", noteBody: "¿Necesitáis algo distinto — renovación de votos, evento corporativo, ceremonia multicultural? Diseñamos paquetes a medida bajo demanda. Las cifras arriba son solo honorarios profesionales; los presupuestos totales suelen partir desde €40.000.",
     ctaA: "¿No estáis seguros?", ctaB: "Hablemos.", ctaBody: "Mandadnos un mensaje breve con la fecha, el lugar y el número de invitados — responderemos en 48 horas con el paquete que tenga sentido para vosotros.", ctaBtn: "Solicitar una consulta",
   },
+  faq: {
+    eyebrow: "Preguntas Frecuentes", h1a: "Respuestas", h1b: "antes de la primera llamada.",
+    lede: "Las preguntas que más escuchamos — respondidas con honestidad, para que podáis planificar con confianza.",
+    items: [
+      { q: "¿Se necesita un matrimonio legal en Italia?", a: "Para nada. La mayoría de nuestras parejas celebran una ceremonia simbólica en Italia y tramitan los papeles legales en casa. Si preferís civil o religiosa aquí, os guiamos paso a paso a través de cada documento y cita." },
+      { q: "¿Cómo elegimos la fecha adecuada?", a: "Primavera (mayo–junio) y principios de otoño (septiembre–octubre) ofrecen el mejor equilibrio de clima, luz y disponibilidad de villas. Reservamos las villas más exclusivas con 18 meses de antelación." },
+      { q: "¿Cuál es el número ideal de invitados?", a: "De cuarenta a ochenta invitados resulta más íntimo y manejable en villas italianas. También diseñamos elopements para 2–20 invitados — Italia es igualmente mágica con un círculo más pequeño." },
+      { q: "¿Necesito mi propio coordinador el día de la boda?", a: "No — exactamente para eso estamos nosotros. Nuestro equipo de dos planners está en el lugar desde la bienvenida matutina hasta el último baile. Os despertáis y camináis simplemente hacia el altar." },
+      { q: "¿Cuánto cuesta una boda en Italia?", a: "Los presupuestos totales suelen ir de €40.000 a más de €500.000 según invitados, lugar y temporada. Nuestros honorarios empiezan en €6.500. Tras vuestra consulta enviamos un dossier detallado con presupuestos de ejemplo." },
+      { q: "¿Podemos planificarlo todo desde el extranjero?", a: "Absolutamente. La mayoría de nuestras parejas vive en EE.UU., Reino Unido o Emiratos. Trabajamos por videollamadas, mood boards compartidos y un único documento de planificación. Voláis a Italia solo para la visita final de la location y la boda misma." },
+      { q: "¿Qué documentos se necesitan?", a: "Para ceremonia civil: pasaportes, certificados de nacimiento con apostilla, nulla osta. Para simbólicas: ninguno. Nos encargamos de traducciones, citas y cada plazo." },
+    ],
+  },
 };
 
 const de: Dict = {
@@ -740,6 +805,19 @@ const de: Dict = {
     ],
     noteH: "Jenseits dieser drei", noteBody: "Brauchen Sie etwas anderes — Vow Renewal, Corporate-Event, multikulturelle Zeremonie? Wir gestalten individuelle Pakete auf Anfrage. Die Zahlen oben sind reine Honorare; Gesamtbudgets starten typischerweise bei €40.000.",
     ctaA: "Nicht sicher, was passt?", ctaB: "Sprechen wir.", ctaBody: "Schicken Sie uns eine kurze Notiz mit Datum, Location und Gästezahl — wir antworten innerhalb von 48 Stunden mit dem passenden Paket.", ctaBtn: "Beratung anfragen",
+  },
+  faq: {
+    eyebrow: "Häufige Fragen", h1a: "Antworten", h1b: "vor dem ersten Anruf.",
+    lede: "Die Fragen, die wir am häufigsten hören — ehrlich beantwortet, damit Sie mit Zuversicht planen können.",
+    items: [
+      { q: "Ist eine rechtliche Heirat in Italien erforderlich?", a: "Überhaupt nicht. Die meisten unserer Paare feiern eine symbolische Zeremonie in Italien und erledigen die rechtlichen Formalitäten zu Hause. Wenn Sie eine zivile oder religiöse Zeremonie bevorzugen, führen wir Sie durch jedes Dokument und jeden Termin." },
+      { q: "Wie wählen wir das richtige Datum?", a: "Frühling (Mai–Juni) und früher Herbst (September–Oktober) bieten das beste Gleichgewicht aus Wetter, Licht und Verfügbarkeit der Villen. Wir reservieren die exklusivsten Locations 18 Monate im Voraus." },
+      { q: "Was ist die ideale Gästezahl?", a: "Vierzig bis achtzig Gäste fühlen sich in italienischen Villen am intimsten und am besten umsetzbar an. Wir gestalten auch Elopements für 2–20 Gäste — Italien ist auch mit einem kleineren Kreis ebenso magisch." },
+      { q: "Brauche ich einen eigenen Koordinator am Tag selbst?", a: "Nein — genau dafür sind wir da. Unser Team aus zwei Planerinnen ist vor Ort vom morgendlichen Empfang bis zum letzten Tanz. Sie wachen auf und gehen einfach zum Altar." },
+      { q: "Was kostet eine Hochzeit in Italien?", a: "Gesamtbudgets liegen typischerweise zwischen €40.000 und über €500.000 je nach Gästezahl, Location und Saison. Unsere Honorare beginnen bei €6.500. Nach Ihrer Anfrage senden wir eine ausführliche Broschüre mit Beispielbudgets." },
+      { q: "Können wir alles aus dem Ausland planen?", a: "Absolut. Die meisten unserer Paare leben in den USA, Großbritannien oder den VAE. Wir arbeiten per Videocall, gemeinsamen Moodboards und einem einzigen Planungsdokument. Sie fliegen nur für den finalen Location-Besuch und die Hochzeit selbst nach Italien." },
+      { q: "Welche Unterlagen werden benötigt?", a: "Für zivile Zeremonie: Pässe, Geburtsurkunden mit Apostille, Nulla Osta. Für symbolische: keine. Wir kümmern uns um Übersetzungen, Termine und jede Frist." },
+    ],
   },
 };
 
