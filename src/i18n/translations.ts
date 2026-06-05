@@ -74,6 +74,7 @@ type Dict = {
     studio: string; studioBy: string;
     follow: string;
   };
+  faq: { eyebrow: string; h1a: string; h1b: string; lede: string; items: { q: string; a: string }[] };
 };
 
 const en: Dict = {
