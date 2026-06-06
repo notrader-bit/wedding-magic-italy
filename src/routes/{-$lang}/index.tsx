@@ -166,15 +166,28 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-ink px-6 py-28 text-background md:px-12 md:py-36">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow text-[#f0c9a8]">{h.kindWords}</p>
-          <blockquote className="mt-8 font-display text-3xl italic leading-[1.3] text-background md:text-5xl">
-            {h.testimonial}
-          </blockquote>
-          <p className="mt-8 text-xs uppercase tracking-[0.32em] text-background/60">
-            {h.testimonialAttr}
-          </p>
+      <section className="bg-ink px-6 py-28 md:px-12 md:py-36">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="text-center">
+            <p className="eyebrow text-[#f0c9a8]">{h.kindWords}</p>
+            <h2 className="mt-4 font-display text-4xl leading-[1.1] text-background md:text-5xl lg:text-6xl">
+              {h.testimonialsTitle}
+            </h2>
+          </div>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {h.testimonials.map((t, i) => (
+              <article key={i} className="border border-white/10 bg-white/5 p-8 md:p-10">
+                <blockquote className="font-display text-xl italic leading-[1.4] text-background md:text-2xl">
+                  {t.quote}
+                </blockquote>
+                <div className="mt-8">
+                  <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#f0c9a8]">{t.couple}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.24em] text-background/50">{t.location} · {t.date}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
