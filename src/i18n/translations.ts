@@ -29,7 +29,7 @@ type Dict = {
     destEyebrow: string; destTitle: string; destItalic: string; allWeddings: string;
     como: string; comoNote: string; amalfi: string; amalfiNote: string; puglia: string; pugliaNote: string;
     founderEyebrow: string; founderQuoteA: string; founderQuoteB: string; founderBody: string; meetStudio: string;
-    kindWords: string; testimonial: string; testimonialAttr: string;
+    kindWords: string; testimonials: { quote: string; couple: string; location: string; date: string }[]; testimonialsTitle: string;
     limitedEyebrow: string; limitedTitleA: string; limitedTitleB: string; limitedTitleC: string; limitedBody: string; requestCta: string;
   };
   about: {
