@@ -117,6 +117,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   useRevealOnScroll();
@@ -129,6 +131,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <WhatsAppButton />
       </LanguageProvider>
     </QueryClientProvider>
   );
