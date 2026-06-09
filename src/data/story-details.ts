@@ -45,7 +45,9 @@ export type StoryUI = {
   decorH: string;
   galleryH: string;
   nextH: string;
-  ctaH: string;
+  ctaEyebrow: string;
+  ctaH1a: string;
+  ctaH1b: string;
   ctaBody: string;
   ctaBtn: string;
   notFoundTitle: string;
@@ -65,7 +67,9 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     decorH: "Decor & details",
     galleryH: "Gallery",
     nextH: "Next story",
-    ctaH: "Imagine your own.",
+    ctaEyebrow: "Your turn",
+    ctaH1a: "Imagine",
+    ctaH1b: "your own.",
     ctaBody: "Every wedding begins with a single conversation. Tell us your dream date, and we'll take it from there.",
     ctaBtn: "Start a conversation",
     notFoundTitle: "Story not found",
@@ -83,7 +87,9 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     decorH: "Декор і деталі",
     galleryH: "Галерея",
     nextH: "Наступна історія",
-    ctaH: "Уявіть своє.",
+    ctaEyebrow: "Ваш наступний крок",
+    ctaH1a: "Уявіть",
+    ctaH1b: "своє.",
     ctaBody: "Кожне весілля починається з однієї розмови. Розкажіть нам дату своєї мрії — далі ми поведемо.",
     ctaBtn: "Почати розмову",
     notFoundTitle: "Історію не знайдено",
@@ -101,7 +107,9 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     decorH: "Декор и детали",
     galleryH: "Галерея",
     nextH: "Следующая история",
-    ctaH: "Представьте свою.",
+    ctaEyebrow: "Ваш следующий шаг",
+    ctaH1a: "Представьте",
+    ctaH1b: "свою.",
     ctaBody: "Каждая свадьба начинается с одного разговора. Расскажите нам дату вашей мечты — дальше мы ведём.",
     ctaBtn: "Начать разговор",
     notFoundTitle: "История не найдена",
@@ -119,7 +127,9 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     decorH: "Decor & dettagli",
     galleryH: "Galleria",
     nextH: "Prossima storia",
-    ctaH: "Immaginate il vostro.",
+    ctaEyebrow: "Il vostro turno",
+    ctaH1a: "Immaginate il",
+    ctaH1b: "vostro.",
     ctaBody: "Ogni matrimonio nasce da una conversazione. Raccontateci la data dei sogni — al resto pensiamo noi.",
     ctaBtn: "Iniziamo a parlare",
     notFoundTitle: "Storia non trovata",
@@ -137,7 +147,9 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     decorH: "Decoración y detalles",
     galleryH: "Galería",
     nextH: "Siguiente historia",
-    ctaH: "Imaginad la vuestra.",
+    ctaEyebrow: "Vuestro turno",
+    ctaH1a: "Imaginad",
+    ctaH1b: "la vuestra.",
     ctaBody: "Cada boda empieza con una conversación. Contadnos la fecha soñada — del resto nos encargamos nosotros.",
     ctaBtn: "Empieza la conversación",
     notFoundTitle: "Historia no encontrada",
@@ -155,7 +167,9 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     decorH: "Dekor & Details",
     galleryH: "Galerie",
     nextH: "Nächste Geschichte",
-    ctaH: "Stellen Sie sich Ihre vor.",
+    ctaEyebrow: "Ihr nächster Schritt",
+    ctaH1a: "Stellen Sie sich",
+    ctaH1b: "Ihre vor.",
     ctaBody: "Jede Hochzeit beginnt mit einem einzigen Gespräch. Erzählen Sie uns Ihr Traumdatum — den Rest übernehmen wir.",
     ctaBtn: "Gespräch beginnen",
     notFoundTitle: "Geschichte nicht gefunden",

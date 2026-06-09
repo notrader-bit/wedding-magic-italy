@@ -12,13 +12,13 @@ import { parseLangFromPath } from "@/i18n/parse-lang";
 
 
 import appCss from "../styles.css?url";
-import fontsCss from "../fonts.css?url";
 import { getFontPreloadLinks } from "@/lib/font-preloads";
 import { DEFAULT_OG_IMAGE, ogImageMetaTags } from "@/lib/og-images";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
+import latinFontCss from "../fonts-latin.css?inline";
 
 function NotFoundComponent() {
   return (
@@ -117,7 +117,6 @@ export const Route = createRootRouteWithContext<{
       { rel: "apple-touch-icon", href: "/favicon.svg" },
       ...getFontPreloadLinks(lang),
       { rel: "preload", href: appCss, as: "style" },
-      { rel: "stylesheet", href: fontsCss },
       { rel: "stylesheet", href: appCss },
     ],
     };
@@ -132,6 +131,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <style dangerouslySetInnerHTML={{ __html: latinFontCss }} />
         <HeadContent />
       </head>
       <body>
@@ -150,7 +150,9 @@ function RootComponent() {
     <LanguageProvider dictionary={dictionary} lang={lang}>
       <SiteHeader />
       <main>
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </main>
       <SiteFooter />
       <Suspense fallback={null}>

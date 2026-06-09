@@ -50,11 +50,9 @@ export function SiteHeader() {
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     window.addEventListener("resize", measure);
-    window.addEventListener("scroll", measure, { passive: true });
     return () => {
       ro.disconnect();
       window.removeEventListener("resize", measure);
-      window.removeEventListener("scroll", measure);
     };
   }, []);
 
