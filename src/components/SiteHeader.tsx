@@ -199,7 +199,7 @@ export function SiteHeader() {
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-3 py-3 text-sm font-medium uppercase tracking-[0.22em] text-ink transition-colors hover:text-terracotta"
+                    className="flex items-center gap-3 py-3 text-sm font-light uppercase tracking-[0.22em] text-ink transition-colors hover:text-terracotta"
                   >
                     <Icon className="h-4 w-4 shrink-0 opacity-60" />
                     {item.label}

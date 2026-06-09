@@ -13,7 +13,7 @@ import { parseLangFromPath } from "@/i18n/parse-lang";
 
 import appCss from "../styles.css?url";
 import fontsCss from "../fonts.css?url";
-import { FONT_PRELOAD_LINKS } from "@/lib/font-preloads";
+import { getFontPreloadLinks } from "@/lib/font-preloads";
 import { DEFAULT_OG_IMAGE, ogImageMetaTags } from "@/lib/og-images";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -86,7 +86,12 @@ export const Route = createRootRouteWithContext<{
     const dictionary = await loadDictionary(lang);
     return { dictionary, lang };
   },
-  head: () => ({
+  head: (ctx) => {
+    const loaderLang = (ctx.loaderData as { lang?: Lang } | undefined)?.lang;
+    const pathname = ctx.matches.at(-1)?.pathname ?? "/";
+    const lang = loaderLang ?? parseLangFromPath(pathname);
+
+    return {
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -110,12 +115,13 @@ export const Route = createRootRouteWithContext<{
     links: [
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "apple-touch-icon", href: "/favicon.svg" },
-      ...FONT_PRELOAD_LINKS,
+      ...getFontPreloadLinks(lang),
       { rel: "preload", href: appCss, as: "style" },
       { rel: "stylesheet", href: fontsCss },
       { rel: "stylesheet", href: appCss },
     ],
-  }),
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

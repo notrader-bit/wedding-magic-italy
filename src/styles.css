@@ -107,7 +107,20 @@
     color: var(--color-terracotta);
   }
 
-  .display-italic { font-style: italic; font-family: var(--font-display); }
+  .display-italic {
+    font-style: italic;
+    font-family: var(--font-display);
+    font-weight: 300;
+  }
+
+  /* Marketing UI: keep light sans (avoid Tailwind font-medium = 500 on body copy). */
+  main .font-medium {
+    font-weight: 400;
+  }
+
+  main .font-light {
+    font-weight: 300;
+  }
 }
 
 @layer utilities {
