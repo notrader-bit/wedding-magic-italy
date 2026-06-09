@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useMemo } from "react";
-import { useNavigate, useParams, useRouterState } from "@tanstack/react-router";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { PAGE_OG_IMAGES } from "@/lib/og-images";
 import { absoluteUrl } from "@/lib/site-url";
-import { LANGS, LANG_HTML, TRANSLATIONS, type Dict, type Lang } from "./translations";
+import { LANGS, LANG_HTML, type Dict, type Lang } from "./dict-types";
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Dict };
 const LanguageContext = createContext<Ctx | null>(null);
@@ -22,12 +22,17 @@ function stripLangFromPath(pathname: string): string {
   return pathname || "/";
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const params = useParams({ strict: false }) as { lang?: string };
+export function LanguageProvider({
+  children,
+  dictionary,
+  lang,
+}: {
+  children: React.ReactNode;
+  dictionary: Dict;
+  lang: Lang;
+}) {
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-
-  const lang: Lang = isLang(params.lang) ? params.lang : DEFAULT_LANG;
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -41,7 +46,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     navigate({ to: nextPath, replace: false });
   };
 
-  const value = useMemo<Ctx>(() => ({ lang, setLang, t: TRANSLATIONS[lang] }), [lang, pathname]);
+  const value = useMemo<Ctx>(() => ({ lang, setLang, t: dictionary }), [lang, dictionary, pathname]);
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 

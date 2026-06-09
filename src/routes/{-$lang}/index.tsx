@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { createFileRoute} from "@tanstack/react-router";
 import { LocaleLink } from "@/components/LocaleLink";
 import heroImg from "@/assets/hero/hero-1920.jpg";
@@ -12,11 +13,15 @@ import heroWebp1920 from "@/assets/hero/hero-1920.webp";
 import heroJpg640 from "@/assets/hero/hero-640.jpg";
 import heroJpg1024 from "@/assets/hero/hero-1024.jpg";
 import heroJpg1600 from "@/assets/hero/hero-1600.jpg";
-import comoImg from "@/assets/portfolio-como.jpg";
-import amalfiImg from "@/assets/portfolio-amalfi.jpg";
-import pugliaImg from "@/assets/portfolio-puglia.jpg";
-import founderImg from "@/assets/founder.jpg";
-import { InstagramFeed } from "@/components/InstagramFeed";
+import {
+  FOUNDER_PORTRAIT_IMAGE,
+  PORTFOLIO_AMALFI_IMAGE,
+  PORTFOLIO_COMO_IMAGE,
+  PORTFOLIO_PUGLIA_IMAGE,
+} from "@/data/marketing-images";
+const InstagramFeed = lazy(() =>
+  import("@/components/InstagramFeed").then((m) => ({ default: m.InstagramFeed })),
+);
 import { ZoomableImage } from "@/components/ZoomableImage";
 import { JsonLd } from "@/components/JsonLd";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
@@ -49,11 +54,15 @@ function HomePage() {
   const f = t.faq;
 
   const destinations = [
-    { img: comoImg, place: h.como, note: h.comoNote },
-    { img: amalfiImg, place: h.amalfi, note: h.amalfiNote },
-    { img: pugliaImg, place: h.puglia, note: h.pugliaNote },
+    { image: PORTFOLIO_COMO_IMAGE, place: h.como, note: h.comoNote },
+    { image: PORTFOLIO_AMALFI_IMAGE, place: h.amalfi, note: h.amalfiNote },
+    { image: PORTFOLIO_PUGLIA_IMAGE, place: h.puglia, note: h.pugliaNote },
   ];
-  const destGallery = destinations.map((d) => ({ src: d.img, alt: d.place }));
+  const destGallery = destinations.map((d) => ({
+    src: d.image.defaultSrc,
+    alt: d.place,
+    lightboxSrc: d.image.fullSrc,
+  }));
 
   return (
     <>
@@ -72,7 +81,7 @@ function HomePage() {
               srcSet={`${heroWebp640} 640w, ${heroWebp1024} 1024w, ${heroWebp1600} 1600w, ${heroWebp1920} 1920w`}
             />
             <img
-              src={heroImg}
+              src={heroJpg1024}
               srcSet={`${heroJpg640} 640w, ${heroJpg1024} 1024w, ${heroJpg1600} 1600w, ${heroImg} 1920w`}
               sizes="100vw"
               alt="Bride and groom at sunset on a Tuscan villa terrace"
@@ -146,10 +155,9 @@ function HomePage() {
               <div key={d.place} className="group">
                 <div className="relative aspect-[3/4] overflow-hidden">
                   <ZoomableImage
-                    src={d.img}
+                    src={d.image.fullSrc}
+                    responsive={d.image}
                     alt={d.place}
-                    width={1080}
-                    height={1440}
                     gallery={destGallery}
                     galleryIndex={i}
                     className="h-full transition-transform duration-[1200ms] group-hover:scale-[1.02]"
@@ -170,10 +178,9 @@ function HomePage() {
         <div className="mx-auto grid max-w-[1200px] items-center gap-14 md:grid-cols-2">
           <div className="relative aspect-[4/5] overflow-hidden">
             <ZoomableImage
-              src={founderImg}
+              src={FOUNDER_PORTRAIT_IMAGE.fullSrc}
+              responsive={FOUNDER_PORTRAIT_IMAGE}
               alt="Founder portrait"
-              width={1024}
-              height={1280}
               className="h-full"
             />
           </div>
@@ -217,12 +224,14 @@ function HomePage() {
         </div>
       </section>
 
-      <InstagramFeed
-        eyebrow={h.instagramEyebrow}
-        title={h.instagramTitle}
-        followLabel={h.instagramFollow}
-        posts={instagramPosts}
-      />
+      <Suspense fallback={null}>
+        <InstagramFeed
+          eyebrow={h.instagramEyebrow}
+          title={h.instagramTitle}
+          followLabel={h.instagramFollow}
+          posts={instagramPosts}
+        />
+      </Suspense>
 
       {/* Experience — five-step process */}
       <section id="experience" className="bg-background px-6 py-28 md:px-12 md:py-36">

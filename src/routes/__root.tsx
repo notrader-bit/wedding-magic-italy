@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import {
   Outlet,
   createRootRouteWithContext,
@@ -6,9 +6,14 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import type { Dict, Lang } from "@/i18n/dict-types";
+import { loadDictionary } from "@/i18n/load-dictionary";
+import { parseLangFromPath } from "@/i18n/parse-lang";
 
 
 import appCss from "../styles.css?url";
+import fontsCss from "../fonts.css?url";
+import { FONT_PRELOAD_LINKS } from "@/lib/font-preloads";
 import { DEFAULT_OG_IMAGE, ogImageMetaTags } from "@/lib/og-images";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -67,7 +72,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+const BackToTop = lazy(() => import("@/components/BackToTop").then((m) => ({ default: m.BackToTop })));
+const WhatsAppButton = lazy(() =>
+  import("@/components/WhatsAppButton").then((m) => ({ default: m.WhatsAppButton })),
+);
+
+export const Route = createRootRouteWithContext<{
+  dictionary: Dict;
+  lang: Lang;
+}>()({
+  beforeLoad: async ({ location }) => {
+    const lang: Lang = location.pathname.includes("sitemap") ? "en" : parseLangFromPath(location.pathname);
+    const dictionary = await loadDictionary(lang);
+    return { dictionary, lang };
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -92,6 +110,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "apple-touch-icon", href: "/favicon.svg" },
+      ...FONT_PRELOAD_LINKS,
+      { rel: "preload", href: appCss, as: "style" },
+      { rel: "stylesheet", href: fontsCss },
       { rel: "stylesheet", href: appCss },
     ],
   }),
@@ -115,24 +136,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-import { BackToTop } from "@/components/BackToTop";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
+  const { dictionary, lang } = Route.useRouteContext();
   useRevealOnScroll();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <SiteHeader />
-        <main>
-          <Outlet />
-        </main>
-        <SiteFooter />
+    <LanguageProvider dictionary={dictionary} lang={lang}>
+      <SiteHeader />
+      <main>
+        <Outlet />
+      </main>
+      <SiteFooter />
+      <Suspense fallback={null}>
         <BackToTop />
         <WhatsAppButton />
-      </LanguageProvider>
-    </QueryClientProvider>
+      </Suspense>
+    </LanguageProvider>
   );
 }

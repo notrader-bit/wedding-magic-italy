@@ -1,5 +1,7 @@
 import { DEFAULT_LANG } from "@/i18n/LanguageProvider";
-import { LANG_HTML, LANGS, TRANSLATIONS, type Dict, type Lang } from "@/i18n/translations";
+import type { Dict, Lang } from "@/i18n/dict-types";
+import { LANG_HTML, LANGS } from "@/i18n/dict-types";
+import { PAGE_META } from "@/i18n/page-meta";
 import { PAGE_OG_IMAGES, ogImageMetaTags } from "@/lib/og-images";
 import { absoluteUrl } from "@/lib/site-url";
 
@@ -25,7 +27,7 @@ export function buildLocalizedPageHead(opts: {
   extraLinks?: { rel: string; href: string; as?: string; type?: string; imageSrcSet?: string; imageSizes?: string }[];
 }) {
   const lang = opts.lang ?? DEFAULT_LANG;
-  const { title, description } = TRANSLATIONS[lang].meta[opts.metaKey];
+  const { title, description } = PAGE_META[lang][opts.metaKey];
   const image = opts.ogImage ?? PAGE_OG_IMAGES[opts.metaKey];
   const imageUrl = image.startsWith("http") ? image : absoluteUrl(image);
   const canonical = absoluteUrl(localizedPath(opts.canonicalPath, lang));

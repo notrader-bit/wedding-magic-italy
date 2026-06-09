@@ -1,6 +1,7 @@
 import { createFileRoute} from "@tanstack/react-router";
 import { LocaleLink } from "@/components/LocaleLink";
-import founderImg from "@/assets/founder.jpg";
+import { ResponsivePhoto } from "@/components/ResponsivePhoto";
+import { FOUNDER_PORTRAIT_IMAGE } from "@/data/marketing-images";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 import { buildLocalizedPageHead, resolveRouteLang } from "@/lib/page-meta-head";
 import { PAGE_OG_IMAGES } from "@/lib/og-images";
@@ -34,7 +35,7 @@ function AboutPage() {
       <section className="px-6 pb-24 md:px-12 md:pb-32">
         <div className="mx-auto grid max-w-[1200px] gap-14 md:grid-cols-[1.1fr_1fr]">
           <div className="relative aspect-[4/5] overflow-hidden">
-            <img src={founderImg} alt={a.founderName} width={1024} height={1280} loading="lazy" className="h-full w-full object-cover" />
+            <ResponsivePhoto image={FOUNDER_PORTRAIT_IMAGE} alt={a.founderName} />
           </div>
           <div className="flex flex-col justify-center">
             <p className="eyebrow">{a.founderEyebrow}</p>

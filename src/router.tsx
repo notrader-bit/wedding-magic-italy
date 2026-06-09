@@ -1,13 +1,14 @@
-import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
+import type { Dict, Lang } from "@/i18n/dict-types";
 import { routeTree } from "./routeTree.gen";
 
 export const getRouter = () => {
-  const queryClient = new QueryClient();
-
   const router = createRouter({
     routeTree,
-    context: { queryClient },
+    context: {
+      dictionary: null as unknown as Dict,
+      lang: "en" as Lang,
+    },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
   });
