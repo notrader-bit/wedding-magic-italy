@@ -1,0 +1,52 @@
+---
+description: Єдиний візуальний і UI-стиль Wedding Magic Italy (editorial luxury)
+globs: src/**/*.{tsx,css}
+alwaysApply: true
+---
+
+# Wedding Magic Italy — design system
+
+**Характер:** італійський editorial luxury — тепла слонова кістка, мінімальні радіуси, багато повітря, тонкі лінії, без «generic SaaS» (яскраві градієнти, великі rounded-xl, дефолтний shadcn look на маркетингових сторінках).
+
+## Токени (з `src/styles.css`)
+
+- **Шрифти:** `font-display` (Cormorant Garamond, weight 300) — заголовки; `font-sans` (Inter, weight 300) — тіло.
+- **Кольори:** `ink`, `terracotta`, `cream`, `sage`, `background`, `foreground`, `muted-foreground`, `border`. Акцент і hover — `terracotta`; основний CTA fill — `bg-ink` → `hover:bg-terracotta`.
+- **Не вводити** нові hex/rgb для UI, окрім hero на темному фото (як на головній). Розширення палітри — лише через CSS-змінні в `styles.css`.
+
+## Типографіка
+
+- Секційний лейбл: клас `.eyebrow` (terracotta, uppercase, wide tracking).
+- Заголовки: `font-display text-ink`; емоційний акцент — `<span className="display-italic text-terracotta">`.
+- Масштаб (орієнтир): page `h1` — `text-5xl md:text-7xl leading-[1.05]`; `h2` — `text-3xl md:text-5xl`; lede/body — `text-base leading-relaxed text-muted-foreground`.
+
+## Макет і секції
+
+- Горизонтальні відступи: `px-6 md:px-12`. Контейнери: `mx-auto max-w-[1100px]` (текст/hero inner), `max-w-[1200px]` (сітки), `max-w-[1400px]` (широкі галереї/header).
+- Внутрішні сторінки під хедером: `pt-40 md:pt-48` у першій секції.
+- Чергування фону: `bg-background` / `bg-cream`; розділювачі — `border-border`, `divide-y divide-border`, `.hairline`.
+- Секції в `<main>` автоматично отримують scroll-reveal (`useRevealOnScroll`); додаткові блоки — `data-reveal`. Анімації: `fade-up`, `ken-burns`, `hero-blur` — лише де вже є прецедент; завжди поважати `prefers-reduced-motion`.
+
+## Кнопки та посилання
+
+- Маркетингові CTA — **не** `Button` з shadcn; патерн з існуючих сторінок:
+
+```tsx
+<LocaleLink
+  to="/contact"
+  className="inline-block bg-ink px-7 py-4 text-[11px] uppercase tracking-[0.28em] text-background transition-colors hover:bg-terracotta"
+>
+```
+
+- Вторинна: `border border-ink` + `hover:bg-ink hover:text-background` або `border-border` для м’якшого варіанту.
+- Внутрішня навігація: `LocaleLink`; текстові лінки — `hover:text-terracotta`.
+
+## Компоненти та контент
+
+- `src/components/ui/*` — shadcn-примітиви; фірмовий UI — `SiteHeader`, `SiteFooter`, `LocaleLink`, тощо.
+- Усі видимі користувачу рядки — через `useLanguage()` / `translations.ts`; маршрути — `usePageMeta(key)` + `buildPageHead` у `head`.
+- Зображення: `object-cover`, `width`/`height`, `loading="lazy"` поза hero; hero — `<picture>` + `srcSet` за зразком `index.tsx`.
+
+## Антипатерни
+
+- Дефолтні `rounded-md`/`primary` кнопки на лендингах, жирні sans-заголовки, холодні сірі палітри, compact dense UI, емодзі в UI, hardcoded copy англійською в JSX.

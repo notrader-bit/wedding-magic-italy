@@ -20,9 +20,9 @@ export const LANG_HTML: Record<Lang, string> = {
 };
 
 type Dict = {
-  nav: { home: string; about: string; services: string; portfolio: string; packages: string; experience: string; contact: string; planCta: string };
+  nav: { home: string; about: string; services: string; portfolio: string; blog: string; packages: string; experience: string; contact: string; planCta: string };
   footer: { tagline: string; explore: string; contact: string; follow: string; crafted: string; locations: string };
-  meta: Record<"home" | "about" | "services" | "portfolio" | "packages" | "experience" | "contact", { title: string; description: string }>;
+  meta: Record<"home" | "about" | "services" | "portfolio" | "packages" | "experience" | "contact" | "blog", { title: string; description: string }>;
   home: {
     eyebrow: string; h1a: string; h1b: string; lede: string; cta1: string; cta2: string; scroll: string;
     promiseEyebrow: string; promiseH1a: string; promiseH1b: string; promiseBody: string;
@@ -31,6 +31,7 @@ type Dict = {
     founderEyebrow: string; founderQuoteA: string; founderQuoteB: string; founderBody: string; meetStudio: string;
     kindWords: string; testimonials: { quote: string; couple: string; location: string; date: string }[]; testimonialsTitle: string;
     limitedEyebrow: string; limitedTitleA: string; limitedTitleB: string; limitedTitleC: string; limitedBody: string; requestCta: string;
+    instagramEyebrow: string; instagramTitle: string; instagramFollow: string;
   };
   about: {
     eyebrow: string; h1a: string; h1b: string;
@@ -75,10 +76,15 @@ type Dict = {
     follow: string;
   };
   faq: { eyebrow: string; h1a: string; h1b: string; lede: string; items: { q: string; a: string }[] };
+  blog: {
+    eyebrow: string; h1a: string; h1b: string; lede: string;
+    readArticle: string; back: string; published: string; minRead: string;
+    recommendedEyebrow: string; recommendedTitle: string;
+  };
 };
 
 const en: Dict = {
-  nav: { home: "Home", about: "About", services: "Services", portfolio: "Portfolio", experience: "Experience", contact: "Contact", packages: "Packages", planCta: "Plan your day" },
+  nav: { home: "Home", about: "About", services: "Services", portfolio: "Portfolio", blog: "Journal", experience: "Experience", contact: "Contact", packages: "Packages", planCta: "Plan your day" },
   footer: { tagline: "Bespoke destination weddings across Tuscany, Lake Como, Amalfi & Puglia. Cinematic, intimate, unforgettable.", explore: "Explore", contact: "Contact", follow: "Follow", crafted: "Crafted in Italia · Con amore", locations: "Firenze · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Luxury Destination Weddings in Italy", description: "Cinematic, intimate destination weddings in Tuscany, Lake Como, Amalfi & Puglia. Crafted by Wedding Magic Italy." },
@@ -88,6 +94,7 @@ const en: Dict = {
     experience: { title: "The Experience — Wedding Magic Italy", description: "How we work — a transparent five-step process from first call to last dance." },
     packages: { title: "Packages & Pricing — Wedding Magic Italy", description: "Three transparent ways to work with us — full planning, partial planning, and elopements in Italy. Honest starting prices." },
     contact: { title: "Contact — Wedding Magic Italy", description: "Begin your Italian wedding. Tell us about your day and we'll reply within 48 hours." },
+    blog: { title: "Journal — Wedding Magic Italy", description: "Guides to Tuscan villas, Lake Como weddings and realistic Italian wedding budgets." },
   },
   home: {
     eyebrow: "Bespoke Destination Weddings · Italia", h1a: "A love story", h1b: "written in Italy.",
@@ -114,6 +121,7 @@ const en: Dict = {
     limitedEyebrow: "Reservations Limited", limitedTitleA: "We accept only", limitedTitleB: "twelve weddings", limitedTitleC: "a year.",
     limitedBody: "Each one designed without compromise. Tell us about yours — we'll respond within 48 hours with a private consultation.",
     requestCta: "Request consultation",
+    instagramEyebrow: "On Instagram", instagramTitle: "Latest from @italian.wedding.magic", instagramFollow: "View post on Instagram",
   },
   about: {
     eyebrow: "The Studio", h1a: "A small studio", h1b: "with a long memory of Italy.",
@@ -206,10 +214,16 @@ const en: Dict = {
       { q: "What documents are needed?", a: "For a civil ceremony: passports, birth certificates with an apostille, nulla osta (certificate of no impediment). For symbolic ceremonies: none at all. We handle translations, appointments and every deadline." },
     ],
   },
+  blog: {
+    eyebrow: "Journal", h1a: "Notes from", h1b: "Italy.",
+    lede: "Venues, budgets and pacing for destination weddings — written for couples planning from abroad.",
+    readArticle: "Read article", back: "Back to journal", published: "Published", minRead: "min read",
+    recommendedEyebrow: "Keep reading", recommendedTitle: "More from the journal",
+  },
 };
 
 const uk: Dict = {
-  nav: { home: "Головна", about: "Про нас", services: "Послуги", portfolio: "Портфоліо", experience: "Досвід", contact: "Контакти", packages: "Пакети", planCta: "Спланувати день" },
+  nav: { home: "Головна", about: "Про нас", services: "Послуги", portfolio: "Портфоліо", blog: "Журнал", experience: "Досвід", contact: "Контакти", packages: "Пакети", planCta: "Спланувати день" },
   footer: { tagline: "Ексклюзивні весілля в Тоскані, на озері Комо, Амальфі та Апулії. Кінематографічні, інтимні, незабутні.", explore: "Розділи", contact: "Контакти", follow: "Соцмережі", crafted: "Створено в Італії · Con amore", locations: "Флоренція · Комо · Амальфі" },
   meta: {
     home: { title: "Wedding Magic Italy — Розкішні весілля в Італії", description: "Кінематографічні, інтимні весілля в Тоскані, на озері Комо, Амальфі та Апулії від Wedding Magic Italy." },
@@ -219,6 +233,7 @@ const uk: Dict = {
     experience: { title: "Досвід — Wedding Magic Italy", description: "Як ми працюємо — прозорий п'ятикроковий процес від першого дзвінка до останнього танцю." },
     packages: { title: "Пакети та ціни — Wedding Magic Italy", description: "Три прозорі формати співпраці — повне планування, часткове планування, елопменти. Чесні стартові ціни." },
     contact: { title: "Контакти — Wedding Magic Italy", description: "Розпочніть своє італійське весілля. Розкажіть про ваш день — відповімо протягом 48 годин." },
+    blog: { title: "Журнал — Wedding Magic Italy", description: "Гіди по віллах Тоскани, весіллях на Комо та реалістичних бюджетах в Італії." },
   },
   home: {
     eyebrow: "Ексклюзивні весілля · Italia", h1a: "Історія кохання,", h1b: "написана в Італії.",
@@ -245,6 +260,7 @@ const uk: Dict = {
     limitedEyebrow: "Обмежена кількість", limitedTitleA: "Ми приймаємо лише", limitedTitleB: "дванадцять весіль", limitedTitleC: "на рік.",
     limitedBody: "Кожне створене без компромісів. Розкажіть про ваше — відповімо протягом 48 годин з приватною консультацією.",
     requestCta: "Запит на консультацію",
+    instagramEyebrow: "В Instagram", instagramTitle: "Останні кадри з @italian.wedding.magic", instagramFollow: "Відкрити допис в Instagram",
   },
   about: {
     eyebrow: "Студія", h1a: "Маленька студія", h1b: "з довгою пам'яттю Італії.",
@@ -337,10 +353,16 @@ const uk: Dict = {
       { q: "Які документи потрібні?", a: "Для цивільної церемонії: паспорти, свідоцтва про народження з апостилем, nulla osta. Для символічної — жодних. Ми беремо на себе переклади, записи та всі терміни." },
     ],
   },
+  blog: {
+    eyebrow: "Журнал", h1a: "Нотатки з", h1b: "Італії.",
+    lede: "Локації, бюджети й ритм destination-весіль — для пар, які планують з-за кордону.",
+    readArticle: "Читати статтю", back: "До журналу", published: "Опубліковано", minRead: "хв читання",
+    recommendedEyebrow: "Рекомендуємо почитати", recommendedTitle: "Інші статті з журналу",
+  },
 };
 
 const ru: Dict = {
-  nav: { home: "Главная", about: "О нас", services: "Услуги", portfolio: "Портфолио", experience: "Опыт", contact: "Контакты", packages: "Пакеты", planCta: "Спланировать день" },
+  nav: { home: "Главная", about: "О нас", services: "Услуги", portfolio: "Портфолио", blog: "Журнал", experience: "Опыт", contact: "Контакты", packages: "Пакеты", planCta: "Спланировать день" },
   footer: { tagline: "Эксклюзивные свадьбы в Тоскане, на озере Комо, Амальфи и Апулии. Кинематографичные, камерные, незабываемые.", explore: "Разделы", contact: "Контакты", follow: "Соцсети", crafted: "Сделано в Италии · Con amore", locations: "Флоренция · Комо · Амальфи" },
   meta: {
     home: { title: "Wedding Magic Italy — Роскошные свадьбы в Италии", description: "Кинематографичные, камерные свадьбы в Тоскане, на Комо, Амальфи и Апулии от Wedding Magic Italy." },
@@ -350,6 +372,7 @@ const ru: Dict = {
     experience: { title: "Опыт — Wedding Magic Italy", description: "Как мы работаем — прозрачный пятишаговый процесс от первого звонка до последнего танца." },
     packages: { title: "Пакеты и цены — Wedding Magic Italy", description: "Три прозрачных формата работы — полное планирование, частичное планирование, элопменты. Честные стартовые цены." },
     contact: { title: "Контакты — Wedding Magic Italy", description: "Начните свою итальянскую свадьбу. Расскажите о вашем дне — ответим в течение 48 часов." },
+    blog: { title: "Журнал — Wedding Magic Italy", description: "Гиды по виллам Тосканы, свадьбам на Комо и реалистичным бюджетам в Италии." },
   },
   home: {
     eyebrow: "Эксклюзивные свадьбы · Italia", h1a: "История любви,", h1b: "написанная в Италии.",
@@ -376,6 +399,7 @@ const ru: Dict = {
     limitedEyebrow: "Ограниченное количество", limitedTitleA: "Мы принимаем только", limitedTitleB: "двенадцать свадеб", limitedTitleC: "в год.",
     limitedBody: "Каждая создана без компромиссов. Расскажите о вашей — ответим в течение 48 часов и предложим личную консультацию.",
     requestCta: "Запросить консультацию",
+    instagramEyebrow: "В Instagram", instagramTitle: "Свежие кадры @italian.wedding.magic", instagramFollow: "Открыть пост в Instagram",
   },
   about: {
     eyebrow: "Студия", h1a: "Маленькая студия", h1b: "с долгой памятью Италии.",
@@ -468,10 +492,16 @@ const ru: Dict = {
       { q: "Какие документы нужны?", a: "Для гражданской церемонии: паспорта, свидетельства о рождении с апостилем, nulla osta. Для символической — никаких. Мы берём на себя переводы, записи и все сроки." },
     ],
   },
+  blog: {
+    eyebrow: "Журнал", h1a: "Заметки из", h1b: "Италии.",
+    lede: "Локации, бюджеты и ритм destination-свадеб — для пар, планирующих из-за рубежа.",
+    readArticle: "Читать статью", back: "К журналу", published: "Опубликовано", minRead: "мин чтения",
+    recommendedEyebrow: "Рекомендуем почитать", recommendedTitle: "Другие статьи из журнала",
+  },
 };
 
 const it: Dict = {
-  nav: { home: "Home", about: "Studio", services: "Servizi", portfolio: "Portfolio", experience: "Esperienza", contact: "Contatti", packages: "Pacchetti", planCta: "Pianifica il giorno" },
+  nav: { home: "Home", about: "Studio", services: "Servizi", portfolio: "Portfolio", blog: "Journal", experience: "Esperienza", contact: "Contatti", packages: "Pacchetti", planCta: "Pianifica il giorno" },
   footer: { tagline: "Matrimoni destinazione su misura tra Toscana, Lago di Como, Amalfi e Puglia. Cinematografici, intimi, indimenticabili.", explore: "Esplora", contact: "Contatti", follow: "Social", crafted: "Crafted in Italia · Con amore", locations: "Firenze · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Matrimoni di Lusso in Italia", description: "Matrimoni destinazione cinematografici e intimi in Toscana, sul Lago di Como, Amalfi e Puglia. Wedding Magic Italy." },
@@ -481,6 +511,7 @@ const it: Dict = {
     experience: { title: "L'Esperienza — Wedding Magic Italy", description: "Come lavoriamo — un percorso trasparente in cinque passi, dalla prima chiamata all'ultimo ballo." },
     packages: { title: "Pacchetti e Prezzi — Wedding Magic Italy", description: "Tre formule trasparenti per lavorare con noi — full planning, partial planning ed elopement in Italia." },
     contact: { title: "Contatti — Wedding Magic Italy", description: "Iniziate il vostro matrimonio italiano. Raccontateci la giornata, rispondiamo entro 48 ore." },
+    blog: { title: "Journal — Wedding Magic Italy", description: "Guide a ville toscane, matrimoni sul Lago di Como e budget realistici in Italia." },
   },
   home: {
     eyebrow: "Matrimoni Destinazione · Italia", h1a: "Una storia d'amore", h1b: "scritta in Italia.",
@@ -507,6 +538,7 @@ const it: Dict = {
     limitedEyebrow: "Posti Limitati", limitedTitleA: "Accettiamo solo", limitedTitleB: "dodici matrimoni", limitedTitleC: "all'anno.",
     limitedBody: "Ognuno disegnato senza compromessi. Raccontateci il vostro — rispondiamo entro 48 ore con una consulenza privata.",
     requestCta: "Richiedi consulenza",
+    instagramEyebrow: "Su Instagram", instagramTitle: "Ultimi scatti da @italian.wedding.magic", instagramFollow: "Apri il post su Instagram",
   },
   about: {
     eyebrow: "Lo Studio", h1a: "Uno studio piccolo", h1b: "con una lunga memoria d'Italia.",
@@ -599,10 +631,16 @@ const it: Dict = {
       { q: "Quali documenti servono?", a: "Per cerimonia civile: passaporti, certificati di nascita con apostille, nulla osta. Per simboliche: nessuno. Ci occupiamo di traduzioni, appuntamenti e ogni scadenza." },
     ],
   },
+  blog: {
+    eyebrow: "Journal", h1a: "Note dall'", h1b: "Italia.",
+    lede: "Location, budget e ritmo per matrimoni destinazione — per coppie che pianificano dall'estero.",
+    readArticle: "Leggi l'articolo", back: "Torna al journal", published: "Pubblicato", minRead: "min di lettura",
+    recommendedEyebrow: "Da leggere", recommendedTitle: "Altri articoli dal journal",
+  },
 };
 
 const es: Dict = {
-  nav: { home: "Inicio", about: "Estudio", services: "Servicios", portfolio: "Portfolio", experience: "Experiencia", contact: "Contacto", packages: "Paquetes", planCta: "Planifica tu día" },
+  nav: { home: "Inicio", about: "Estudio", services: "Servicios", portfolio: "Portfolio", blog: "Journal", experience: "Experiencia", contact: "Contacto", packages: "Paquetes", planCta: "Planifica tu día" },
   footer: { tagline: "Bodas destino a medida en Toscana, Lago di Como, Amalfi y Puglia. Cinematográficas, íntimas, inolvidables.", explore: "Explorar", contact: "Contacto", follow: "Redes", crafted: "Hecho en Italia · Con amore", locations: "Florencia · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Bodas de Lujo en Italia", description: "Bodas destino cinematográficas e íntimas en Toscana, Lago di Como, Amalfi y Puglia. Por Wedding Magic Italy." },
@@ -612,6 +650,7 @@ const es: Dict = {
     experience: { title: "La Experiencia — Wedding Magic Italy", description: "Cómo trabajamos — un proceso transparente en cinco pasos, de la primera llamada al último baile." },
     packages: { title: "Paquetes y Precios — Wedding Magic Italy", description: "Tres formatos transparentes para trabajar con nosotros — full planning, partial planning y elopements en Italia." },
     contact: { title: "Contacto — Wedding Magic Italy", description: "Comienza tu boda italiana. Cuéntanos sobre tu día y respondemos en 48 horas." },
+    blog: { title: "Journal — Wedding Magic Italy", description: "Guías de villas toscanas, bodas en el Lago de Como y presupuestos realistas en Italia." },
   },
   home: {
     eyebrow: "Bodas Destino · Italia", h1a: "Una historia de amor", h1b: "escrita en Italia.",
@@ -638,6 +677,7 @@ const es: Dict = {
     limitedEyebrow: "Plazas Limitadas", limitedTitleA: "Aceptamos solo", limitedTitleB: "doce bodas", limitedTitleC: "al año.",
     limitedBody: "Cada una diseñada sin compromisos. Cuéntanos la tuya — respondemos en 48 horas con una consulta privada.",
     requestCta: "Solicitar consulta",
+    instagramEyebrow: "En Instagram", instagramTitle: "Lo último de @italian.wedding.magic", instagramFollow: "Ver publicación en Instagram",
   },
   about: {
     eyebrow: "El Estudio", h1a: "Un estudio pequeño", h1b: "con larga memoria de Italia.",
@@ -730,10 +770,16 @@ const es: Dict = {
       { q: "¿Qué documentos se necesitan?", a: "Para ceremonia civil: pasaportes, certificados de nacimiento con apostilla, nulla osta. Para simbólicas: ninguno. Nos encargamos de traducciones, citas y cada plazo." },
     ],
   },
+  blog: {
+    eyebrow: "Journal", h1a: "Notas desde", h1b: "Italia.",
+    lede: "Lugares, presupuestos y ritmo para bodas destino — para parejas que planifican desde el extranjero.",
+    readArticle: "Leer artículo", back: "Volver al journal", published: "Publicado", minRead: "min de lectura",
+    recommendedEyebrow: "Sigue leyendo", recommendedTitle: "Más artículos del journal",
+  },
 };
 
 const de: Dict = {
-  nav: { home: "Start", about: "Studio", services: "Leistungen", portfolio: "Portfolio", experience: "Ablauf", contact: "Kontakt", packages: "Pakete", planCta: "Tag planen" },
+  nav: { home: "Start", about: "Studio", services: "Leistungen", portfolio: "Portfolio", blog: "Journal", experience: "Ablauf", contact: "Kontakt", packages: "Pakete", planCta: "Tag planen" },
   footer: { tagline: "Maßgeschneiderte Destination Weddings in der Toskana, am Comer See, an der Amalfiküste und in Apulien. Cinematic, intim, unvergesslich.", explore: "Entdecken", contact: "Kontakt", follow: "Social", crafted: "Crafted in Italia · Con amore", locations: "Florenz · Como · Amalfi" },
   meta: {
     home: { title: "Wedding Magic Italy — Luxus-Hochzeiten in Italien", description: "Cinematic, intime Destination Weddings in der Toskana, am Comer See, an der Amalfiküste und in Apulien. Wedding Magic Italy." },
@@ -743,6 +789,7 @@ const de: Dict = {
     experience: { title: "Der Ablauf — Wedding Magic Italy", description: "Wie wir arbeiten — ein transparenter Fünf-Schritte-Prozess vom ersten Anruf bis zum letzten Tanz." },
     packages: { title: "Pakete & Preise — Wedding Magic Italy", description: "Drei transparente Formate für die Zusammenarbeit — Full Planning, Partial Planning und Elopements in Italien." },
     contact: { title: "Kontakt — Wedding Magic Italy", description: "Beginnen Sie Ihre italienische Hochzeit. Erzählen Sie uns von Ihrem Tag — wir antworten innerhalb von 48 Stunden." },
+    blog: { title: "Journal — Wedding Magic Italy", description: "Guides zu toskanischen Villen, Comer See-Hochzeiten und realistischen Budgets in Italien." },
   },
   home: {
     eyebrow: "Destination Weddings · Italia", h1a: "Eine Liebesgeschichte,", h1b: "geschrieben in Italien.",
@@ -769,6 +816,7 @@ const de: Dict = {
     limitedEyebrow: "Begrenzte Plätze", limitedTitleA: "Wir nehmen nur", limitedTitleB: "zwölf Hochzeiten", limitedTitleC: "pro Jahr an.",
     limitedBody: "Jede wird kompromisslos gestaltet. Erzählen Sie uns von Ihrer — wir antworten innerhalb von 48 Stunden mit einer privaten Beratung.",
     requestCta: "Beratung anfragen",
+    instagramEyebrow: "Auf Instagram", instagramTitle: "Neu von @italian.wedding.magic", instagramFollow: "Beitrag auf Instagram öffnen",
   },
   about: {
     eyebrow: "Das Studio", h1a: "Ein kleines Studio", h1b: "mit langem Italien-Gedächtnis.",
@@ -860,6 +908,12 @@ const de: Dict = {
       { q: "Können wir alles aus dem Ausland planen?", a: "Absolut. Die meisten unserer Paare leben in den USA, Großbritannien oder den VAE. Wir arbeiten per Videocall, gemeinsamen Moodboards und einem einzigen Planungsdokument. Sie fliegen nur für den finalen Location-Besuch und die Hochzeit selbst nach Italien." },
       { q: "Welche Unterlagen werden benötigt?", a: "Für zivile Zeremonie: Pässe, Geburtsurkunden mit Apostille, Nulla Osta. Für symbolische: keine. Wir kümmern uns um Übersetzungen, Termine und jede Frist." },
     ],
+  },
+  blog: {
+    eyebrow: "Journal", h1a: "Notizen aus", h1b: "Italien.",
+    lede: "Locations, Budgets und Tempo für Destination Weddings — für Paare, die aus dem Ausland planen.",
+    readArticle: "Artikel lesen", back: "Zurück zum Journal", published: "Veröffentlicht", minRead: "Min. Lesezeit",
+    recommendedEyebrow: "Weiterlesen", recommendedTitle: "Weitere Artikel aus dem Journal",
   },
 };
 

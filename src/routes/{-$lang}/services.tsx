@@ -2,18 +2,16 @@ import { createFileRoute} from "@tanstack/react-router";
 import { LocaleLink } from "@/components/LocaleLink";
 import designImg from "@/assets/services-design.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
+import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
 
 export const Route = createFileRoute("/{-$lang}/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — Wedding Magic Italy" },
-      { name: "description", content: "Full planning, destination weddings, elopements and creative direction across Italy." },
-      { property: "og:title", content: "Services — Wedding Magic Italy" },
-      { property: "og:description", content: "Full planning, destination weddings & elopements in Italy." },
-      { property: "og:url", content: "/services" },
-    ],
-    links: [{ rel: "canonical", href: "/services" }],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Services — Wedding Magic Italy",
+      description: "Full planning, destination weddings, elopements and creative direction across Italy.",
+      canonicalPath: "/services",
+      ogImage: PAGE_OG_IMAGES.services,
+    }),
   component: ServicesPage,
 });
 

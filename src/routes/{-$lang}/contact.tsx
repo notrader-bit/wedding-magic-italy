@@ -1,29 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
+import { JsonLd } from "@/components/JsonLd";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
+import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
+import { contactPageStructuredData } from "@/lib/structured-data";
 
 export const Route = createFileRoute("/{-$lang}/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Wedding Magic Italy" },
-      { name: "description", content: "Begin your Italian wedding. Tell us about your day." },
-      { property: "og:title", content: "Contact — Wedding Magic Italy" },
-      { property: "og:description", content: "Begin your Italian wedding." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Contact — Wedding Magic Italy",
+      description: "Begin your Italian wedding. Tell us about your day.",
+      canonicalPath: "/contact",
+      ogImage: PAGE_OG_IMAGES.contact,
+    }),
   component: ContactPage,
 });
 
 function ContactPage() {
   usePageMeta("contact");
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const c = t.contact;
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const contactPath = lang === "en" ? "/contact" : `/${lang}/contact`;
 
   return (
     <>
+      <JsonLd data={contactPageStructuredData(contactPath)} />
       <section className="px-6 pb-12 pt-40 md:px-12 md:pb-16 md:pt-48">
         <div className="mx-auto max-w-[1100px]">
           <p className="eyebrow">{c.eyebrow}</p>
@@ -36,7 +40,17 @@ function ContactPage() {
 
       <section className="px-6 pb-32 md:px-12">
         <div className="mx-auto grid max-w-[1200px] gap-16 md:grid-cols-[1.4fr_1fr]">
-          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="space-y-8">
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              if (sending) return;
+              setSending(true);
+              await new Promise((resolve) => setTimeout(resolve, 900));
+              setSending(false);
+              setSent(true);
+            }}
+            className="space-y-8"
+          >
             {sent ? (
               <div className="border border-terracotta bg-cream p-10 text-center">
                 <p className="eyebrow">{c.sent}</p>
@@ -67,8 +81,19 @@ function ContactPage() {
                     placeholder={c.visionPh}
                   />
                 </div>
-                <button type="submit" className="mt-4 bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-background transition-colors hover:bg-terracotta">
-                  {c.send}
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="mt-4 inline-flex min-w-[200px] items-center justify-center gap-2 bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-background transition-colors hover:bg-terracotta disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  {sending ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+                      <span>{c.send}</span>
+                    </>
+                  ) : (
+                    c.send
+                  )}
                 </button>
               </>
             )}

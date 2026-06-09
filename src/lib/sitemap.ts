@@ -1,4 +1,5 @@
 import type {} from "@tanstack/react-start";
+import { BLOG_SLUGS } from "@/data/blog-posts";
 
 const BASE_URL = "";
 export const LANGS = ["en", "uk", "ru", "it", "es", "de"] as const;
@@ -10,6 +11,8 @@ const ENTRIES = [
   { path: "/about", priority: "0.8" },
   { path: "/services", priority: "0.9" },
   { path: "/portfolio", priority: "0.9" },
+  { path: "/blog", priority: "0.85" },
+  ...BLOG_SLUGS.map((slug) => ({ path: `/blog/${slug}`, priority: "0.8" })),
   { path: "/contact", priority: "0.9" },
 ];
 

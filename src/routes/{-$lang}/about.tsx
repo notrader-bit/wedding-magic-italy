@@ -2,18 +2,16 @@ import { createFileRoute} from "@tanstack/react-router";
 import { LocaleLink } from "@/components/LocaleLink";
 import founderImg from "@/assets/founder.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
+import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
 
 export const Route = createFileRoute("/{-$lang}/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Wedding Magic Italy" },
-      { name: "description", content: "Meet the studio behind Wedding Magic Italy." },
-      { property: "og:title", content: "About — Wedding Magic Italy" },
-      { property: "og:description", content: "Meet the studio behind Wedding Magic Italy." },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "About — Wedding Magic Italy",
+      description: "Meet the studio behind Wedding Magic Italy.",
+      canonicalPath: "/about",
+      ogImage: PAGE_OG_IMAGES.about,
+    }),
   component: AboutPage,
 });
 

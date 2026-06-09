@@ -1,23 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LocaleLink } from "@/components/LocaleLink";
+import { ZoomableImage } from "@/components/ZoomableImage";
 import heroImg from "@/assets/hero-tuscany.jpg";
 import comoImg from "@/assets/portfolio-como.jpg";
 import amalfiImg from "@/assets/portfolio-amalfi.jpg";
 import pugliaImg from "@/assets/portfolio-puglia.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 import { STORY_SLUGS } from "@/data/story-details";
+import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
 
 export const Route = createFileRoute("/{-$lang}/portfolio")({
-  head: () => ({
-    meta: [
-      { title: "Portfolio — Wedding Magic Italy" },
-      { name: "description", content: "A selected portfolio of luxury weddings across Italy." },
-      { property: "og:title", content: "Portfolio — Wedding Magic Italy" },
-      { property: "og:description", content: "Selected luxury weddings across Italy." },
-      { property: "og:url", content: "/portfolio" },
-    ],
-    links: [{ rel: "canonical", href: "/portfolio" }],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Portfolio — Wedding Magic Italy",
+      description: "A selected portfolio of luxury weddings across Italy.",
+      canonicalPath: "/portfolio",
+      ogImage: PAGE_OG_IMAGES.portfolio,
+    }),
   component: PortfolioPage,
 });
 
@@ -28,6 +27,7 @@ function PortfolioPage() {
   const langPrefix = lang === "en" ? "" : `/${lang}`;
   const images = [heroImg, comoImg, amalfiImg, pugliaImg];
   const aspects = ["aspect-[16/10]", "aspect-[3/4]", "aspect-[3/4]", "aspect-[16/10]"];
+  const portfolioGallery = p.stories.map((s, i) => ({ src: images[i], alt: s.couple }));
 
   return (
     <>
@@ -49,18 +49,18 @@ function PortfolioPage() {
             return (
               <article key={s.couple} className="grid gap-10 md:grid-cols-12 md:items-center">
                 <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-                  <a href={href} className="group block">
-                    <div className={`relative ${aspects[i]} overflow-hidden`}>
-                      <img
-                        src={images[i]}
-                        alt={s.couple}
-                        width={1600}
-                        height={1200}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-                      />
-                    </div>
-                  </a>
+                  <div className={`relative ${aspects[i]} overflow-hidden`}>
+                    <ZoomableImage
+                      src={images[i]}
+                      alt={s.couple}
+                      width={1600}
+                      height={1200}
+                      gallery={portfolioGallery}
+                      galleryIndex={i}
+                      className="h-full"
+                      imgClassName="transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
+                    />
+                  </div>
                 </div>
                 <div className={`md:col-span-5 ${i % 2 ? "md:pr-12" : "md:pl-12"}`}>
                   <p className="eyebrow">{s.place} · {s.year}</p>

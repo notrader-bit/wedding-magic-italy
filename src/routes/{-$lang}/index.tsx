@@ -16,33 +16,49 @@ import comoImg from "@/assets/portfolio-como.jpg";
 import amalfiImg from "@/assets/portfolio-amalfi.jpg";
 import pugliaImg from "@/assets/portfolio-puglia.jpg";
 import founderImg from "@/assets/founder.jpg";
+import { InstagramFeed } from "@/components/InstagramFeed";
+import { ZoomableImage } from "@/components/ZoomableImage";
+import { JsonLd } from "@/components/JsonLd";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
+import { getInstagramFeed } from "@/lib/instagram-feed";
+import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
+import { faqPageStructuredData } from "@/lib/structured-data";
 
 export const Route = createFileRoute("/{-$lang}/")({
-  head: () => ({
-    meta: [
-      { title: "Wedding Magic Italy — Luxury Destination Weddings in Italy" },
-      { name: "description", content: "Cinematic, intimate destination weddings in Tuscany, Lake Como, Amalfi & Puglia. Crafted by Wedding Magic Italy." },
-      { property: "og:title", content: "Wedding Magic Italy — Luxury Destination Weddings" },
-      { property: "og:description", content: "Cinematic, intimate destination weddings across Italy." },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
+  loader: async () => ({
+    instagramPosts: await getInstagramFeed(),
   }),
+  head: () =>
+    buildPageHead({
+      title: "Wedding Magic Italy — Luxury Destination Weddings in Italy",
+      description:
+        "Cinematic, intimate destination weddings in Tuscany, Lake Como, Amalfi & Puglia. Crafted by Wedding Magic Italy.",
+      canonicalPath: "/",
+      ogImage: PAGE_OG_IMAGES.home,
+    }),
   component: HomePage,
 });
 
 function HomePage() {
   usePageMeta("home");
-  const { t } = useLanguage();
+  const { instagramPosts } = Route.useLoaderData();
+  const { t, lang } = useLanguage();
+  const homePath = lang === "en" ? "/" : `/${lang}`;
   const h = t.home;
   const e = t.experience;
   const p = t.packages;
   const f = t.faq;
 
+  const destinations = [
+    { img: comoImg, place: h.como, note: h.comoNote },
+    { img: amalfiImg, place: h.amalfi, note: h.amalfiNote },
+    { img: pugliaImg, place: h.puglia, note: h.pugliaNote },
+  ];
+  const destGallery = destinations.map((d) => ({ src: d.img, alt: d.place }));
 
   return (
     <>
+      <JsonLd data={faqPageStructuredData(`${homePath}#faq`, t.faq.items)} />
       <section className="relative h-screen min-h-[640px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <picture>
@@ -127,14 +143,19 @@ function HomePage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {[
-              { img: comoImg, place: h.como, note: h.comoNote },
-              { img: amalfiImg, place: h.amalfi, note: h.amalfiNote },
-              { img: pugliaImg, place: h.puglia, note: h.pugliaNote },
-            ].map((d) => (
+            {destinations.map((d, i) => (
               <div key={d.place} className="group">
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <img src={d.img} alt={d.place} width={1080} height={1440} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
+                  <ZoomableImage
+                    src={d.img}
+                    alt={d.place}
+                    width={1080}
+                    height={1440}
+                    gallery={destGallery}
+                    galleryIndex={i}
+                    className="h-full transition-transform duration-[1200ms] group-hover:scale-[1.02]"
+                    imgClassName="transition-transform duration-[1200ms] group-hover:scale-105"
+                  />
                 </div>
                 <div className="mt-5">
                   <h3 className="font-display text-2xl text-ink">{d.place}</h3>
@@ -149,7 +170,13 @@ function HomePage() {
       <section className="bg-background px-6 py-28 md:px-12 md:py-40">
         <div className="mx-auto grid max-w-[1200px] items-center gap-14 md:grid-cols-2">
           <div className="relative aspect-[4/5] overflow-hidden">
-            <img src={founderImg} alt="Founder portrait" width={1024} height={1280} loading="lazy" className="h-full w-full object-cover" />
+            <ZoomableImage
+              src={founderImg}
+              alt="Founder portrait"
+              width={1024}
+              height={1280}
+              className="h-full"
+            />
           </div>
           <div>
             <p className="eyebrow">{h.founderEyebrow}</p>
@@ -190,6 +217,13 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <InstagramFeed
+        eyebrow={h.instagramEyebrow}
+        title={h.instagramTitle}
+        followLabel={h.instagramFollow}
+        posts={instagramPosts}
+      />
 
       {/* Experience — five-step process */}
       <section id="experience" className="bg-background px-6 py-28 md:px-12 md:py-36">

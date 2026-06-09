@@ -9,19 +9,30 @@ type ExtraProps = Pick<
 
 export type LocaleLinkProps = AnchorProps &
   ExtraProps & {
-    to: "/" | "/about" | "/services" | "/portfolio" | "/contact";
+    to: "/" | "/about" | "/services" | "/portfolio" | "/blog" | "/contact";
+    params?: { slug?: string };
   };
 
 /**
  * Drop-in replacement for <Link> that prefixes the current language into the
  * pathname (e.g. /uk/about). EN is the default and renders without a prefix.
  */
-export function LocaleLink({ to, ...rest }: LocaleLinkProps) {
+export function LocaleLink({ to, params: linkParams, ...rest }: LocaleLinkProps) {
   const params = useParams({ strict: false }) as { lang?: string };
   const lang = params.lang;
+
+  if (to === "/blog" && linkParams?.slug) {
+    return (
+      <Link
+        {...(rest as object)}
+        to={"/{-$lang}/blog/$slug" as never}
+        params={{ lang, slug: linkParams.slug } as never}
+      />
+    );
+  }
+
   const target = to === "/" ? "/{-$lang}/" : `/{-$lang}${to}`;
   return (
-    // The optional-locale route is matched at runtime; loosen the literal type.
     <Link {...(rest as object)} to={target as never} params={{ lang } as never} />
   );
 }

@@ -9,6 +9,7 @@ import {
 
 
 import appCss from "../styles.css?url";
+import { DEFAULT_OG_IMAGE, ogImageMetaTags } from "@/lib/og-images";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
@@ -86,8 +87,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Wedding Magic Italy" },
       { name: "twitter:card", content: "summary_large_image" },
+      ...ogImageMetaTags(DEFAULT_OG_IMAGE),
     ],
     links: [
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -117,6 +121,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { BackToTop } from "@/components/BackToTop";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 function RootComponent() {
@@ -131,6 +136,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <BackToTop />
         <WhatsAppButton />
       </LanguageProvider>
     </QueryClientProvider>

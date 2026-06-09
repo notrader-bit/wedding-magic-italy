@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { ZoomableImage } from "@/components/ZoomableImage";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import {
   STORY_SLUGS,
@@ -9,6 +10,7 @@ import {
   isStorySlug,
   type StorySlug,
 } from "@/data/story-details";
+import { buildPageHead } from "@/lib/og-images";
 
 export const Route = createFileRoute("/{-$lang}/portfolio_/$slug")({
   beforeLoad: ({ params }) => {
@@ -21,17 +23,13 @@ export const Route = createFileRoute("/{-$lang}/portfolio_/$slug")({
     const title = `${slug.split("-").slice(0, 2).map(cap).join(" & ")} — ${en.venue}`;
     const description = en.paragraphs[0];
     const image = STORY_IMAGES[slug].hero;
-    return {
-      meta: [
-        { title: `${title} | Wedding Magic Italy` },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:image", content: image },
-        { property: "og:type", content: "article" },
-      ],
-      links: [{ rel: "canonical", href: `/portfolio/${slug}` }],
-    };
+    return buildPageHead({
+      title: `${title} | Wedding Magic Italy`,
+      description,
+      canonicalPath: `/portfolio/${slug}`,
+      ogImage: image,
+      ogType: "article",
+    });
   },
   component: StoryPage,
   notFoundComponent: NotFoundStory,
@@ -68,6 +66,14 @@ function StoryPage() {
   }, [couple, detail.venue]);
 
   const langPrefix = lang === "en" ? "" : `/${lang}`;
+
+  const storyGallery = [
+    { src: imgs.hero, alt: couple },
+    ...imgs.gallery.map((src, gi) => ({
+      src,
+      alt: `${couple} ${ui.galleryH} ${gi + 1}`,
+    })),
+  ];
 
   return (
     <>
@@ -132,31 +138,34 @@ function StoryPage() {
           <div className="mt-8 grid gap-4 md:grid-cols-12 md:gap-6">
             <div className="md:col-span-8">
               <div className="aspect-[16/10] overflow-hidden">
-                <img
+                <ZoomableImage
                   src={imgs.gallery[0]}
                   alt={`${couple} ${ui.galleryH} 1`}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
+                  gallery={storyGallery}
+                  galleryIndex={1}
+                  className="h-full"
                 />
               </div>
             </div>
             <div className="md:col-span-4">
               <div className="aspect-[3/4] h-full overflow-hidden">
-                <img
+                <ZoomableImage
                   src={imgs.gallery[1]}
                   alt={`${couple} ${ui.galleryH} 2`}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
+                  gallery={storyGallery}
+                  galleryIndex={2}
+                  className="h-full"
                 />
               </div>
             </div>
             <div className="md:col-span-12">
               <div className="aspect-[16/7] overflow-hidden">
-                <img
+                <ZoomableImage
                   src={imgs.gallery[2]}
                   alt={`${couple} ${ui.galleryH} 3`}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
+                  gallery={storyGallery}
+                  galleryIndex={3}
+                  className="h-full"
                 />
               </div>
             </div>

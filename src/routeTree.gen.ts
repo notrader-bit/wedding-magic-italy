@@ -20,8 +20,10 @@ import { Route as Char123LangChar125IndexRouteImport } from './routes/{-$lang}/i
 import { Route as Char123LangChar125ServicesRouteImport } from './routes/{-$lang}/services'
 import { Route as Char123LangChar125PortfolioRouteImport } from './routes/{-$lang}/portfolio'
 import { Route as Char123LangChar125ContactRouteImport } from './routes/{-$lang}/contact'
+import { Route as Char123LangChar125BlogRouteImport } from './routes/{-$lang}/blog'
 import { Route as Char123LangChar125AboutRouteImport } from './routes/{-$lang}/about'
 import { Route as Char123LangChar125PortfolioSlugRouteImport } from './routes/{-$lang}/portfolio_.$slug'
+import { Route as Char123LangChar125BlogSlugRouteImport } from './routes/{-$lang}/blog_.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -81,6 +83,11 @@ const Char123LangChar125ContactRoute =
     path: '/{-$lang}/contact',
     getParentRoute: () => rootRouteImport,
   } as any)
+const Char123LangChar125BlogRoute = Char123LangChar125BlogRouteImport.update({
+  id: '/{-$lang}/blog',
+  path: '/{-$lang}/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char123LangChar125AboutRoute = Char123LangChar125AboutRouteImport.update({
   id: '/{-$lang}/about',
   path: '/{-$lang}/about',
@@ -90,6 +97,12 @@ const Char123LangChar125PortfolioSlugRoute =
   Char123LangChar125PortfolioSlugRouteImport.update({
     id: '/{-$lang}/portfolio_/$slug',
     path: '/{-$lang}/portfolio/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LangChar125BlogSlugRoute =
+  Char123LangChar125BlogSlugRouteImport.update({
+    id: '/{-$lang}/blog_/$slug',
+    path: '/{-$lang}/blog/$slug',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -102,10 +115,12 @@ export interface FileRoutesByFullPath {
   '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/blog': typeof Char123LangChar125BlogRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/blog/$slug': typeof Char123LangChar125BlogSlugRoute
   '/{-$lang}/portfolio/$slug': typeof Char123LangChar125PortfolioSlugRoute
 }
 export interface FileRoutesByTo {
@@ -117,10 +132,12 @@ export interface FileRoutesByTo {
   '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/blog': typeof Char123LangChar125BlogRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/blog/$slug': typeof Char123LangChar125BlogSlugRoute
   '/{-$lang}/portfolio/$slug': typeof Char123LangChar125PortfolioSlugRoute
 }
 export interface FileRoutesById {
@@ -133,10 +150,12 @@ export interface FileRoutesById {
   '/sitemap-uk.xml': typeof SitemapUkDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/{-$lang}/about': typeof Char123LangChar125AboutRoute
+  '/{-$lang}/blog': typeof Char123LangChar125BlogRoute
   '/{-$lang}/contact': typeof Char123LangChar125ContactRoute
   '/{-$lang}/portfolio': typeof Char123LangChar125PortfolioRoute
   '/{-$lang}/services': typeof Char123LangChar125ServicesRoute
   '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/blog_/$slug': typeof Char123LangChar125BlogSlugRoute
   '/{-$lang}/portfolio_/$slug': typeof Char123LangChar125PortfolioSlugRoute
 }
 export interface FileRouteTypes {
@@ -150,10 +169,12 @@ export interface FileRouteTypes {
     | '/sitemap-uk.xml'
     | '/sitemap.xml'
     | '/{-$lang}/about'
+    | '/{-$lang}/blog'
     | '/{-$lang}/contact'
     | '/{-$lang}/portfolio'
     | '/{-$lang}/services'
     | '/{-$lang}/'
+    | '/{-$lang}/blog/$slug'
     | '/{-$lang}/portfolio/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -165,10 +186,12 @@ export interface FileRouteTypes {
     | '/sitemap-uk.xml'
     | '/sitemap.xml'
     | '/{-$lang}/about'
+    | '/{-$lang}/blog'
     | '/{-$lang}/contact'
     | '/{-$lang}/portfolio'
     | '/{-$lang}/services'
     | '/{-$lang}'
+    | '/{-$lang}/blog/$slug'
     | '/{-$lang}/portfolio/$slug'
   id:
     | '__root__'
@@ -180,10 +203,12 @@ export interface FileRouteTypes {
     | '/sitemap-uk.xml'
     | '/sitemap.xml'
     | '/{-$lang}/about'
+    | '/{-$lang}/blog'
     | '/{-$lang}/contact'
     | '/{-$lang}/portfolio'
     | '/{-$lang}/services'
     | '/{-$lang}/'
+    | '/{-$lang}/blog_/$slug'
     | '/{-$lang}/portfolio_/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -196,10 +221,12 @@ export interface RootRouteChildren {
   SitemapUkDotxmlRoute: typeof SitemapUkDotxmlRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char123LangChar125AboutRoute: typeof Char123LangChar125AboutRoute
+  Char123LangChar125BlogRoute: typeof Char123LangChar125BlogRoute
   Char123LangChar125ContactRoute: typeof Char123LangChar125ContactRoute
   Char123LangChar125PortfolioRoute: typeof Char123LangChar125PortfolioRoute
   Char123LangChar125ServicesRoute: typeof Char123LangChar125ServicesRoute
   Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
+  Char123LangChar125BlogSlugRoute: typeof Char123LangChar125BlogSlugRoute
   Char123LangChar125PortfolioSlugRoute: typeof Char123LangChar125PortfolioSlugRoute
 }
 
@@ -282,6 +309,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/{-$lang}/blog': {
+      id: '/{-$lang}/blog'
+      path: '/{-$lang}/blog'
+      fullPath: '/{-$lang}/blog'
+      preLoaderRoute: typeof Char123LangChar125BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/{-$lang}/about': {
       id: '/{-$lang}/about'
       path: '/{-$lang}/about'
@@ -296,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LangChar125PortfolioSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/{-$lang}/blog_/$slug': {
+      id: '/{-$lang}/blog_/$slug'
+      path: '/{-$lang}/blog/$slug'
+      fullPath: '/{-$lang}/blog/$slug'
+      preLoaderRoute: typeof Char123LangChar125BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -308,10 +349,12 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapUkDotxmlRoute: SitemapUkDotxmlRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char123LangChar125AboutRoute: Char123LangChar125AboutRoute,
+  Char123LangChar125BlogRoute: Char123LangChar125BlogRoute,
   Char123LangChar125ContactRoute: Char123LangChar125ContactRoute,
   Char123LangChar125PortfolioRoute: Char123LangChar125PortfolioRoute,
   Char123LangChar125ServicesRoute: Char123LangChar125ServicesRoute,
   Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
+  Char123LangChar125BlogSlugRoute: Char123LangChar125BlogSlugRoute,
   Char123LangChar125PortfolioSlugRoute: Char123LangChar125PortfolioSlugRoute,
 }
 export const routeTree = rootRouteImport

@@ -1,0 +1,47 @@
+---
+description: i18n, маршрути TanStack Router і SEO для Wedding Magic Italy
+globs: src/routes/**/*.tsx,src/i18n/**/*
+alwaysApply: false
+---
+
+# i18n та маршрути
+
+## Мови та текст
+
+- Усі рядки UI — у `src/i18n/translations.ts` для **кожної** мови з `LANGS` (EN, IT, UK, RU, DE, ES…).
+- У компонентах: `const { t, lang } = useLanguage()`; не хардкодити видимий користувачу текст англійською в JSX (виняток: технічні повідомлення помилок у `__root`, якщо ще без перекладу).
+- Нова сторінка → додати секцію в `Dict` + переклади; для meta — ключ у `Dict["meta"]` і `PAGE_OG_IMAGES` у `src/lib/og-images.ts`.
+
+## Маршрути
+
+- Сторінки під `src/routes/{-$lang}/`; `createFileRoute("/{-$lang}/…")`.
+- EN без префікса (`DEFAULT_LANG`); інші — `/{lang}/…`.
+- Внутрішні посилання: `LocaleLink` з логічним `to` (`"/about"`, не повний шлях з мовою). Портфоліо/блог slug — `params` за зразком `LocaleLink`.
+- Динамічні маршрути: `portfolio_.$slug`, `blog_.$slug`; після додавання файлу — перегенерується `routeTree.gen.ts` (dev/build).
+
+## SEO на сторінці
+
+```tsx
+export const Route = createFileRoute("/{-$lang}/about")({
+  head: () =>
+    buildPageHead({
+      title: "…",           // fallback SSR; локалізований title — usePageMeta
+      description: "…",
+      canonicalPath: "/about",
+      ogImage: PAGE_OG_IMAGES.about,
+    }),
+  component: AboutPage,
+});
+
+function AboutPage() {
+  usePageMeta("about"); // синхронізує title/description/hreflang з t.meta
+  // …
+}
+```
+
+- `canonicalPath` — шлях **без** мовного префікса.
+- Структуровані дані — `JsonLd` + хелпери з `src/lib/structured-data.ts`; нові URL — оновити `src/lib/sitemap.ts`.
+
+## Антипатерни
+
+- `<a href="/uk/about">` замість `LocaleLink`; дубль meta лише в JSX без `usePageMeta`; переклад лише для однієї мови.

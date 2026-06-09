@@ -38,6 +38,18 @@
   --color-destructive-foreground: var(--destructive-foreground);
 }
 
+/*
+ * Design tokens — Wedding Magic Italy (editorial luxury)
+ * ─────────────────────────────────────────────────────
+ * Fonts:    --font-display (Cormorant Garamond), --font-sans (Inter 300)
+ * Brand:    --ink, --terracotta, --cream, --sage, --background, --foreground
+ * UI:       --border, --muted-foreground, --ring (terracotta)
+ * Radius:   2–10px (--radius-*), prefer minimal corners on marketing UI
+ * Utilities in @layer base: .eyebrow, .display-italic
+ * Motion:   .reveal / .fade-up / .ken-burns — respect prefers-reduced-motion
+ * Cursor:   .cursor/rules/site-design-system.mdc
+ */
+
 :root {
   /* Italian editorial luxury palette */
   --background: oklch(0.975 0.012 80);       /* warm ivory */

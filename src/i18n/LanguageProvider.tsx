@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useMemo } from "react";
 import { useNavigate, useParams, useRouterState } from "@tanstack/react-router";
+import { PAGE_OG_IMAGES } from "@/lib/og-images";
+import { absoluteUrl } from "@/lib/site-url";
 import { LANGS, LANG_HTML, TRANSLATIONS, type Dict, type Lang } from "./translations";
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Dict };
@@ -104,5 +106,10 @@ export function usePageMeta(key: keyof Dict["meta"]) {
     addLink("alternate", buildLangUrl(path, DEFAULT_LANG), "x-default");
 
     upsertMeta('meta[property="og:url"]', { property: "og:url", content: buildLangUrl(path, lang) });
+
+    const ogImage = PAGE_OG_IMAGES[key];
+    const ogImageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
+    upsertMeta('meta[property="og:image"]', { property: "og:image", content: ogImageUrl });
+    upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: ogImageUrl });
   }, [t, key, lang]);
 }

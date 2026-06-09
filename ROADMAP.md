@@ -31,18 +31,31 @@
 - [x] Шапка / підвал сайту, навігація
 - [x] Перемикач мов (`LanguageSwitcher`, `LocaleLink`)
 - [x] Плаваюча кнопка WhatsApp
+- [x] Блок Instagram-стрічки на головній (@italian.wedding.magic)
 - [x] Анімації по скролу (`use-reveal-on-scroll`)
 - [x] Мобільне меню (є e2e-тест)
+- [x] Lightbox (зум) для фото на головній і в портфоліо (`ZoomableImage`)
+- [x] Favicon (`public/favicon.svg`)
+- [x] Кнопка «Назад нагору» (`BackToTop`)
+- [x] Loading state (спінер) при відправці форми Contact
 
 ### Локалізація
 
 - [x] Переклади в `src/i18n/translations.ts` (EN, IT, UK, RU, DE, ES та ін.)
 - [x] Маршрути з опційним префіксом мови `{-$lang}`
 
+### Design system
+
+- [x] Токени та утиліти в `src/styles.css` (палітра ivory/ink/terracotta, шрифти, `.eyebrow`, scroll-reveal)
+- [x] Cursor-правила: `.cursor/rules/site-design-system.mdc` (UI/стиль), `.cursor/rules/i18n-routes.mdc` (переклади, маршрути, SEO)
+
 ### SEO
 
 - [x] `robots.txt`
 - [x] Sitemap: індекс + окремі sitemap за мовами (`sitemap-*.xml`)
+- [x] JSON-LD: LocalBusiness + WeddingPlanner (Contact), FAQPage (головна)
+- [x] `og:image` / `twitter:image` для сторінок (унікальні зображення де можливо)
+- [x] Розділ блогу / Journal (3 SEO-статті + sitemap)
 
 ---
 
@@ -90,6 +103,7 @@
 
 ## 4. Backlog / ідеї (не узгоджено)
 
+- [ ] `INSTAGRAM_ACCESS_TOKEN` на Railway для стабільної стрічки через Instagram Graph API (без токена — спроба публічного API або резервна сітка)
 - [ ] Форма контакту з бекендом або сервісом (email, CRM)
 - [ ] Аналітика (privacy-friendly)
 - [ ] Оптимізація зображень / CDN для портфоліо
@@ -105,6 +119,8 @@
 | — | WhatsApp-кнопка (`77c6d7c`) |
 | — | Підготовка до Railway, push на GitHub (`0d5567b`) |
 | 2026-06-09 | Створено файл `ROADMAP.md` для відстеження планів і прогресу |
+| 2026-06-09 | Секція Instagram на головній (`InstagramFeed`, `getInstagramFeed`) |
+| 2026-06-09 | Design system: Cursor rules + документація токенів у `styles.css` / ROADMAP |
 
 ---
 
