@@ -7,14 +7,15 @@ import amalfiImg from "@/assets/portfolio-amalfi.jpg";
 import pugliaImg from "@/assets/portfolio-puglia.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 import { STORY_SLUGS } from "@/data/story-details";
-import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
+import { buildLocalizedPageHead, resolveRouteLang } from "@/lib/page-meta-head";
+import { PAGE_OG_IMAGES } from "@/lib/og-images";
 
 export const Route = createFileRoute("/{-$lang}/portfolio")({
-  head: () =>
-    buildPageHead({
-      title: "Portfolio — Wedding Magic Italy",
-      description: "A selected portfolio of luxury weddings across Italy.",
+  head: ({ params }) =>
+    buildLocalizedPageHead({
+      metaKey: "portfolio",
       canonicalPath: "/portfolio",
+      lang: resolveRouteLang(params.lang),
       ogImage: PAGE_OG_IMAGES.portfolio,
     }),
   component: PortfolioPage,

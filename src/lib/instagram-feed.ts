@@ -20,7 +20,7 @@ const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 let cachedPosts: InstagramPost[] | null = null;
 let cachedAt = 0;
 
-const FALLBACK_POSTS: InstagramPost[] = [
+export const INSTAGRAM_FALLBACK_POSTS: InstagramPost[] = [
   { id: "fallback-como", permalink: INSTAGRAM_PROFILE_URL, imageUrl: comoImg, alt: "Lake Como wedding — Wedding Magic Italy on Instagram" },
   { id: "fallback-amalfi", permalink: INSTAGRAM_PROFILE_URL, imageUrl: amalfiImg, alt: "Amalfi Coast wedding — Wedding Magic Italy on Instagram" },
   { id: "fallback-puglia", permalink: INSTAGRAM_PROFILE_URL, imageUrl: pugliaImg, alt: "Puglia wedding — Wedding Magic Italy on Instagram" },
@@ -141,7 +141,7 @@ export async function getInstagramFeed(): Promise<InstagramPost[]> {
     }
   }
 
-  const result = posts ?? FALLBACK_POSTS;
+  const result = posts ?? INSTAGRAM_FALLBACK_POSTS;
   cachedPosts = result;
   cachedAt = now;
   return result;

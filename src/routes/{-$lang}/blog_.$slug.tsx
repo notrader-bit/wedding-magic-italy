@@ -9,7 +9,7 @@ import {
   type BlogSlug,
 } from "@/data/blog-posts";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { buildPageHead } from "@/lib/og-images";
+import { buildSlugPageHead, resolveRouteLang } from "@/lib/page-meta-head";
 import { blogPostingStructuredData } from "@/lib/structured-data";
 
 export const Route = createFileRoute("/{-$lang}/blog_/$slug")({
@@ -18,12 +18,14 @@ export const Route = createFileRoute("/{-$lang}/blog_/$slug")({
   },
   head: ({ params }) => {
     const slug = params.slug as BlogSlug;
-    const post = getBlogPost("en", slug);
+    const lang = resolveRouteLang(params.lang);
+    const post = getBlogPost(lang, slug);
     const image = BLOG_IMAGES[slug];
-    return buildPageHead({
+    return buildSlugPageHead({
       title: `${post.title} — Wedding Magic Italy`,
       description: post.excerpt,
       canonicalPath: `/blog/${slug}`,
+      lang,
       ogImage: image,
       ogType: "article",
     });

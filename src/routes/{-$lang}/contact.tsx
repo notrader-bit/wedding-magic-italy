@@ -3,15 +3,16 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
-import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
+import { buildLocalizedPageHead, resolveRouteLang } from "@/lib/page-meta-head";
+import { PAGE_OG_IMAGES } from "@/lib/og-images";
 import { contactPageStructuredData } from "@/lib/structured-data";
 
 export const Route = createFileRoute("/{-$lang}/contact")({
-  head: () =>
-    buildPageHead({
-      title: "Contact — Wedding Magic Italy",
-      description: "Begin your Italian wedding. Tell us about your day.",
+  head: ({ params }) =>
+    buildLocalizedPageHead({
+      metaKey: "contact",
       canonicalPath: "/contact",
+      lang: resolveRouteLang(params.lang),
       ogImage: PAGE_OG_IMAGES.contact,
     }),
   component: ContactPage,

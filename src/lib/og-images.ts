@@ -1,3 +1,4 @@
+import { absoluteUrl } from "@/lib/site-url";
 import heroOg from "@/assets/hero/hero-1920.jpg";
 import heroTuscany from "@/assets/hero-tuscany.jpg";
 import founderImg from "@/assets/founder.jpg";
@@ -38,17 +39,19 @@ export function buildPageHead(opts: {
   ogType?: string;
 }) {
   const image = opts.ogImage ?? DEFAULT_OG_IMAGE;
+  const imageUrl = image.startsWith("http") ? image : absoluteUrl(image);
+  const canonical = absoluteUrl(opts.canonicalPath);
   return {
     meta: [
       { title: opts.title },
       { name: "description", content: opts.description },
       { property: "og:title", content: opts.title },
       { property: "og:description", content: opts.description },
-      { property: "og:url", content: opts.canonicalPath },
+      { property: "og:url", content: canonical },
       { property: "og:type", content: opts.ogType ?? "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      ...ogImageMetaTags(image),
+      ...ogImageMetaTags(imageUrl),
     ],
-    links: [{ rel: "canonical", href: opts.canonicalPath }],
+    links: [{ rel: "canonical", href: canonical }],
   };
 }

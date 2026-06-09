@@ -10,7 +10,7 @@ import {
   isStorySlug,
   type StorySlug,
 } from "@/data/story-details";
-import { buildPageHead } from "@/lib/og-images";
+import { buildSlugPageHead, resolveRouteLang } from "@/lib/page-meta-head";
 
 export const Route = createFileRoute("/{-$lang}/portfolio_/$slug")({
   beforeLoad: ({ params }) => {
@@ -18,15 +18,17 @@ export const Route = createFileRoute("/{-$lang}/portfolio_/$slug")({
   },
   head: ({ params }) => {
     const slug = params.slug as StorySlug;
-    const en = STORY_DETAILS.en[slug];
-    if (!en) return { meta: [{ title: "Story — Wedding Magic Italy" }] };
-    const title = `${slug.split("-").slice(0, 2).map(cap).join(" & ")} — ${en.venue}`;
-    const description = en.paragraphs[0];
+    const lang = resolveRouteLang(params.lang);
+    const detail = STORY_DETAILS[lang][slug] ?? STORY_DETAILS.en[slug];
+    if (!detail) return { meta: [{ title: "Story — Wedding Magic Italy" }] };
+    const title = `${slug.split("-").slice(0, 2).map(cap).join(" & ")} — ${detail.venue}`;
+    const description = detail.paragraphs[0];
     const image = STORY_IMAGES[slug].hero;
-    return buildPageHead({
+    return buildSlugPageHead({
       title: `${title} | Wedding Magic Italy`,
       description,
       canonicalPath: `/portfolio/${slug}`,
+      lang,
       ogImage: image,
       ogType: "article",
     });

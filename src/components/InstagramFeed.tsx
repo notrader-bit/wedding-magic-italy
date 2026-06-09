@@ -32,7 +32,7 @@ export function InstagramFeed({ eyebrow, title, followLabel, posts }: Props) {
         </div>
 
         <ul className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-6">
-          {posts.map((post, index) => (
+          {posts.map((post) => (
             <li key={post.id} className="group relative aspect-square overflow-hidden bg-ink/5">
               <a
                 href={post.permalink}
@@ -46,7 +46,7 @@ export function InstagramFeed({ eyebrow, title, followLabel, posts }: Props) {
                   alt={post.alt}
                   width={400}
                   height={400}
-                  loading={index < 3 ? "eager" : "lazy"}
+                  loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

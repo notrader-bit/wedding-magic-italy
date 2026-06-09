@@ -1,12 +1,4 @@
 User-agent: *
 Allow: /
 
-# Allow all language variants (served via ?lang= query parameter)
-Allow: /*?lang=en
-Allow: /*?lang=uk
-Allow: /*?lang=ru
-Allow: /*?lang=it
-Allow: /*?lang=es
-Allow: /*?lang=de
-
-Sitemap: /sitemap.xml
+Sitemap: https://weddingmagicitaly.com/sitemap.xml

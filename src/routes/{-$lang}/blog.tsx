@@ -3,14 +3,15 @@ import { LocaleLink } from "@/components/LocaleLink";
 import { listBlogPosts } from "@/data/blog-posts";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
 import { BLOG_IMAGES } from "@/data/blog-posts";
-import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
+import { buildLocalizedPageHead, resolveRouteLang } from "@/lib/page-meta-head";
+import { PAGE_OG_IMAGES } from "@/lib/og-images";
 
 export const Route = createFileRoute("/{-$lang}/blog")({
-  head: () =>
-    buildPageHead({
-      title: "Journal — Wedding Magic Italy",
-      description: "Guides to Tuscan villas, Lake Como weddings and realistic Italian wedding budgets.",
+  head: ({ params }) =>
+    buildLocalizedPageHead({
+      metaKey: "blog",
       canonicalPath: "/blog",
+      lang: resolveRouteLang(params.lang),
       ogImage: PAGE_OG_IMAGES.blog,
     }),
   component: BlogIndexPage,

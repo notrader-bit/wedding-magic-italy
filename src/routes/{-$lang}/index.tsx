@@ -20,28 +20,27 @@ import { InstagramFeed } from "@/components/InstagramFeed";
 import { ZoomableImage } from "@/components/ZoomableImage";
 import { JsonLd } from "@/components/JsonLd";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
-import { getInstagramFeed } from "@/lib/instagram-feed";
-import { buildPageHead, PAGE_OG_IMAGES } from "@/lib/og-images";
+import { useInstagramFeed } from "@/hooks/use-instagram-feed";
+import { HOME_HERO_LCP_PRELOAD_LINKS } from "@/lib/hero-lcp";
+import { buildLocalizedPageHead, resolveRouteLang } from "@/lib/page-meta-head";
+import { PAGE_OG_IMAGES } from "@/lib/og-images";
 import { faqPageStructuredData } from "@/lib/structured-data";
 
 export const Route = createFileRoute("/{-$lang}/")({
-  loader: async () => ({
-    instagramPosts: await getInstagramFeed(),
-  }),
-  head: () =>
-    buildPageHead({
-      title: "Wedding Magic Italy — Luxury Destination Weddings in Italy",
-      description:
-        "Cinematic, intimate destination weddings in Tuscany, Lake Como, Amalfi & Puglia. Crafted by Wedding Magic Italy.",
+  head: ({ params }) =>
+    buildLocalizedPageHead({
+      metaKey: "home",
       canonicalPath: "/",
+      lang: resolveRouteLang(params.lang),
       ogImage: PAGE_OG_IMAGES.home,
+      extraLinks: HOME_HERO_LCP_PRELOAD_LINKS,
     }),
   component: HomePage,
 });
 
 function HomePage() {
   usePageMeta("home");
-  const { instagramPosts } = Route.useLoaderData();
+  const instagramPosts = useInstagramFeed();
   const { t, lang } = useLanguage();
   const homePath = lang === "en" ? "/" : `/${lang}`;
   const h = t.home;
@@ -80,7 +79,7 @@ function HomePage() {
               width={1920}
               height={1280}
               fetchPriority="high"
-              decoding="async"
+              decoding="sync"
               className="hero-blur h-full w-full object-cover scale-110 ken-burns"
             />
           </picture>
