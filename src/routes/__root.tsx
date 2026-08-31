@@ -20,6 +20,21 @@ import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import latinFontCss from "../fonts-latin.css?inline";
 
+/** Minimal tokens so the shell isn’t unstyled while the main stylesheet loads. */
+const criticalShellCss = `
+:root {
+  --background: oklch(0.975 0.012 80);
+  --foreground: oklch(0.22 0.012 60);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+`;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -131,7 +146,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <style dangerouslySetInnerHTML={{ __html: latinFontCss }} />
+        <style dangerouslySetInnerHTML={{ __html: latinFontCss + criticalShellCss }} />
         <HeadContent />
       </head>
       <body>

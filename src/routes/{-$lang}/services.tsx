@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazyRoutePage } from "@/lib/lazy-route-page";
+import ServicesPage from "@/pages/services-page";
 import { buildLocalizedPageHead, resolveRouteLang } from "@/lib/page-meta-head";
 import { PAGE_OG_IMAGES } from "@/lib/og-images";
-
-const ServicesPage = lazyRoutePage(() => import("@/pages/services-page"));
 
 export const Route = createFileRoute("/{-$lang}/services")({
   head: ({ params }) =>

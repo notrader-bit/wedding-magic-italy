@@ -2,9 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { STORY_DETAILS, STORY_IMAGES, STORY_UI, isStorySlug, type StorySlug } from "@/data/story-details";
 import { buildSlugPageHead, resolveRouteLang } from "@/lib/page-meta-head";
-import { lazyRoutePage } from "@/lib/lazy-route-page";
-
-const StoryPage = lazyRoutePage(() => import("@/pages/portfolio-story-page"));
+import StoryPage from "@/pages/portfolio-story-page";
 
 function cap(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);

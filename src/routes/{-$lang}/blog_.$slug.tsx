@@ -1,9 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { BLOG_IMAGES, getBlogPost, isBlogSlug, type BlogSlug } from "@/data/blog-posts";
 import { buildSlugPageHead, resolveRouteLang } from "@/lib/page-meta-head";
-import { lazyRoutePage } from "@/lib/lazy-route-page";
-
-const BlogPostPage = lazyRoutePage(() => import("@/pages/blog-post-page"));
+import BlogPostPage from "@/pages/blog-post-page";
 
 export const Route = createFileRoute("/{-$lang}/blog_/$slug")({
   beforeLoad: ({ params }) => {

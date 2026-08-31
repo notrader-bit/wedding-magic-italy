@@ -38,7 +38,7 @@ export const dictionary: Dict = {
     limitedEyebrow: "Reservations Limited", limitedTitleA: "We accept only", limitedTitleB: "twelve weddings", limitedTitleC: "a year.",
     limitedBody: "Each one designed without compromise. Tell us about yours — we'll respond within 48 hours with a private consultation.",
     requestCta: "Request consultation",
-    instagramEyebrow: "On Instagram", instagramTitle: "Latest from @italian.wedding.magic", instagramFollow: "View post on Instagram",
+    instagramEyebrow: "On Instagram", instagramTitle: "Latest from @italian.wedding.magic", instagramViewPhoto: "View photo in gallery",
   },
   about: {
     eyebrow: "The Studio", h1a: "A small studio", h1b: "with a long memory of Italy.",

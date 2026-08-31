@@ -228,7 +228,7 @@ function HomePage() {
         <InstagramFeed
           eyebrow={h.instagramEyebrow}
           title={h.instagramTitle}
-          followLabel={h.instagramFollow}
+          viewPhotoLabel={h.instagramViewPhoto}
           posts={instagramPosts}
         />
       </Suspense>

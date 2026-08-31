@@ -38,7 +38,7 @@ export const dictionary: Dict = {
     limitedEyebrow: "Ограниченное количество", limitedTitleA: "Мы принимаем только", limitedTitleB: "двенадцать свадеб", limitedTitleC: "в год.",
     limitedBody: "Каждая создана без компромиссов. Расскажите о вашей — ответим в течение 48 часов и предложим личную консультацию.",
     requestCta: "Запросить консультацию",
-    instagramEyebrow: "В Instagram", instagramTitle: "Свежие кадры @italian.wedding.magic", instagramFollow: "Открыть пост в Instagram",
+    instagramEyebrow: "В Instagram", instagramTitle: "Свежие кадры @italian.wedding.magic", instagramViewPhoto: "Открыть фото в галерее",
   },
   about: {
     eyebrow: "Студия", h1a: "Маленькая студия", h1b: "с долгой памятью Италии.",

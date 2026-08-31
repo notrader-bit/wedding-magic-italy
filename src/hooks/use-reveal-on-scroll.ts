@@ -28,6 +28,12 @@ export function useRevealOnScroll() {
       el.classList.add("is-revealed");
     };
 
+    const isInViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      const viewH = window.innerHeight || document.documentElement.clientHeight;
+      return rect.top < viewH * 0.92 && rect.bottom > 0;
+    };
+
     if (prefersReduced) {
       document.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => {
         prepare(el);
@@ -50,7 +56,12 @@ export function useRevealOnScroll() {
 
     const scan = () => {
       document.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => {
-        if (prepare(el)) io.observe(el);
+        if (!prepare(el)) return;
+        if (isInViewport(el)) {
+          revealNow(el);
+          return;
+        }
+        io.observe(el);
       });
     };
 

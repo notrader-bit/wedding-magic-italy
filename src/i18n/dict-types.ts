@@ -31,7 +31,7 @@ export type Dict = {
     founderEyebrow: string; founderQuoteA: string; founderQuoteB: string; founderBody: string; meetStudio: string;
     kindWords: string; testimonials: { quote: string; couple: string; location: string; date: string }[]; testimonialsTitle: string;
     limitedEyebrow: string; limitedTitleA: string; limitedTitleB: string; limitedTitleC: string; limitedBody: string; requestCta: string;
-    instagramEyebrow: string; instagramTitle: string; instagramFollow: string;
+    instagramEyebrow: string; instagramTitle: string; instagramViewPhoto: string;
   };
   about: {
     eyebrow: string; h1a: string; h1b: string;
