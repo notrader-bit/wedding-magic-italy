@@ -35,7 +35,7 @@ export type Dict = {
   };
   about: {
     eyebrow: string; h1a: string; h1b: string;
-    founderEyebrow: string; founderName: string; founderBio1: string; founderBio2: string;
+    founderEyebrow: string; founderName: string; founderBio1: string; founderBio2: string; founderBio3: string; founderBio4: string;
     philosophy: string;
     p1t: string; p1d: string; p2t: string; p2d: string; p3t: string; p3d: string;
     ctaA: string; ctaB: string; ctaBtn: string;

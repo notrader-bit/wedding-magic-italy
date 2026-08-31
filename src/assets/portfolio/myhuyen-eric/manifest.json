@@ -1,0 +1,114 @@
+{
+  "hero": {
+    "file": "hero.jpg",
+    "source": "Deziro Studio18.jpg"
+  },
+  "sections": {
+    "couple-shoot": [
+      {
+        "file": "couple-shoot/01.jpg",
+        "source": "Deziro Studio1.jpg"
+      },
+      {
+        "file": "couple-shoot/02.jpg",
+        "source": "Deziro Studio37.jpg"
+      },
+      {
+        "file": "couple-shoot/03.jpg",
+        "source": "Deziro Studio73.jpg"
+      },
+      {
+        "file": "couple-shoot/04.jpg",
+        "source": "Deziro Studio108.jpg"
+      },
+      {
+        "file": "couple-shoot/05.jpg",
+        "source": "Deziro Studio144.jpg"
+      }
+    ],
+    "ceremony": [
+      {
+        "file": "ceremony/01.jpg",
+        "source": "Deziro Studio145.jpg"
+      },
+      {
+        "file": "ceremony/02.jpg",
+        "source": "Deziro Studio206.jpg"
+      },
+      {
+        "file": "ceremony/03.jpg",
+        "source": "Deziro Studio266.jpg"
+      },
+      {
+        "file": "ceremony/04.jpg",
+        "source": "Deziro Studio327.jpg"
+      },
+      {
+        "file": "ceremony/05.jpg",
+        "source": "Deziro Studio388.jpg"
+      }
+    ],
+    "cocktail-hour": [
+      {
+        "file": "cocktail-hour/01.jpg",
+        "source": "Deziro Studio386.jpg"
+      },
+      {
+        "file": "cocktail-hour/02.jpg",
+        "source": "Deziro Studio450.jpg"
+      },
+      {
+        "file": "cocktail-hour/03.jpg",
+        "source": "Deziro Studio512.jpg"
+      },
+      {
+        "file": "cocktail-hour/04.jpg",
+        "source": "Deziro Studio573.jpg"
+      },
+      {
+        "file": "cocktail-hour/05.jpg",
+        "source": "Deziro Studio635.jpg"
+      }
+    ],
+    "dinner": [
+      {
+        "file": "dinner/01.jpg",
+        "source": "Deziro Studio636.jpg"
+      },
+      {
+        "file": "dinner/02.jpg",
+        "source": "Deziro Studio674.jpg"
+      },
+      {
+        "file": "dinner/03.jpg",
+        "source": "Deziro Studio713.jpg"
+      },
+      {
+        "file": "dinner/04.jpg",
+        "source": "Deziro Studio751.jpg"
+      },
+      {
+        "file": "dinner/05.jpg",
+        "source": "Deziro Studio789.jpg"
+      }
+    ],
+    "chinese-gift-exchange": [
+      {
+        "file": "chinese-gift-exchange/01.jpg",
+        "source": "Deziro Studio790.jpg"
+      },
+      {
+        "file": "chinese-gift-exchange/02.jpg",
+        "source": "Deziro Studio813.jpg"
+      },
+      {
+        "file": "chinese-gift-exchange/03.jpg",
+        "source": "Deziro Studio836.jpg"
+      },
+      {
+        "file": "chinese-gift-exchange/04.jpg",
+        "source": "Deziro Studio859.jpg"
+      }
+    ]
+  }
+}

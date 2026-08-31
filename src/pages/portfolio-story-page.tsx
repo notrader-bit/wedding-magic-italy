@@ -1,5 +1,5 @@
 import { Link, useParams } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { ZoomableImage } from "@/components/ZoomableImage";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import {
@@ -7,15 +7,10 @@ import {
   STORY_IMAGES,
   STORY_DETAILS,
   STORY_UI,
+  STORY_COUPLE_NAMES,
+  STORY_GALLERY_SECTION_ORDER,
   type StorySlug,
 } from "@/data/story-details";
-
-const COUPLE_NAMES: Record<StorySlug, string> = {
-  "eleonora-tomas-tuscany": "Eleonora & Tomás",
-  "sara-andrew-como": "Sara & Andrew",
-  "claudia-henri-amalfi": "Claudia & Henri",
-  "sophie-marcus-puglia": "Sophie & Marcus",
-};
 
 export default function StoryPage() {
   const { slug } = useParams({ strict: false }) as { slug: StorySlug };
@@ -23,14 +18,13 @@ export default function StoryPage() {
   const ui = STORY_UI[lang];
   const detail = STORY_DETAILS[lang][slug];
   const imgs = STORY_IMAGES[slug];
-  const couple = COUPLE_NAMES[slug];
+  const couple = STORY_COUPLE_NAMES[slug];
   const [first, second] = couple.split(" & ");
 
   const idx = STORY_SLUGS.indexOf(slug);
   const nextSlug = STORY_SLUGS[(idx + 1) % STORY_SLUGS.length];
-  const nextCouple = COUPLE_NAMES[nextSlug];
+  const nextCouple = STORY_COUPLE_NAMES[nextSlug];
 
-  // Page title fallback for client navigations
   useEffect(() => {
     if (typeof document === "undefined") return;
     document.title = `${couple} — ${detail.venue} | Wedding Magic Italy`;
@@ -38,17 +32,30 @@ export default function StoryPage() {
 
   const langPrefix = lang === "en" ? "" : `/${lang}`;
 
-  const storyGallery = [
-    { src: imgs.hero, alt: couple },
-    ...imgs.gallery.map((src, gi) => ({
-      src,
-      alt: `${couple} ${ui.galleryH} ${gi + 1}`,
-    })),
-  ];
+  const storyGallery = useMemo(() => {
+    const hero = { src: imgs.hero, alt: couple };
+    if (imgs.sections) {
+      const rest = STORY_GALLERY_SECTION_ORDER.flatMap((sectionId, si) =>
+        imgs.sections![sectionId].map((src, gi) => ({
+          src,
+          alt: `${couple} — ${ui.gallerySections[sectionId]} ${gi + 1}`,
+        })),
+      );
+      return [hero, ...rest];
+    }
+    return [
+      hero,
+      ...imgs.gallery!.map((src, gi) => ({
+        src,
+        alt: `${couple} ${ui.galleryH} ${gi + 1}`,
+      })),
+    ];
+  }, [couple, imgs, ui.galleryH, ui.gallerySections]);
+
+  let galleryCursor = 1;
 
   return (
     <>
-      {/* Hero */}
       <section className="relative h-[80vh] min-h-[560px] w-full overflow-hidden">
         <img
           src={imgs.hero}
@@ -76,7 +83,6 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/* Back link + facts */}
       <section className="px-6 pt-16 md:px-12 md:pt-24">
         <div className="mx-auto max-w-[1100px]">
           <Link
@@ -97,7 +103,6 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/* Story paragraphs */}
       <section className="px-6 py-20 md:px-12 md:py-28">
         <div className="mx-auto max-w-[760px]">
           <p className="eyebrow">{ui.storyH}</p>
@@ -109,49 +114,110 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/* Gallery */}
       <section className="px-6 pb-24 md:px-12">
         <div className="mx-auto max-w-[1300px]">
           <p className="eyebrow">{ui.galleryH}</p>
-          <div className="mt-8 grid gap-4 md:grid-cols-12 md:gap-6">
-            <div className="md:col-span-8">
-              <div className="aspect-[16/10] overflow-hidden">
-                <ZoomableImage
-                  src={imgs.gallery[0]}
-                  alt={`${couple} ${ui.galleryH} 1`}
-                  gallery={storyGallery}
-                  galleryIndex={1}
-                  className="h-full"
-                />
+
+          {imgs.sections ? (
+            <div className="mt-10">
+              <nav
+                className="flex flex-wrap gap-x-6 gap-y-3 border-b border-border pb-6 md:gap-x-10"
+                aria-label={ui.galleryH}
+              >
+                {STORY_GALLERY_SECTION_ORDER.map((sectionId) => (
+                  <a
+                    key={sectionId}
+                    href={`#gallery-${sectionId}`}
+                    className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground transition-colors hover:text-terracotta"
+                  >
+                    {ui.gallerySections[sectionId]}
+                  </a>
+                ))}
+              </nav>
+
+              <div className="mt-16 space-y-24 md:space-y-32">
+                {STORY_GALLERY_SECTION_ORDER.map((sectionId) => {
+                  const images = imgs.sections![sectionId];
+                  return (
+                    <div key={sectionId} id={`gallery-${sectionId}`} className="scroll-mt-32">
+                      <h3 className="font-display text-2xl text-ink md:text-3xl">
+                        {ui.gallerySections[sectionId]}
+                      </h3>
+                      <div className="mt-8 grid gap-4 md:grid-cols-12 md:gap-6">
+                        {images.map((src, gi) => {
+                          const galleryIndex = galleryCursor++;
+                          const span =
+                            gi % 3 === 0
+                              ? "md:col-span-8"
+                              : gi % 3 === 1
+                                ? "md:col-span-4"
+                                : "md:col-span-12";
+                          const aspect =
+                            gi % 3 === 0
+                              ? "aspect-[16/10]"
+                              : gi % 3 === 1
+                                ? "aspect-[3/4]"
+                                : "aspect-[16/7]";
+                          return (
+                            <div key={gi} className={span}>
+                              <div className={`${aspect} overflow-hidden`}>
+                                <ZoomableImage
+                                  src={src}
+                                  alt={`${couple} — ${ui.gallerySections[sectionId]} ${gi + 1}`}
+                                  gallery={storyGallery}
+                                  galleryIndex={galleryIndex}
+                                  className="h-full"
+                                />
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-            <div className="md:col-span-4">
-              <div className="aspect-[3/4] h-full overflow-hidden">
-                <ZoomableImage
-                  src={imgs.gallery[1]}
-                  alt={`${couple} ${ui.galleryH} 2`}
-                  gallery={storyGallery}
-                  galleryIndex={2}
-                  className="h-full"
-                />
+          ) : (
+            <div className="mt-8 grid gap-4 md:grid-cols-12 md:gap-6">
+              <div className="md:col-span-8">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <ZoomableImage
+                    src={imgs.gallery![0]}
+                    alt={`${couple} ${ui.galleryH} 1`}
+                    gallery={storyGallery}
+                    galleryIndex={1}
+                    className="h-full"
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-4">
+                <div className="aspect-[3/4] h-full overflow-hidden">
+                  <ZoomableImage
+                    src={imgs.gallery![1]}
+                    alt={`${couple} ${ui.galleryH} 2`}
+                    gallery={storyGallery}
+                    galleryIndex={2}
+                    className="h-full"
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-12">
+                <div className="aspect-[16/7] overflow-hidden">
+                  <ZoomableImage
+                    src={imgs.gallery![2]}
+                    alt={`${couple} ${ui.galleryH} 3`}
+                    gallery={storyGallery}
+                    galleryIndex={3}
+                    className="h-full"
+                  />
+                </div>
               </div>
             </div>
-            <div className="md:col-span-12">
-              <div className="aspect-[16/7] overflow-hidden">
-                <ZoomableImage
-                  src={imgs.gallery[2]}
-                  alt={`${couple} ${ui.galleryH} 3`}
-                  gallery={storyGallery}
-                  galleryIndex={3}
-                  className="h-full"
-                />
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
-      {/* Decor */}
       <section className="bg-cream px-6 py-24 md:px-12 md:py-32">
         <div className="mx-auto grid max-w-[1100px] gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
@@ -174,7 +240,6 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/* Next + CTA */}
       <section className="border-t border-ink/10 px-6 py-20 md:px-12">
         <div className="mx-auto flex max-w-[1100px] flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>

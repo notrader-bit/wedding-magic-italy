@@ -28,6 +28,8 @@ export default function AboutPage() {
             <h2 className="mt-4 font-display text-4xl text-ink md:text-5xl">{a.founderName}</h2>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">{a.founderBio1}</p>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">{a.founderBio2}</p>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground">{a.founderBio3}</p>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground">{a.founderBio4}</p>
           </div>
         </div>
       </section>

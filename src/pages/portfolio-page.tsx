@@ -1,20 +1,25 @@
 import { LocaleLink } from "@/components/LocaleLink";
 import { ZoomableImage } from "@/components/ZoomableImage";
-import heroImg from "@/assets/hero-tuscany.jpg";
-import comoImg from "@/assets/portfolio-como.jpg";
-import amalfiImg from "@/assets/portfolio-amalfi.jpg";
-import pugliaImg from "@/assets/portfolio-puglia.jpg";
 import { useLanguage, usePageMeta } from "@/i18n/LanguageProvider";
-import { STORY_SLUGS } from "@/data/story-details";
+import { STORY_SLUGS, STORY_IMAGES } from "@/data/story-details";
+
+const aspects = [
+  "aspect-[16/10]",
+  "aspect-[3/4]",
+  "aspect-[3/4]",
+  "aspect-[16/10]",
+  "aspect-[16/10]",
+] as const;
 
 export default function PortfolioPage() {
   usePageMeta("portfolio");
   const { t, lang } = useLanguage();
   const p = t.portfolio;
   const langPrefix = lang === "en" ? "" : `/${lang}`;
-  const images = [heroImg, comoImg, amalfiImg, pugliaImg];
-  const aspects = ["aspect-[16/10]", "aspect-[3/4]", "aspect-[3/4]", "aspect-[16/10]"];
-  const portfolioGallery = p.stories.map((s, i) => ({ src: images[i], alt: s.couple }));
+  const portfolioGallery = STORY_SLUGS.map((slug, i) => ({
+    src: STORY_IMAGES[slug].hero,
+    alt: p.stories[i]?.couple ?? slug,
+  }));
 
   return (
     <>
@@ -32,13 +37,15 @@ export default function PortfolioPage() {
           {p.stories.map((s, i) => {
             const [first, second] = s.couple.split(" & ");
             const slug = STORY_SLUGS[i];
+            if (!slug) return null;
             const href = `${langPrefix}/portfolio/${slug}`;
+            const hero = STORY_IMAGES[slug].hero;
             return (
               <article key={s.couple} className="grid gap-10 md:grid-cols-12 md:items-center">
                 <div className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-                  <div className={`relative ${aspects[i]} overflow-hidden`}>
+                  <div className={`relative ${aspects[i] ?? "aspect-[16/10]"} overflow-hidden`}>
                     <ZoomableImage
-                      src={images[i]}
+                      src={hero}
                       alt={s.couple}
                       width={1600}
                       height={1200}

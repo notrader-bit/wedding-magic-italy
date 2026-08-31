@@ -2,26 +2,57 @@ import heroImg from "@/assets/hero-tuscany.jpg";
 import comoImg from "@/assets/portfolio-como.jpg";
 import amalfiImg from "@/assets/portfolio-amalfi.jpg";
 import pugliaImg from "@/assets/portfolio-puglia.jpg";
+import {
+  MYHUYEN_ERIC_HERO,
+  MYHUYEN_ERIC_SECTIONS,
+} from "@/data/myhuyen-eric-images";
 import type { Lang } from "@/i18n/translations";
+
+export const STORY_GALLERY_SECTION_ORDER = [
+  "couple-shoot",
+  "ceremony",
+  "cocktail-hour",
+  "dinner",
+  "chinese-gift-exchange",
+] as const;
+
+export type StoryGallerySectionId = (typeof STORY_GALLERY_SECTION_ORDER)[number];
 
 export const STORY_SLUGS = [
   "eleonora-tomas-tuscany",
   "sara-andrew-como",
   "claudia-henri-amalfi",
   "sophie-marcus-puglia",
+  "myhuyen-eric",
 ] as const;
 
 export type StorySlug = (typeof STORY_SLUGS)[number];
+
+export const STORY_COUPLE_NAMES: Record<StorySlug, string> = {
+  "eleonora-tomas-tuscany": "Eleonora & Tomás",
+  "sara-andrew-como": "Sara & Andrew",
+  "claudia-henri-amalfi": "Claudia & Henri",
+  "sophie-marcus-puglia": "Sophie & Marcus",
+  "myhuyen-eric": "MyHuyen & Eric",
+};
 
 export function isStorySlug(v: string | undefined): v is StorySlug {
   return !!v && (STORY_SLUGS as readonly string[]).includes(v);
 }
 
-export const STORY_IMAGES: Record<StorySlug, { hero: string; gallery: string[] }> = {
+export type StoryImageSet =
+  | { hero: string; gallery: string[]; sections?: undefined }
+  | { hero: string; sections: Record<StoryGallerySectionId, string[]>; gallery?: undefined };
+
+export const STORY_IMAGES: Record<StorySlug, StoryImageSet> = {
   "eleonora-tomas-tuscany": { hero: heroImg, gallery: [comoImg, amalfiImg, pugliaImg] },
   "sara-andrew-como": { hero: comoImg, gallery: [heroImg, pugliaImg, amalfiImg] },
   "claudia-henri-amalfi": { hero: amalfiImg, gallery: [pugliaImg, heroImg, comoImg] },
   "sophie-marcus-puglia": { hero: pugliaImg, gallery: [amalfiImg, comoImg, heroImg] },
+  "myhuyen-eric": {
+    hero: MYHUYEN_ERIC_HERO,
+    sections: MYHUYEN_ERIC_SECTIONS as Record<StoryGallerySectionId, string[]>,
+  },
 };
 
 export type StoryDetail = {
@@ -44,6 +75,7 @@ export type StoryUI = {
   storyH: string;
   decorH: string;
   galleryH: string;
+  gallerySections: Record<StoryGallerySectionId, string>;
   nextH: string;
   ctaEyebrow: string;
   ctaH1a: string;
@@ -66,6 +98,13 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     storyH: "The story",
     decorH: "Decor & details",
     galleryH: "Gallery",
+    gallerySections: {
+      "couple-shoot": "Couple shoot",
+      ceremony: "Ceremony",
+      "cocktail-hour": "Cocktail hour",
+      dinner: "Dinner",
+      "chinese-gift-exchange": "Chinese gift exchange",
+    },
     nextH: "Next story",
     ctaEyebrow: "Your turn",
     ctaH1a: "Imagine",
@@ -86,6 +125,13 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     storyH: "Історія",
     decorH: "Декор і деталі",
     galleryH: "Галерея",
+    gallerySections: {
+      "couple-shoot": "Пара",
+      ceremony: "Церемонія",
+      "cocktail-hour": "Коктейль",
+      dinner: "Вечеря",
+      "chinese-gift-exchange": "Обмін подарунками",
+    },
     nextH: "Наступна історія",
     ctaEyebrow: "Ваш наступний крок",
     ctaH1a: "Уявіть",
@@ -106,6 +152,13 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     storyH: "История",
     decorH: "Декор и детали",
     galleryH: "Галерея",
+    gallerySections: {
+      "couple-shoot": "Пара",
+      ceremony: "Церемония",
+      "cocktail-hour": "Коктейль",
+      dinner: "Ужин",
+      "chinese-gift-exchange": "Обмен подарками",
+    },
     nextH: "Следующая история",
     ctaEyebrow: "Ваш следующий шаг",
     ctaH1a: "Представьте",
@@ -126,6 +179,13 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     storyH: "La storia",
     decorH: "Decor & dettagli",
     galleryH: "Galleria",
+    gallerySections: {
+      "couple-shoot": "Coppia",
+      ceremony: "Cerimonia",
+      "cocktail-hour": "Cocktail",
+      dinner: "Cena",
+      "chinese-gift-exchange": "Scambio regali",
+    },
     nextH: "Prossima storia",
     ctaEyebrow: "Il vostro turno",
     ctaH1a: "Immaginate il",
@@ -146,6 +206,13 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     storyH: "La historia",
     decorH: "Decoración y detalles",
     galleryH: "Galería",
+    gallerySections: {
+      "couple-shoot": "Pareja",
+      ceremony: "Ceremonia",
+      "cocktail-hour": "Cóctel",
+      dinner: "Cena",
+      "chinese-gift-exchange": "Intercambio de regalos",
+    },
     nextH: "Siguiente historia",
     ctaEyebrow: "Vuestro turno",
     ctaH1a: "Imaginad",
@@ -166,6 +233,13 @@ export const STORY_UI: Record<Lang, StoryUI> = {
     storyH: "Die Geschichte",
     decorH: "Dekor & Details",
     galleryH: "Galerie",
+    gallerySections: {
+      "couple-shoot": "Paarshooting",
+      ceremony: "Zeremonie",
+      "cocktail-hour": "Cocktail",
+      dinner: "Dinner",
+      "chinese-gift-exchange": "Geschenkaustausch",
+    },
     nextH: "Nächste Geschichte",
     ctaEyebrow: "Ihr nächster Schritt",
     ctaH1a: "Stellen Sie sich",
@@ -256,6 +330,25 @@ export const STORY_DETAILS: Record<Lang, Record<StorySlug, StoryDetail>> = {
         "Estate wine, hand-rolled pasta, espresso & grappa at dawn",
       ],
     },
+    "myhuyen-eric": {
+      venue: "TBC",
+      season: "Late June 2026",
+      guests: "—",
+      palette: "TBC",
+      photography: "Deziro Studio",
+      paragraphs: [
+        "MyHuyen and Eric marked 28 June 2026 with a celebration in the mountains — long golden light, quiet vows, and a table that stretched into the evening.",
+        "The gallery follows the rhythm of the day, from couple portraits through ceremony, cocktail hour, dinner, and the Chinese gift exchange among family.",
+        "Venue details and the full written story will appear here as soon as the final edit is ready.",
+      ],
+      decor: [
+        "Venue and styling — forthcoming with the final edit",
+        "Ceremony among alpine views",
+        "Cocktail hour and dinner tablescapes — forthcoming",
+        "Chinese gift exchange — a family ritual in sequence",
+        "Photography by Deziro Studio",
+      ],
+    },
   },
   uk: {
     "eleonora-tomas-tuscany": {
@@ -332,6 +425,25 @@ export const STORY_DETAILS: Record<Lang, Record<StorySlug, StoryDetail>> = {
         "Довгі громадські столи, теракота, без центральних композицій",
         "Жива кумбія день другий, DJ до 4 ранку день третій",
         "Вино маєтку, паста вручну, еспресо й граппа на світанку",
+      ],
+    },
+    "myhuyen-eric": {
+      venue: "Уточнюється",
+      season: "Кінець червня 2026",
+      guests: "—",
+      palette: "Уточнюється",
+      photography: "Deziro Studio",
+      paragraphs: [
+        "Майхуєн і Ерік відсвяткували 28 червня 2026 року в горах — довге золоте світло, тихі обітниці й стіл, що тягнувся ввечір.",
+        "Галерея йде в ритмі дня: портрети пари, церемонія, коктейль, вечеря та китайський обмін подарунками серед родини.",
+        "Локацію та повний текст історії додамо, щойно буде готова фінальна версія.",
+      ],
+      decor: [
+        "Локація та стилістика — незабаром",
+        "Церемонія на тлі альпійських пейзажів",
+        "Коктейль і вечеря — деталі незабаром",
+        "Обмін подарунками — сімейний ритуал у кадрах",
+        "Фото: Deziro Studio",
       ],
     },
   },
@@ -412,6 +524,25 @@ export const STORY_DETAILS: Record<Lang, Record<StorySlug, StoryDetail>> = {
         "Вино поместья, паста вручную, эспрессо и граппа на рассвете",
       ],
     },
+    "myhuyen-eric": {
+      venue: "Уточняется",
+      season: "Конец июня 2026",
+      guests: "—",
+      palette: "Уточняется",
+      photography: "Deziro Studio",
+      paragraphs: [
+        "Майхуен и Эрик отметили 28 июня 2026 года в горах — долгий золотой свет, тихие клятвы и стол, который тянулся в вечер.",
+        "Галерея следует ритму дня: портреты пары, церемония, коктейль, ужин и китайский обмен подарками среди семьи.",
+        "Локацию и полный текст истории добавим, как только будет готова финальная версия.",
+      ],
+      decor: [
+        "Локация и стилистика — скоро",
+        "Церемония на фоне альпийских видов",
+        "Коктейль и ужин — детали скоро",
+        "Обмен подарками — семейный ритуал в кадрах",
+        "Фото: Deziro Studio",
+      ],
+    },
   },
   it: {
     "eleonora-tomas-tuscany": {
@@ -488,6 +619,25 @@ export const STORY_DETAILS: Record<Lang, Record<StorySlug, StoryDetail>> = {
         "Tavolate comuni, terracotta, nessun centrotavola",
         "Cumbia dal vivo giorno due, DJ fino alle 4 giorno tre",
         "Vino della tenuta, pasta a mano, espresso & grappa all'alba",
+      ],
+    },
+    "myhuyen-eric": {
+      venue: "In definizione",
+      season: "Fine giugno 2026",
+      guests: "—",
+      palette: "In definizione",
+      photography: "Deziro Studio",
+      paragraphs: [
+        "MyHuyen ed Eric hanno celebrato il 28 giugno 2026 in montagna — luce dorata lunga, voti raccolti e una tavola che si è prolungata nella sera.",
+        "La galleria segue il ritmo della giornata: ritratti di coppia, cerimonia, cocktail, cena e lo scambio dei regali cinesi in famiglia.",
+        "Location e racconto completo arriveranno con la versione finale.",
+      ],
+      decor: [
+        "Location e styling — in arrivo",
+        "Cerimonia tra viste alpine",
+        "Cocktail e cena — dettagli in arrivo",
+        "Scambio regali — rituale di famiglia in sequenza",
+        "Fotografia: Deziro Studio",
       ],
     },
   },
@@ -568,6 +718,25 @@ export const STORY_DETAILS: Record<Lang, Record<StorySlug, StoryDetail>> = {
         "Vino de la finca, pasta a mano, espresso y grappa al alba",
       ],
     },
+    "myhuyen-eric": {
+      venue: "Por confirmar",
+      season: "Finales de junio de 2026",
+      guests: "—",
+      palette: "Por confirmar",
+      photography: "Deziro Studio",
+      paragraphs: [
+        "MyHuyen y Eric celebraron el 28 de junio de 2026 en la montaña — luz dorada prolongada, votos íntimos y una mesa que se extendió hasta la noche.",
+        "La galería sigue el ritmo del día: retratos de pareja, ceremonia, cóctel, cena e intercambio de regalos chinos en familia.",
+        "El lugar y el relato completo llegarán con la edición final.",
+      ],
+      decor: [
+        "Lugar y estilismo — próximamente",
+        "Ceremonia con vistas alpinas",
+        "Cóctel y cena — detalles próximamente",
+        "Intercambio de regalos — ritual familiar en secuencia",
+        "Fotografía: Deziro Studio",
+      ],
+    },
   },
   de: {
     "eleonora-tomas-tuscany": {
@@ -644,6 +813,25 @@ export const STORY_DETAILS: Record<Lang, Record<StorySlug, StoryDetail>> = {
         "Lange Gemeinschaftstafeln, Terrakotta, keine Centerpieces",
         "Live-Cumbia Tag zwei, DJ bis 4 Uhr Tag drei",
         "Wein des Anwesens, handgerollte Pasta, Espresso & Grappa im Morgengrauen",
+      ],
+    },
+    "myhuyen-eric": {
+      venue: "Noch offen",
+      season: "Ende Juni 2026",
+      guests: "—",
+      palette: "Noch offen",
+      photography: "Deziro Studio",
+      paragraphs: [
+        "MyHuyen und Eric feierten am 28. Juni 2026 in den Bergen — langes goldenes Licht, stille Gelübde und eine Tafel, die sich in den Abend zog.",
+        "Die Galerie folgt dem Rhythmus des Tages: Paarporträts, Zeremonie, Cocktail, Dinner und der chinesische Geschenkaustausch in der Familie.",
+        "Location und der vollständige Text folgen mit der finalen Fassung.",
+      ],
+      decor: [
+        "Location und Styling — folgt in Kürze",
+        "Zeremonie mit Alpenblick",
+        "Cocktail und Dinner — Details folgen",
+        "Geschenkaustausch — Familienritual in Bildern",
+        "Fotografie: Deziro Studio",
       ],
     },
   },
