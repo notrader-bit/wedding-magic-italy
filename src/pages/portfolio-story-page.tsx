@@ -61,6 +61,11 @@ export default function StoryPage() {
           src={imgs.hero}
           alt={couple}
           className="absolute inset-0 h-full w-full object-cover"
+          style={
+            imgs.heroObjectPosition
+              ? { objectPosition: imgs.heroObjectPosition }
+              : undefined
+          }
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/75" />
         <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black/85 via-black/45 to-transparent" />

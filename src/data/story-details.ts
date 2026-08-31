@@ -41,8 +41,13 @@ export function isStorySlug(v: string | undefined): v is StorySlug {
 }
 
 export type StoryImageSet =
-  | { hero: string; gallery: string[]; sections?: undefined }
-  | { hero: string; sections: Record<StoryGallerySectionId, string[]>; gallery?: undefined };
+  | { hero: string; gallery: string[]; sections?: undefined; heroObjectPosition?: string }
+  | {
+      hero: string;
+      sections: Record<StoryGallerySectionId, string[]>;
+      gallery?: undefined;
+      heroObjectPosition?: string;
+    };
 
 export const STORY_IMAGES: Record<StorySlug, StoryImageSet> = {
   "eleonora-tomas-tuscany": { hero: heroImg, gallery: [comoImg, amalfiImg, pugliaImg] },
@@ -52,6 +57,7 @@ export const STORY_IMAGES: Record<StorySlug, StoryImageSet> = {
   "myhuyen-eric": {
     hero: MYHUYEN_ERIC_HERO,
     sections: MYHUYEN_ERIC_SECTIONS as Record<StoryGallerySectionId, string[]>,
+    heroObjectPosition: "50% 18%",
   },
 };
 
